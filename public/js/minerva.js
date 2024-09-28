@@ -61,32 +61,46 @@ function showMoreCards(sectionId) {
   }
 }
 
-// Funcionalidad para buscar por nombre o departamento (sin cambios)
+// Cambiar texto al botón
+function showMoreCards(elementId, button) {
+  const moreCards = document.getElementById(elementId);
+  
+  if (moreCards.style.display === "none") {
+      moreCards.style.display = "block"; 
+      button.innerText = "Ver menos"; 
+  } else {
+      moreCards.style.display = "none"; 
+      button.innerText = "Ver más"; 
+  }
+}
+
+
+// Funcionalidad para buscar por nombre o departamento
 const searchInput = document.querySelector('.boton__texto');
 searchInput.addEventListener('input', function () {
   const searchTerm = this.value.toLowerCase();
-  const sections = document.querySelectorAll('.section-container');
+  const sections = document.querySelectorAll('.col-12');  
   
   sections.forEach(section => {
-    const departmentTitle = section.querySelector('.section-title').textContent.toLowerCase();
-    const cards = section.querySelectorAll('.card');
+    const departmentTitle = section.querySelector('h2.section-title').textContent.toLowerCase(); 
+    const cards = section.querySelectorAll('.card'); 
     let hasVisibleCard = false;
     
     cards.forEach(card => {
-      const cardTitle = card.querySelector('h3').textContent.toLowerCase();
+      const cardTitle = card.querySelector('.card-title').textContent.toLowerCase(); 
       if (cardTitle.includes(searchTerm) || departmentTitle.includes(searchTerm)) {
-        card.style.display = "block";
+        card.parentElement.style.display = "block"; 
         hasVisibleCard = true;
       } else {
-        card.style.display = "none";
+        card.parentElement.style.display = "none"; // Ocultar la tarjeta si no coincide
       }
     });
     
     // Mostrar u ocultar secciones basadas en si hay tarjetas visibles
     if (hasVisibleCard || departmentTitle.includes(searchTerm)) {
-      section.style.display = "block";
+      section.style.display = "block"; // Mostrar la sección si hay tarjetas visibles
     } else {
-      section.style.display = "none";
+      section.style.display = "none"; // Ocultar la sección si no hay tarjetas visibles
     }
   });
 });

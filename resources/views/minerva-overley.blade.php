@@ -11,17 +11,12 @@
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Improved View with Side Images</title>
-    <link rel="stylesheet" href="{{ asset('css/overlay.css') }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-</head>
-<body>
+@extends('base')
 
+@section('title')
+
+
+@section('content')
     <!-- Botón de retorno en la parte superior izquierda -->
     <a href="javascript:history.back()" class="circle-button">
         <div class="inner-circle">
@@ -50,9 +45,4 @@
         </div>
     </div>
     <!-- Footer al final del contenido -->
-<div class="footer">
-    <div class="footer-text">© Realizado por estudiantes de Ingeniería en Sistemas Informáticos 2024.</div>
-</div>
-</body>
-
-</html>
+@endsection
