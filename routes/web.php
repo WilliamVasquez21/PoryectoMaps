@@ -12,3 +12,9 @@ Route::get('/minerva', [MinervaController::class, 'index'])->name('minerva');
 Route::get('/minerva-la', [MinervaLaController::class, 'index'])->name('minerva-la');
 
 Route::get('/minerva-overley', [MinervaOverlayController::class, 'index'])->name('minerva-overley');
+
+// Ruta para el método index (ya existente)
+Route::get('/zonas', [MinervaController::class, 'index'])->name('minerva.home');
+
+// Nueva ruta para aulas
+Route::get('/aulas', [MinervaController::class, 'getAulas'])->name('aulas.index');
