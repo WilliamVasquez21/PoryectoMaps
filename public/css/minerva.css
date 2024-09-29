@@ -7,7 +7,7 @@
 body {
     height: 100%;
 
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     width: 100%;
     /* Asegura que tomen toda la anchura del viewport */
     margin: 0;
@@ -15,8 +15,6 @@ body {
     padding: 0;
     /* Elimina los paddings */
     overflow-x: hidden;
-
-
 }
 
 #root {
@@ -30,8 +28,8 @@ body {
 }
 
 .header {
-
-    background: linear-gradient(180deg, rgba(170, 0, 0, 0.800) 0%, #ff1f1f80 100%), url(https://firebasestorage.googleapis.com/v0/b/dbasistenciadocente.appspot.com/o/collage_header-removebg.png?alt=media&token=1f8d6e9c-cc5c-4570-ae82-525bb7ce6543);
+    background: linear-gradient(180deg, rgba(170, 0, 0, 0.8) 0%, #ff1f1f80 100%),
+        url(https://firebasestorage.googleapis.com/v0/b/dbasistenciadocente.appspot.com/o/collage_header-removebg.png?alt=media&token=1f8d6e9c-cc5c-4570-ae82-525bb7ce6543);
 
     color: white;
     padding: 15px;
@@ -39,10 +37,8 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-
-    background-color: #AA0000;
+    background-color: #aa0000;
 }
-
 
 .logo {
     display: flex;
@@ -59,14 +55,12 @@ body {
     /* Mantiene la proporción */
 }
 
-
 /* Busqueda */
 .busqueda {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-
 }
 .busqueda__titulo {
     color: var(--blanco);
@@ -78,10 +72,8 @@ body {
 
 @media (min-width: 768px) {
     .busqueda__titulo {
-
         font-size: 4rem;
         /* Ajustar el tamaño de fuente */
-
     }
 }
 
@@ -125,13 +117,11 @@ input::placeholder {
 .content {
     padding: 10px;
 
-
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 
     flex-grow: 1;
     gap: 10px;
-
 
     flex-grow: 1;
     gap: 10px;
@@ -142,14 +132,11 @@ input::placeholder {
     width: 100%;
     height: 100px;
     padding: 32px 0px;
-
-    background: linear-gradient(180deg, #A00 0%, #FF1F1F 100%);
-
+    background: linear-gradient(180deg, #a00 0%, #ff1f1f 100%);
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 0;
-
 }
 
 .footer-text {
@@ -185,40 +172,24 @@ input::placeholder {
 .material-symbols-outlined {
     color: #000000;
 
-    font-variation-settings:
-
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
-
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
 /* Contenedor del menú desplazable */
 .menu-container {
     display: flex;
-
-    overflow-x: hidden;
-    /* Evitar que la barra de desplazamiento sea visible */
-
+    overflow-x: auto; /* Habilitar el desplazamiento horizontal */
     white-space: nowrap;
     margin: 20px;
     padding: 10px 0;
     scroll-behavior: smooth;
-
     cursor: grab;
-    /* Indicar al usuario que se puede arrastrar */
     user-select: none;
-    /* Evitar selección de texto mientras se arrastra */
-
-}
-.menu-container::-webkit-scrollbar-thumb:hover {
-    background-color: transparent; /* Color al pasar el ratón */
+    scrollbar-width: none; /* Para navegadores que soportan scrollbar CSS */
 }
 
-.menu-container::-webkit-scrollbar-track {
-    background-color: transparent; /* Color del fondo de la barra */
-    border-radius: 10px; /* Esquinas redondeadas del track */
+.menu-container::-webkit-scrollbar {
+    height: 8px; /* Altura de la barra de desplazamiento */
 }
 
 /* Estilo para cada opción del menú */
@@ -227,32 +198,25 @@ input::placeholder {
     padding: 15px 25px;
     margin: 0 10px;
     font-size: 20px;
-
-    color: #AA0000;
+    color: #aa0000;
     font-weight: bold;
-    border: 2px solid #AA0000;
+    border: 2px solid #aa0000;
     border-radius: 15px;
-    background-color: white;
+    background-color: transparent;
     cursor: pointer;
     transition: all 0.7s ease;
     flex-shrink: 0;
-    /* Para evitar que las opciones se compriman */
-
 }
 
-/* Estilo para la opción activa */
-.menu-item.active {
-
-    background-color: #AA0000;
-
-    color: white;
+.menu-item {
+    text-decoration: none;
+    /* Elimina la línea debajo del texto */
+    display: inline-block;
+    font-size: 16px;
 }
-
-/* Efecto al pasar el mouse */
 
 .menu-item:hover {
-    background-color: #AA0000;
-
+    background-color: #aa0000;
     color: white;
 }
 
@@ -275,13 +239,12 @@ input::placeholder {
 .section-title {
     font-size: 31px;
 
-    color: #AA0000;
+    color: #aa0000;
 
     font-weight: bold;
     margin-bottom: 10px;
     text-align: left;
 }
-
 
 .section-container {
     display: flex;
@@ -296,8 +259,7 @@ input::placeholder {
 }
 
 .section-title {
-
-    color: #AA0000;
+    color: #aa0000;
 
     padding: 10px 0;
     font-size: 18px;
@@ -333,11 +295,9 @@ input::placeholder {
     /* Asegura que el texto mantenga su color original */
     display: block;
     /* Asegura que el enlace cubra toda la tarjeta */
-
 }
 
 .card:hover {
-
     text-decoration: none;
     /* Asegura que no aparezca un subrayado al hacer hover */
 }
@@ -349,7 +309,6 @@ input::placeholder {
     /* Limita el tamaño máximo de la imagen */
     height: auto;
     /* Mantiene la proporción de la imagen */
-
 }
 
 .hidden-cards {
@@ -364,7 +323,7 @@ input::placeholder {
 .btn {
     padding: 10px 20px;
 
-    background-color: #AA0000;
+    background-color: #aa0000;
 
     color: #fff;
     border: none;
@@ -375,8 +334,7 @@ input::placeholder {
 .material-symbols-outlined {
     color: #000000;
 
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
 /* Estilos para las tarjetas */
@@ -398,7 +356,7 @@ input::placeholder {
 .card-body h3 {
     font-size: 25px;
 
-    color: #AA0000;
+    color: #aa0000;
 
     margin: 0;
 }
@@ -406,7 +364,7 @@ input::placeholder {
 .card-body p {
     font-size: 15px;
 
-    color: #AA0000;
+    color: #aa0000;
 
     margin: 5px 0;
 }
@@ -421,13 +379,12 @@ input::placeholder {
 .view-more-btn .btn {
     padding: 10px 20px;
 
-    border: 1px solid #FF1F1F;
+    border: 1px solid #ff1f1f;
     border-radius: 10px;
-    color: #FF1F1F;
+    color: #ff1f1f;
     font-size: 15px;
     cursor: pointer;
-    font-family: 'Roboto', sans-serif;
-
+    font-family: "Roboto", sans-serif;
 }
 
 /* Ocultar inicialmente las tarjetas adicionales */
@@ -438,7 +395,6 @@ input::placeholder {
 /* Media queries for responsive design */
 @media (max-width: 768px) {
     .header-grid {
-
         grid-template-columns: 1fr;
         /* Stack columns on small screens */
         grid-template-rows: auto auto auto;
@@ -471,19 +427,7 @@ input::placeholder {
     }
 }
 
-.menu-item {
-    text-decoration: none;
-    /* Elimina la línea debajo del texto */
-    display: inline-block;
-    font-size: 16px;
-}
-
-.menu-item:hover {
-    color: #f04;
-    /* Cambia el color al pasar el mouse si es necesario */
-}
-
-@media(max-width:480px) {
+@media (max-width: 480px) {
     .busqueda {
         width: 50%;
     }
@@ -523,7 +467,4 @@ input::placeholder {
         width: 2rem;
         height: 2rem;
     }
-
-
 }
-
