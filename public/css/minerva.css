@@ -4,10 +4,9 @@
     box-sizing: border-box;
 }
 
-
-
 body {
     height: 100%;
+
     font-family: 'Roboto', sans-serif;
     width: 100%;
     /* Asegura que tomen toda la anchura del viewport */
@@ -17,24 +16,30 @@ body {
     /* Elimina los paddings */
     overflow-x: hidden;
 
+
 }
 
 #root {
     display: flex;
     flex-direction: column;
+
     min-height: 100vh;
     /* 100% de la altura del viewport */
+
     width: 100vw;
 }
 
 .header {
+
     background: linear-gradient(180deg, rgba(170, 0, 0, 0.800) 0%, #ff1f1f80 100%), url(https://firebasestorage.googleapis.com/v0/b/dbasistenciadocente.appspot.com/o/collage_header-removebg.png?alt=media&token=1f8d6e9c-cc5c-4570-ae82-525bb7ce6543);
+
     color: white;
     padding: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+
     background-color: #AA0000;
 }
 
@@ -54,13 +59,14 @@ body {
     /* Mantiene la proporción */
 }
 
+
 /* Busqueda */
 .busqueda {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-}
+
 
 .busqueda__titulo {
     color: var(--blanco);
@@ -72,15 +78,19 @@ body {
 
 @media (min-width: 768px) {
     .busqueda__titulo {
+
         font-size: 4rem;
         /* Ajustar el tamaño de fuente */
+
     }
 }
 
 .boton {
     display: flex;
+
     align-items: center;
     width: 100%;
+
     height: 4rem;
     border: 1px solid #ffffff;
     border-radius: 6px;
@@ -115,12 +125,16 @@ input::placeholder {
 .content {
     padding: 10px;
 
+
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 
     flex-grow: 1;
     gap: 10px;
 
+
+    flex-grow: 1;
+    gap: 10px;
 }
 
 /* Footer al final del contenido sin dejar espacios */
@@ -128,12 +142,13 @@ input::placeholder {
     width: 100%;
     height: 108px;
     padding: 32px 0px;
+
     background: linear-gradient(180deg, #A00 0%, #FF1F1F 100%);
+
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 0;
-
 
 }
 
@@ -145,32 +160,43 @@ input::placeholder {
     word-wrap: break-word;
 }
 
-
 .material-symbols-outlined {
     color: #000000;
+
     font-variation-settings:
 
         'FILL' 0,
         'wght' 400,
         'GRAD' 0,
         'opsz' 24
+
 }
 
 /* Contenedor del menú desplazable */
 .menu-container {
     display: flex;
+
     overflow-x: hidden;
     /* Evitar que la barra de desplazamiento sea visible */
+
     white-space: nowrap;
     margin: 20px;
     padding: 10px 0;
     scroll-behavior: smooth;
+
     cursor: grab;
     /* Indicar al usuario que se puede arrastrar */
     user-select: none;
     /* Evitar selección de texto mientras se arrastra */
 
 
+.menu-container::-webkit-scrollbar-thumb:hover {
+    background-color: transparent; /* Color al pasar el ratón */
+}
+
+.menu-container::-webkit-scrollbar-track {
+    background-color: transparent; /* Color del fondo de la barra */
+    border-radius: 10px; /* Esquinas redondeadas del track */
 }
 
 /* Estilo para cada opción del menú */
@@ -179,6 +205,7 @@ input::placeholder {
     padding: 15px 25px;
     margin: 0 10px;
     font-size: 20px;
+
     color: #AA0000;
     font-weight: bold;
     border: 2px solid #AA0000;
@@ -188,17 +215,22 @@ input::placeholder {
     transition: all 0.7s ease;
     flex-shrink: 0;
     /* Para evitar que las opciones se compriman */
+
 }
 
 /* Estilo para la opción activa */
 .menu-item.active {
+
     background-color: #AA0000;
+
     color: white;
 }
 
 /* Efecto al pasar el mouse */
+
 .menu-item:hover {
     background-color: #AA0000;
+
     color: white;
 }
 
@@ -220,12 +252,13 @@ input::placeholder {
 /* Título de la sección */
 .section-title {
     font-size: 31px;
+
     color: #AA0000;
+
     font-weight: bold;
     margin-bottom: 10px;
     text-align: left;
 }
-
 
 
 .section-container {
@@ -241,8 +274,9 @@ input::placeholder {
 }
 
 .section-title {
+
     color: #AA0000;
-    ;
+
     padding: 10px 0;
     font-size: 18px;
     width: 100%;
@@ -250,10 +284,12 @@ input::placeholder {
 
 .content {
     display: grid;
+
     grid-template-columns: repeat(4, 1fr);
     /* 4 columnas */
     gap: 20px;
     /* Espaciado entre tarjetas */
+
     margin-bottom: 10px;
 }
 
@@ -266,6 +302,7 @@ input::placeholder {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     margin-bottom: 20px;
     /* Asegurar margen entre tarjetas */
     text-decoration: none;
@@ -274,9 +311,11 @@ input::placeholder {
     /* Asegura que el texto mantenga su color original */
     display: block;
     /* Asegura que el enlace cubra toda la tarjeta */
+
 }
 
 .card:hover {
+
     text-decoration: none;
     /* Asegura que no aparezca un subrayado al hacer hover */
 }
@@ -288,6 +327,7 @@ input::placeholder {
     /* Limita el tamaño máximo de la imagen */
     height: auto;
     /* Mantiene la proporción de la imagen */
+
 }
 
 .hidden-cards {
@@ -301,18 +341,20 @@ input::placeholder {
 
 .btn {
     padding: 10px 20px;
+
     background-color: #AA0000;
+
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-
-
 .material-symbols-outlined {
     color: #000000;
+
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+
 }
 
 /* Estilos para las tarjetas */
@@ -333,13 +375,17 @@ input::placeholder {
 
 .card-body h3 {
     font-size: 25px;
+
     color: #AA0000;
+
     margin: 0;
 }
 
 .card-body p {
     font-size: 15px;
+
     color: #AA0000;
+
     margin: 5px 0;
 }
 
@@ -352,12 +398,14 @@ input::placeholder {
 
 .view-more-btn .btn {
     padding: 10px 20px;
+
     border: 1px solid #FF1F1F;
     border-radius: 10px;
     color: #FF1F1F;
     font-size: 15px;
     cursor: pointer;
     font-family: 'Roboto', sans-serif;
+
 }
 
 /* Ocultar inicialmente las tarjetas adicionales */
@@ -368,6 +416,7 @@ input::placeholder {
 /* Media queries for responsive design */
 @media (max-width: 768px) {
     .header-grid {
+
         grid-template-columns: 1fr;
         /* Stack columns on small screens */
         grid-template-rows: auto auto auto;
@@ -452,5 +501,6 @@ input::placeholder {
         width: 2rem;
         height: 2rem;
     }
+
 
 }
