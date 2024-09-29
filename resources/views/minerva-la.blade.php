@@ -1,23 +1,3 @@
-<?php
-$images = [
-    ['url' => 'https://via.placeholder.com/502x677', 'caption' => 'Imagen principal'],
-    ['url' => 'https://via.placeholder.com/346x332', 'caption' => 'Imagen secundaria'],
-    ['url' => 'https://via.placeholder.com/346x332', 'caption' => 'Imagen secundaria'],
-    ['url' => 'https://via.placeholder.com/346x332', 'caption' => 'Imagen secundaria'],
-    ['url' => 'https://via.placeholder.com/346x332', 'caption' => 'Imagen secundaria']
-];
-
-$highlightedImages = [
-  [
-      'url' => 'https://via.placeholder.com/712x677',
-      'title' => 'Auditorio 1',
-      'location' => 'CRQV+V24, San Miguel',
-      'address' => 'Frente a la Plaza Roque Daltón, Costado Poniente del Parqueo de Visitantes.',
-      'capacity' => '250 personas'
-  ]
-];
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
