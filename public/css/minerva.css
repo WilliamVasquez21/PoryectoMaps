@@ -185,7 +185,9 @@ input::placeholder {
     scroll-behavior: smooth;
     cursor: grab;
     user-select: none;
+
     scrollbar-width: none; /* Para navegadores que soportan scrollbar CSS */
+
 }
 
 .menu-container::-webkit-scrollbar {
