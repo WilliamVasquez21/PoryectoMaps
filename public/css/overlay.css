@@ -96,27 +96,28 @@ footer {
     font-weight: 700;
 }
 
-/* Para dispositivos móviles (pantallas pequeñas) */
-@media (max-width: 430px) {
-    footer {
-        height: 80px; /* Reducir la altura en móviles */
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .footer {
+        padding: 20px 0;
     }
 
     .footer-text {
-        font-size: 10px; /* Ajustar el tamaño del texto para móviles */
+        font-size: 18px; /* Tamaño de texto más pequeño */
     }
 }
 
-/* Para tablets (pantallas medianas) */
-@media (min-width: 431px) and (max-width: 900px) {
-    footer {
-        height: 90px; /* Ajustar la altura para tablets */
+@media (min-width: 320px) {
+    .footer {
+        padding: 15px 0;
+        text-align: center;
     }
 
     .footer-text {
-        font-size: 20px; /* Ajustar el tamaño del texto para tablets */
+        font-size: 16px;
     }
 }
+
 
 /* Para laptops y pantallas grandes (escritorio) */
 @media (min-width: 901px) and (max-width: 1200px) {

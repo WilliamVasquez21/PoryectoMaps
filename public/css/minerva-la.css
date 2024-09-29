@@ -88,7 +88,7 @@ body {
 /* Footer al final del contenido sin dejar espacios */
 .footer {
     width: 100%;
-    height: 108px;
+    height: 60px;
     padding: 32px 0px;
     background: linear-gradient(180deg, #a00 0%, #ff1f1f 100%);
     display: flex;
@@ -101,51 +101,28 @@ body {
     color: white;
     font-size: 25px;
     font-family: Inter, sans-serif;
-    font-weight: 700;
+    font-weight: 400;
     word-wrap: break-word;
 }
 
-/* Para dispositivos móviles (pantallas pequeñas) */
-@media (max-width: 430px) {
-    footer {
-        height: 80px; /* Reducir la altura en móviles */
+@media (max-width: 768px) {
+    .footer {
+        padding: 20px 0;
     }
 
     .footer-text {
-        font-size: 10px; /* Ajustar el tamaño del texto para móviles */
+        font-size: 18px;
     }
 }
 
-/* Para tablets (pantallas medianas) */
-@media (min-width: 431px) and (max-width: 900px) {
-    footer {
-        height: 90px; /* Ajustar la altura para tablets */
+@media (min-width: 320px) {
+    .footer {
+        padding: 15px 0;
+        text-align: center;
     }
 
     .footer-text {
-        font-size: 20px; /* Ajustar el tamaño del texto para tablets */
-    }
-}
-
-/* Para laptops y pantallas grandes (escritorio) */
-@media (min-width: 901px) and (max-width: 1200px) {
-    footer {
-        height: 100px; /* Ajustar la altura para laptops */
-    }
-
-    .footer-text {
-        font-size: 22px; /* Ajustar el tamaño del texto para laptops */
-    }
-}
-
-/* Para pantallas muy grandes (monitores de escritorio) */
-@media (min-width: 1201px) {
-    footer {
-        height: 108px; /* Mantener la altura original en pantallas grandes */
-    }
-
-    .footer-text {
-        font-size: 25px; /* Mantener el tamaño original del texto */
+        font-size: 16px;
     }
 }
 
