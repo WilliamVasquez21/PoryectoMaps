@@ -1,18 +1,21 @@
 /* General body styling */
 body {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: white;
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: white;
+
 }
 
 /* Círculo flotante para "volver atrás" */
 .back-button {
+
   width: 77px;
   height: 77px;
   padding: 17.71px;
@@ -23,6 +26,7 @@ body {
   cursor: pointer;
   margin-top: 20px;
   margin-bottom: 30px; /* Separa el botón del grid de imágenes */
+
 
 }
 
@@ -67,52 +71,78 @@ text-decoration: none;
 }
 
 .back-button .icon-arrow {
+
   border: solid white;
   border-width: 0 3.4px 3.4px 0;
   display: inline-block;
   padding: 10px;
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
+
 }
 
 /* Contenedor principal */
 .container {
-  width: 100%;
-  max-width: 1233px;
-  flex-grow: 1;
-  position: relative;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding-top: 50px; /* Añadir espacio para el botón flotante */
+
+    width: 100%;
+    max-width: 1233px;
+    flex-grow: 1;
+    position: relative;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 50px; /* Añadir espacio para el botón flotante */
+
 }
 
 /* Footer al final del contenido sin dejar espacios */
 .footer {
-width: 100%;
-height: 108px;
-padding: 32px 0px;
-background: linear-gradient( 180deg, #A00 0%, #FF1F1F 100%);
-display: flex;
-justify-content: center;
-align-items: center;
-margin-top: 0;
 
-
+    width: 100%;
+    height: 60px;
+    padding: 32px 0px;
+    background: linear-gradient(180deg, #a00 0%, #ff1f1f 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
 }
 
 .footer-text {
-color: white;
-font-size: 25px;
-font-family: Inter, sans-serif;
-font-weight: 700;
-word-wrap: break-word;
+    color: white;
+    font-size: 25px;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 20px 0;
+    }
+
+    .footer-text {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 320px) {
+    .footer {
+        padding: 15px 0;
+        text-align: center;
+    }
+
+    .footer-text {
+        font-size: 16px;
+    }
+
 }
 
 /* Contenedor de imágenes */
 .image-grid {
+
   width: 1233px;
   height: 676.59px;
   margin-top: 20px; /* Reducimos el margen para ajustarlo mejor */
@@ -124,6 +154,7 @@ word-wrap: break-word;
   height: 676.59px;
   position: absolute;
   border-radius: 11.06px 0 0 11.06px;
+
 }
 
 .grid-image {
@@ -157,6 +188,7 @@ word-wrap: break-word;
 
 /* Botón de fotos flotante en la parte inferior de la quinta imagen del grid */
 .button-box {
+
   padding: 10px;
   position: absolute;
   right: 10px;
@@ -179,20 +211,24 @@ word-wrap: break-word;
   font-weight: 400;
   word-wrap: break-word;
   text-align: center;
+
 }
 
 /* Contenedor de imagen destacada y texto */
 .highlighted-container {
+
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-top: 20px;
   width: 100%;
   max-width: 1233px;
+
 }
 
 /* Imagen destacada ajustada al tamaño de las dos filas del grid */
 .highlighted-image {
+
   width: 712px;
   height: 676.59px;
   border-radius: 15.68px;
@@ -206,6 +242,7 @@ word-wrap: break-word;
   gap: 19px;
   text-align: left;
   margin-left: 20px;
+
 }
 
 .auditorio-text {
@@ -267,10 +304,12 @@ word-wrap: break-word;
 }
 
 .black-icon {
+
   width: 20px;
   height: 20px;
   position: absolute;
   left: 2px;
   top: 2px;
   border: 2px solid black;
+
 }
