@@ -11,6 +11,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <div class="row">
         <header class="header">
 
@@ -110,6 +111,8 @@
 </head>
 
 <body>
+=======
+>>>>>>> 09dc33b95f012c29b54c00418acebbdde48565c6
     <header class="header">
         <div class="busqueda">
             <h1 class="busqueda__titulo">Minerva Maps <br>UES-FMO</h1>
