@@ -209,7 +209,7 @@ input::placeholder {
     height: 8px; /* Ajustar el alto de la barra */
     opacity: 0; /* Hacer la barra invisible por defecto */
     transition: opacity 0.01s ease; /* Transición suave */
-    width: 0;
+    width: 0;/*tamaño */
     height: 0;
 
 }
