@@ -1,21 +1,25 @@
 <?php
-$images = [
-    ['url' => 'https://via.placeholder.com/502x677', 'caption' => 'Imagen principal'],
-    ['url' => 'https://via.placeholder.com/346x332', 'caption' => 'Imagen secundaria'],
-    ['url' => 'https://via.placeholder.com/346x332', 'caption' => 'Imagen secundaria'],
-    ['url' => 'https://via.placeholder.com/346x332', 'caption' => 'Imagen secundaria'],
-    ['url' => 'https://via.placeholder.com/346x332', 'caption' => 'Imagen secundaria']
-];
+// Establecemos un número mínimo de imágenes que queremos en el grid
+$minImagesCount = 5; 
 
-$highlightedImages = [
-  [
-      'url' => 'https://via.placeholder.com/712x677',
-      'title' => 'Auditorio 1',
-      'location' => 'CRQV+V24, San Miguel',
-      'address' => 'Frente a la Plaza Roque Daltón, Costado Poniente del Parqueo de Visitantes.',
-      'capacity' => '250 personas'
-  ]
-];
+// Llenar el grid de imágenes con la última si no hay suficientes
+while (count($imagenes) < $minImagesCount) {
+    $imagenes[] = end($imagenes);  // Añadir la última imagen disponible hasta llenar
+}
+
+// Extraer las coordenadas de la zona relacionada si existen para aulas, o las de referencia
+if (isset($zonaRelacionada['coordenadas'])) {
+    $coordenadas = explode(',', $zonaRelacionada['coordenadas']);
+    $latitude = $coordenadas[0] ?? '13.4834'; // Valor por defecto si no existe
+    $longitude = $coordenadas[1] ?? '-88.1834'; // Valor por defecto si no existe
+} elseif (isset($referenciaData['coordenadas'])) {
+    $coordenadas = explode(',', $referenciaData['coordenadas']);
+    $latitude = $coordenadas[0] ?? '13.4834'; // Coordenada predeterminada para referencias
+    $longitude = $coordenadas[1] ?? '-88.1834'; // Coordenada predeterminada para referencias
+} else {
+    $latitude = '13.4834';  // Valor por defecto si no hay coordenadas
+    $longitude = '-88.1834'; // Valor por defecto si no hay coordenadas
+}
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +59,9 @@ $highlightedImages = [
     </div>
 </a>
 
+<!-- Contenedor principal -->
 <div class="container">
+  <!-- Cuadrícula de imágenes -->
   <div class="image-grid">
     <?php foreach ($images as $index => $image): ?>
       <?php if ($index == 0): ?>
@@ -73,6 +79,7 @@ $highlightedImages = [
     </div>
   </div>
   
+  <!-- Contenedor de detalles y mapa -->
   <div class="container">
    
     <?php foreach ($highlightedImages as $image): ?>
