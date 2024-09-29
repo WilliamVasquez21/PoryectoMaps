@@ -6,77 +6,43 @@
 
 body {
     height: 100%;
-    font-family: "Roboto", sans-serif;
-    width: 100%; /* Asegura que tomen toda la anchura del viewport */
-    margin: 0; /* Elimina los márgenes */
-    padding: 0; /* Elimina los paddings */
+
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    /* Asegura que tomen toda la anchura del viewport */
+    margin: 0;
+    /* Elimina los márgenes */
+    padding: 0;
+    /* Elimina los paddings */
     overflow-x: hidden;
-    background-color: #e8e8e8;
+
+
 }
 
 #root {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* 100% de la altura del viewport */
+
+    min-height: 100vh;
+    /* 100% de la altura del viewport */
+
     width: 100vw;
 }
 
 .header {
-    background: linear-gradient(180deg, #a00 0%, #ff1f1f 100%);
+
+    background: linear-gradient(180deg, rgba(170, 0, 0, 0.800) 0%, #ff1f1f80 100%), url(https://firebasestorage.googleapis.com/v0/b/dbasistenciadocente.appspot.com/o/collage_header-removebg.png?alt=media&token=1f8d6e9c-cc5c-4570-ae82-525bb7ce6543);
+
     color: white;
     padding: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+
+    background-color: #AA0000;
 }
 
-.header-grid {
-    display: grid;
-    grid-template-columns: 1fr 100px; /* Two columns: title/search and logo */
-    grid-template-rows: auto auto auto; /* Three rows: title, subtitle, search */
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    max-width: 500px;
-}
-
-.header-title {
-    grid-column: 1; /* First column */
-    grid-row: 1; /* First row */
-    font-size: 40px;
-    text-align: center;
-}
-
-.header-subtitle {
-    grid-column: 1; /* First column */
-    grid-row: 2; /* Second row */
-    font-size: 40px;
-    text-align: center;
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-    background: white;
-    border-radius: 8px;
-    padding: 8px 15px;
-    grid-column: 1; /* First column */
-    grid-row: 3; /* Third row */
-    margin-bottom: 20px;
-}
-
-.search-bar img {
-    height: 20px;
-    margin-right: 5px;
-}
-
-.search-bar input {
-    border: none;
-    outline: none;
-    width: 100%;
-    font-size: 16px;
-}
 
 .logo {
     display: flex;
@@ -84,24 +50,23 @@ body {
     justify-content: center;
     grid-column: 2;
     grid-row: 1 / 4;
+    margin-left: 20%;
 
     /* Esto limitará el tamaño sin distorsionar la imagen */
-    max-width: 150px; /* Limita el ancho máximo de la imagen */
-    height: auto; /* Mantiene la proporción */
+    max-width: 170px;
+    /* Limita el ancho máximo de la imagen */
+    height: auto;
+    /* Mantiene la proporción */
 }
+
+
 /* Busqueda */
 .busqueda {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-}
 
-@media (min-width: 480px) {
-    .busqueda {
-        width: 50%;
-    }
-}
 
 .busqueda__titulo {
     color: var(--blanco);
@@ -113,15 +78,19 @@ body {
 
 @media (min-width: 768px) {
     .busqueda__titulo {
-        font-size: 4rem; /* Ajustar el tamaño de fuente */
+
+        font-size: 4rem;
+        /* Ajustar el tamaño de fuente */
+
     }
 }
 
 .boton {
     display: flex;
-    justify-content: center;
+
     align-items: center;
-    width: 80%;
+    width: 100%;
+
     height: 4rem;
     border: 1px solid #ffffff;
     border-radius: 6px;
@@ -156,8 +125,13 @@ input::placeholder {
 .content {
     padding: 10px;
 
+
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+    flex-grow: 1;
+    gap: 10px;
+
 
     flex-grow: 1;
     gap: 10px;
@@ -168,11 +142,14 @@ input::placeholder {
     width: 100%;
     height: 108px;
     padding: 32px 0px;
-    background: linear-gradient(180deg, #a00 0%, #ff1f1f 100%);
+
+    background: linear-gradient(180deg, #A00 0%, #FF1F1F 100%);
+
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 0;
+
 }
 
 .footer-text {
@@ -185,45 +162,33 @@ input::placeholder {
 
 .material-symbols-outlined {
     color: #000000;
-    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+
+    font-variation-settings:
+
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+
 }
 
 /* Contenedor del menú desplazable */
 .menu-container {
     display: flex;
-    overflow-x: scroll; /* Evitar que la barra de desplazamiento sea visible */
+
+    overflow-x: hidden;
+    /* Evitar que la barra de desplazamiento sea visible */
+
     white-space: nowrap;
     margin: 20px;
     padding: 10px 0;
     scroll-behavior: smooth;
-    cursor: grab; /* Indicar al usuario que se puede arrastrar */
-    user-select: none; /* Evitar selección de texto mientras se arrastra */
 
-    
-}
+    cursor: grab;
+    /* Indicar al usuario que se puede arrastrar */
+    user-select: none;
+    /* Evitar selección de texto mientras se arrastra */
 
-
-
-/* Personalizar la barra de desplazamiento */
-.menu-container::-webkit-scrollbar {
-    height: 8px; /* Ajustar el alto de la barra */
-    opacity: 0; /* Hacer la barra invisible por defecto */
-    transition: opacity 0.01s ease; /* Transición suave */
-    width: 0;/*tamaño */
-    height: 0;
-
-}
-
-.menu-container:hover::-webkit-scrollbar {
-    opacity: 0; /* Mostrar la barra al hacer hover */
-}
-
-.menu-container::-webkit-scrollbar-thumb {
-    background-color: transparent; /* Color de la barra */
-    border-radius: 10px; /* Esquinas redondeadas */
-    border: 2px solid transparent; /* Espacio alrededor de la barra */
-    background-clip: padding-box; /* Evitar que el borde corte la barra */
-}
 
 .menu-container::-webkit-scrollbar-thumb:hover {
     background-color: transparent; /* Color al pasar el ratón */
@@ -240,28 +205,32 @@ input::placeholder {
     padding: 15px 25px;
     margin: 0 10px;
     font-size: 20px;
-    color: #aa0000;
+
+    color: #AA0000;
     font-weight: bold;
-    border: 2px solid #aa0000;
+    border: 2px solid #AA0000;
     border-radius: 15px;
-    background-color: transparent;
+    background-color: white;
     cursor: pointer;
     transition: all 0.7s ease;
-    flex-shrink: 0; /* Para evitar que las opciones se compriman */
-    text-decoration: none; /* Elimina la línea debajo del texto */
-    display: inline-block;
-    font-size: 16px;
+    flex-shrink: 0;
+    /* Para evitar que las opciones se compriman */
+
 }
 
 /* Estilo para la opción activa */
 .menu-item.active {
-    background-color: blue;
+
+    background-color: #AA0000;
+
     color: white;
 }
 
 /* Efecto al pasar el mouse */
-.menu-item.menu-item:hover {
-    background-color: #aa0000;
+
+.menu-item:hover {
+    background-color: #AA0000;
+
     color: white;
 }
 
@@ -283,11 +252,14 @@ input::placeholder {
 /* Título de la sección */
 .section-title {
     font-size: 31px;
-    color: #aa0000;
+
+    color: #AA0000;
+
     font-weight: bold;
     margin-bottom: 10px;
     text-align: left;
 }
+
 
 .section-container {
     display: flex;
@@ -302,15 +274,22 @@ input::placeholder {
 }
 
 .section-title {
-    color: #aa0000;
+
+    color: #AA0000;
+
     padding: 10px 0;
     font-size: 18px;
     width: 100%;
 }
+
 .content {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
-    gap: 20px; /* Espaciado entre tarjetas */
+
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 columnas */
+    gap: 20px;
+    /* Espaciado entre tarjetas */
+
     margin-bottom: 10px;
 }
 
@@ -323,19 +302,32 @@ input::placeholder {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px; /* Asegurar margen entre tarjetas */
-    text-decoration: none; /* Elimina el subrayado */
-    color: inherit; /* Asegura que el texto mantenga su color original */
-    display: block; /* Asegura que el enlace cubra toda la tarjeta */
+
+    margin-bottom: 20px;
+    /* Asegurar margen entre tarjetas */
+    text-decoration: none;
+    /* Elimina el subrayado */
+    color: inherit;
+    /* Asegura que el texto mantenga su color original */
+    display: block;
+    /* Asegura que el enlace cubra toda la tarjeta */
+
 }
+
 .card:hover {
-    text-decoration: none; /* Asegura que no aparezca un subrayado al hacer hover */
+
+    text-decoration: none;
+    /* Asegura que no aparezca un subrayado al hacer hover */
 }
 
 .card img {
-    width: 100%; /* Asegura que la imagen cubra el ancho de la tarjeta */
-    max-width: 200px; /* Limita el tamaño máximo de la imagen */
-    height: auto; /* Mantiene la proporción de la imagen */
+    width: 100%;
+    /* Asegura que la imagen cubra el ancho de la tarjeta */
+    max-width: 200px;
+    /* Limita el tamaño máximo de la imagen */
+    height: auto;
+    /* Mantiene la proporción de la imagen */
+
 }
 
 .hidden-cards {
@@ -349,7 +341,9 @@ input::placeholder {
 
 .btn {
     padding: 10px 20px;
-    background-color: #aa0000;
+
+    background-color: #AA0000;
+
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -358,7 +352,9 @@ input::placeholder {
 
 .material-symbols-outlined {
     color: #000000;
-    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+
 }
 
 /* Estilos para las tarjetas */
@@ -379,13 +375,17 @@ input::placeholder {
 
 .card-body h3 {
     font-size: 25px;
-    color: #aa0000;
+
+    color: #AA0000;
+
     margin: 0;
 }
 
 .card-body p {
     font-size: 15px;
-    color: #aa0000;
+
+    color: #AA0000;
+
     margin: 5px 0;
 }
 
@@ -398,12 +398,14 @@ input::placeholder {
 
 .view-more-btn .btn {
     padding: 10px 20px;
-    border: 1px solid #ff1f1f;
+
+    border: 1px solid #FF1F1F;
     border-radius: 10px;
-    color: #ff1f1f;
+    color: #FF1F1F;
     font-size: 15px;
     cursor: pointer;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
+
 }
 
 /* Ocultar inicialmente las tarjetas adicionales */
@@ -414,8 +416,11 @@ input::placeholder {
 /* Media queries for responsive design */
 @media (max-width: 768px) {
     .header-grid {
-        grid-template-columns: 1fr; /* Stack columns on small screens */
-        grid-template-rows: auto auto auto; /* Adjust rows to accommodate changes */
+
+        grid-template-columns: 1fr;
+        /* Stack columns on small screens */
+        grid-template-rows: auto auto auto;
+        /* Adjust rows to accommodate changes */
     }
 
     .header-title,
@@ -425,7 +430,8 @@ input::placeholder {
     }
 
     .header-title {
-        font-size: 30px; /* Reduce title size for smaller screens */
+        font-size: 30px;
+        /* Reduce title size for smaller screens */
     }
 
     .header-subtitle {
@@ -433,10 +439,68 @@ input::placeholder {
     }
 
     .logo img {
-        max-width: 80px; /* Smaller logo for small screens */
+        max-width: 80px;
+        /* Smaller logo for small screens */
     }
 
     .search-bar {
-        grid-column: 1; /* Keep search bar in the same column */
+        grid-column: 1;
+        /* Keep search bar in the same column */
     }
+}
+
+.menu-item {
+    text-decoration: none;
+    /* Elimina la línea debajo del texto */
+    display: inline-block;
+    font-size: 16px;
+}
+
+.menu-item:hover {
+    color: #f04;
+    /* Cambia el color al pasar el mouse si es necesario */
+}
+
+@media(max-width:480px) {
+    .busqueda {
+        width: 50%;
+    }
+
+    .boton {
+        width: 100%;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column-reverse;
+        padding: 10px;
+    }
+
+    .logo {
+        max-width: 130px;
+        height: auto;
+        margin-left: 0%;
+    }
+
+    .busqueda__titulo {
+        font-size: 2rem;
+    }
+
+    .boton {
+        width: auto;
+        height: 55px;
+    }
+
+    .boton__texto {
+        font-size: 1.2rem;
+    }
+
+    .type__icon {
+        width: 2rem;
+        height: 2rem;
+    }
+
+
 }

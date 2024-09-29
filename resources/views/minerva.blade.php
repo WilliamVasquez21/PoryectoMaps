@@ -11,13 +11,14 @@
 </head>
 
 <body>
-<<<<<<< HEAD
+
     <div class="row">
         <header class="header">
 
             <div class="col col-10">
 
                 <p class="busqueda__titulo">Minerva Maps <br>UES-FMO</p>
+
 
 
                 <div class="boton">
@@ -33,6 +34,7 @@
             <div class="col col-2">
                 <img class="logo" src="https://www.uese.ues.edu.sv/images/minerva_sola_white.png" alt="Logo UES">
             </div>
+
 
         </header>
     </div>
@@ -98,6 +100,7 @@
 
 </html>
 
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -111,8 +114,7 @@
 </head>
 
 <body>
-=======
->>>>>>> 09dc33b95f012c29b54c00418acebbdde48565c6
+
     <header class="header">
         <div class="busqueda">
             <h1 class="busqueda__titulo">Minerva Maps <br>UES-FMO</h1>
