@@ -66,4 +66,40 @@ class MinervaController extends Controller
             return view('minerva', ['error' => 'Ocurrió un error al procesar la solicitud. Inténtalo nuevamente más tarde.']);
         }
     }
+
+    public function getAulas()
+    {
+        try {
+            // Consumir la API de aulas
+            $aulasResponse = Http::get('https://ues-api-production.up.railway.app/aulas');
+
+            $aulas = [];
+
+            // Verificar que la respuesta fue exitosa
+            if ($aulasResponse->successful()) {
+                $aulasData = $aulasResponse->json();
+
+                // Asegurarse de que 'data' existe en la respuesta
+                if (isset($aulasData['data'])) {
+                    $aulas = $aulasData['data'];
+                } else {
+                    Log::error('La respuesta de la API de aulas no contiene el campo "data".');
+                    return view('aulas', ['error' => 'Error en la estructura de la respuesta de la API de aulas.']);
+                }
+            } else {
+                // Manejar el error
+                $error = 'Error al obtener los datos de la API de aulas: ' . $aulasResponse->status();
+                Log::error($error);
+                return view('aulas', ['error' => $error]);
+            }
+
+            // Pasar los datos de $aulas a la vista
+            return view('aulas', compact('aulas'));
+
+        } catch (\Exception $e) {
+            // Registrar el error y mostrar un mensaje amigable
+            Log::error('Error al consumir la API de aulas: ' . $e->getMessage());
+            return view('aulas', ['error' => 'Ocurrió un error al procesar la solicitud de aulas. Inténtalo nuevamente más tarde.']);
+        }
+    }
 }
