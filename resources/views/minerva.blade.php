@@ -19,11 +19,18 @@
     <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Escudo_de_la_Universidad_de_El_Salvador.svg" alt="Logo UES">
 </header>
 
+<!-- Botón de retorno en la parte superior izquierda -->
+<a href="{{ route('minerva.home') }}" class="circle-button">
+    <div class="inner-circle">
+        <i class="fas fa-arrow-left"></i>
+    </div>
+</a>
+
 <!-- Contenedor del menú -->
 <div class="menu-container">
     @if(isset($departments) && count($departments) > 0)
-        @foreach($departments as $department => $cards) <!-- Aquí obtienes la clave y los datos -->
-            <a href="#{{ strtolower(str_replace(' ', '', $department)) }}" class="menu-item">{{ $department }}</a> <!-- $department es la clave (nombre de la zona) -->
+        @foreach($departments as $department => $cards)
+            <a href="#{{ strtolower(str_replace(' ', '', $department)) }}" class="menu-item">{{ $department }}</a>
         @endforeach
     @else
         <p>No hay departamentos disponibles en este momento.</p>
@@ -37,15 +44,14 @@
             <div class="section-title">{{ $department }}</div>
             <div class="content visible-cards">
                 @foreach(array_slice($cards, 0, 8) as $card)
-                <a href="{{ route('minerva-la') }}" class="card"> <!-- Enlace correcto para la ruta 'minerva-la' -->
-                    <div class="card-body">
-                        <img src="{{ explode(',', $card['foto'])[0] }}" alt="{{ $card['nombre'] }}" style="width: 100%; height: auto;">
-                        <h3>{{ $card['nombre'] }}</h3>
-                        <p>{{ $card['descripcion'] }}</p>
-                        <p>Coordenadas: {{ $card['coordenadas'] }}</p>
-                    </div>
-                </a>
-
+                    <a href="{{ route('minerva-la') }}" class="card">
+                        <div class="card-body">
+                            <img src="{{ explode(',', $card['foto'])[0] }}" alt="{{ $card['nombre'] }}" style="width: 100%; height: auto;">
+                            <h3>{{ $card['nombre'] }}</h3>
+                            <p>{{ $card['descripcion'] }}</p>
+                            <p>Coordenadas: {{ $card['coordenadas'] }}</p>
+                        </div>
+                    </a>
                 @endforeach
             </div>
             
@@ -70,9 +76,53 @@
     @endforeach
 </div>
 
-
+<!-- Galería de Imágenes -->
+<div class="container">
+  <div class="image-grid">
+    @foreach ($images as $index => $image)
+      @if ($index == 0)
+        <!-- Primera imagen más grande -->
+        <img class="main-image" src="{{ $image['url'] }}" alt="{{ $image['caption'] }}" />
+      @else
+        <!-- Imágenes secundarias en grid -->
+        <img class="grid-image" src="{{ $image['url'] }}" alt="{{ $image['caption'] }}" />
+      @endif
+    @endforeach
+    
+    <!-- Botón flotante sobre la última imagen del grid -->
+    <div class="button-box" onclick="location.href='{{ route('minerva-overley') }}'">
+      <div class="button-text">Mostrar todas las fotos</div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <!-- Contenedor de imagen destacada y texto -->
+    @foreach ($highlightedImages as $image)
+        <div class="highlighted-container">
+            <div class="info-box">
+                <div class="auditorio-text">{{ $image['title'] }}</div>
+                <div class="location">
+                    <i class="bi bi-geo-alt" style="font-size: 24px;"></i>
+                    <div class="location-text">{{ $image['location'] }}</div>
+                </div>
+                <div class="address">
+                    <i class="bi bi-map" style="font-size: 24px;"></i>
+                    <div class="address-text">{{ $image['address'] }}</div>
+                </div>
+                <div class="capacity">
+                    <i class="bi bi-people" style="font-size: 24px;"></i>
+                    <div class="capacity-text">{{ $image['capacity'] }}</div>
+                </div>
+            </div>
+            <img class="highlighted-image" src="{{ $image['url'] }}" alt="{{ $image['title'] }}" />
+        </div>
+    @endforeach
+  </div>
+</div>
+<br><br><br>
+<!-- Footer al final del contenido -->
 <div class="footer">
-    <div class="footer-text">© Realizado por estudiantes de Ingeniería en Sistemas Informáticos 2024.</div>
+  <div class="footer-text">© Realizado por estudiantes de Ingeniería en Sistemas Informáticos 2024.</div>
 </div>
 
 <script src="{{ asset('js/minerva.js') }}"></script>
