@@ -198,13 +198,20 @@ input::placeholder {
     scroll-behavior: smooth;
     cursor: grab; /* Indicar al usuario que se puede arrastrar */
     user-select: none; /* Evitar selección de texto mientras se arrastra */
+
+    
 }
+
+
 
 /* Personalizar la barra de desplazamiento */
 .menu-container::-webkit-scrollbar {
     height: 8px; /* Ajustar el alto de la barra */
     opacity: 0; /* Hacer la barra invisible por defecto */
-    transition: opacity 0.3s ease; /* Transición suave */
+    transition: opacity 0.01s ease; /* Transición suave */
+    width: 0;/*tamaño */
+    height: 0;
+
 }
 
 .menu-container:hover::-webkit-scrollbar {
