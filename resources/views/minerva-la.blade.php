@@ -66,7 +66,7 @@ if (isset($zonaRelacionada['coordenadas'])) {
     <div class="button-box" onclick="location.href='{{ route('minerva-overley') }}'">
       <div class="button-text">Mostrar todas las fotos</div>
     </div>
-  </div>
+</div>
   
   <!-- Contenedor de detalles y mapa -->
   <div class="container">
