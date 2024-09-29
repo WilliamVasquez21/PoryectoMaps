@@ -67,7 +67,7 @@ body {
     align-items: center;
     width: 100%;
 
-
+}
 .busqueda__titulo {
     color: var(--blanco);
     font-size: 3rem;
@@ -189,7 +189,7 @@ input::placeholder {
     user-select: none;
     /* Evitar selección de texto mientras se arrastra */
 
-
+}
 .menu-container::-webkit-scrollbar-thumb:hover {
     background-color: transparent; /* Color al pasar el ratón */
 }
@@ -504,3 +504,4 @@ input::placeholder {
 
 
 }
+
