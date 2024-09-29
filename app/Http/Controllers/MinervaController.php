@@ -57,8 +57,27 @@ class MinervaController extends Controller
                 return view('minerva', ['error' => $error]);
             }
 
-            // Pasar los datos de $departments a la vista
-            return view('minerva', compact('departments'));
+            // Definir los arrays de imágenes
+            $images = [
+                ['url' => 'https://via.placeholder.com/502x677', 'caption' => 'Imagen principal'],
+                ['url' => 'https://via.placeholder.com/346x332', 'caption' => 'Imagen secundaria'],
+                ['url' => 'https://via.placeholder.com/346x332', 'caption' => 'Imagen secundaria'],
+                ['url' => 'https://via.placeholder.com/346x332', 'caption' => 'Imagen secundaria'],
+                ['url' => 'https://via.placeholder.com/346x332', 'caption' => 'Imagen secundaria']
+            ];
+
+            $highlightedImages = [
+                [
+                    'url' => 'https://via.placeholder.com/712x677',
+                    'title' => 'Auditorio 1',
+                    'location' => 'CRQV+V24, San Miguel',
+                    'address' => 'Frente a la Plaza Roque Daltón, Costado Poniente del Parqueo de Visitantes.',
+                    'capacity' => '250 personas'
+                ]
+            ];
+
+            // Pasar todos los datos a la vista
+            return view('minerva', compact('departments', 'images', 'highlightedImages'));
 
         } catch (\Exception $e) {
             // Registrar el error y mostrar un mensaje amigable
