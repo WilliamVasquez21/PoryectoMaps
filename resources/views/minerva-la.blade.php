@@ -31,21 +31,38 @@ if (isset($zonaRelacionada['coordenadas'])) {
 @endphp
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
 <link rel="stylesheet" href="{{ asset('css/minerva-la.css') }}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+<style>
+        .map-wrapper {
+            width: 600px; /* Ajusta el ancho del mapa */
+            height: 400px; /* Ajusta la altura del mapa */
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+        }
 
+        #map-container {
+            width: 100%;
+            height: 100%;
+        }
+</style>
+@endsection
 
 @section('content')
 
 <!-- Botón de retorno en la parte superior izquierda -->
-<a href="{{ route('minerva') }}" class="volver">
+<a href="{{ route('minerva') }}" class="circle-button">
     <div class="inner-circle">
         <i class="fas fa-arrow-left"></i>
     </div>
 </a>
-
 
 <!-- Contenedor principal -->
 <div class="container">
@@ -64,83 +81,65 @@ if (isset($zonaRelacionada['coordenadas'])) {
     <!-- Botón flotante sobre la última imagen del grid -->
     <div style="background: #B81414;" class="button-box" id="abrirModal">
       <i style="color: white;" class="fas fa-arrow-right arrow"></i>
-
     </div>
-</a>
-
-<main class="slider">
-    <section class="imagenes">
-        @foreach ($imagenes as $index => $imagen)
-        @if ($index == 0)
-            <!-- Primera imagen más grande -->
-            <img class="imagenes__principal slider__foto" src="{{ $imagen }}" alt="Imagen principal" />
-        @else
-            <!-- Imágenes secundarias en grid -->
-            <img class="imagenes__secundaria slider__foto" src="{{ $imagen }}" alt="Imagen secundaria" />
-        @endif
-        @endforeach
-
-        <button class="imagenes__mostrar" onclick="location.href='{{ route('minerva-overley') }}'">
-        Mostrar todas las fotos
-        </button>
-
-    </section>
-</main>
+  </div>
   
   <!-- Contenedor de detalles y mapa -->
-<section class="informacion">
+  <div class="container">
     @if (isset($aulaData) && $aulaData)
       <!-- Contenedor de detalles del aula -->
-      <div class="datos">
-              <div class="datos__titulo">{{ $aulaData['numero'] ?? 'Aula' }}</div>
-              <div class="datos__ubicacion">
+      <div class="highlighted-container">
+          <div class="info-box">
+              <div class="auditorio-text">{{ $aulaData['numero'] ?? 'Aula' }}</div>
+              <div class="location">
                   <i class="bi bi-geo-alt icon"></i>
-                  <div class="datos-margin">{{ $zonaRelacionada['nombre'] ?? 'Sin zona asociada' }}</div>
+                  <div class="location-text">{{ $zonaRelacionada['nombre'] ?? 'Sin zona asociada' }}</div>
               </div>
-              <div class="datos__espacios">
+              <div class="capacity">
                   <i class="bi bi-people icon"></i>
-                  <div class="datos-margin">Capacidad: {{ $aulaData['capacidad'] ?? 'No especificada' }} personas</div>
+                  <div class="capacity-text">Capacidad: {{ $aulaData['capacidad'] ?? 'No especificada' }} personas</div>
               </div>
-              <div class="datos__departamento">
+              <div class="coordinates">
                   <i class="bi bi-map icon"></i>
-                  <div class="datos-margin">Coordenadas: {{ $zonaRelacionada['coordenadas'] ?? 'Sin coordenadas' }}</div>
+                  <div class="location-text">Coordenadas: {{ $zonaRelacionada['coordenadas'] ?? 'Sin coordenadas' }}</div>
               </div>
+          </div>
+          <!-- Contenedor para Google Maps -->
+          <div class="map-wrapper">
+                <div id="map-container"></div>
+            </div>
       </div>
-      <!-- Contenedor para Google Maps -->
-        <div class="informacion__ubicacion">
-            <div id="map-container"></div>
-        </div>
 
     @elseif (isset($referenciaData) && $referenciaData)
       <!-- Contenedor de detalles de la referencia -->
-      <div class="datos">
-              <div class="datos__titulo">{{ $referenciaData['nombre'] ?? 'Referencia' }}</div>
+      <div class="highlighted-container">
+          <div class="info-box">
+              <div class="auditorio-text">{{ $referenciaData['nombre'] ?? 'Referencia' }}</div>
               
               <!-- Descripción de la referencia con ícono -->
               @if (!empty($referenciaData['descripcion']))
-                  <div class="datos__ubicacion">
+                  <div class="description">
                       <i class="bi bi-info-circle icon"></i>
-                      <div class="datos-margin">{{ $referenciaData['descripcion'] }}</div>
+                      <div class="location-text">{{ $referenciaData['descripcion'] }}</div>
                   </div>
               @endif
 
               <!-- Coordenadas de la referencia -->
-              <div class="datos__departamento">
+              <div class="location">
                   <i class="bi bi-geo-alt icon"></i>
-                  <div class="datos-margin">Coordenadas: {{ $referenciaData['coordenadas'] ?? 'Sin coordenadas' }}</div>
+                  <div class="location-text">Coordenadas: {{ $referenciaData['coordenadas'] ?? 'Sin coordenadas' }}</div>
               </div>
+          </div>
+          <!-- Contenedor para Google Maps -->
+            <div class="map-wrapper">
+                <div id="map-container"></div>
+            </div>
       </div>
-      <!-- Contenedor para Google Maps -->
-        <div class="informacion__ubicacion">
-            <div id="map-container"></div>
-        </div>
-
     @else
       <!-- Mensaje si no hay datos -->
       <p>No se encontró información para este elemento.</p>
     @endif
   </div>
-
 </div>
 <br><br><br>
 <!-- Modal -->
@@ -162,17 +161,13 @@ if (isset($zonaRelacionada['coordenadas'])) {
 </div>
 
 
-
-<script src="{{ asset('js/minerva-la.js') }}"></script>
-
-
 <!-- Cargar Google Maps con coordenadas dinámicas -->
 <script>
     const apiKey = 'AIzaSyAPOp7CDPpzRDuYqF1z4pP1ifIPnQN0c2M';
 
     function loadGoogleMapsAPI() {
         const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
+        script.src = https://maps.googleapis.com/maps/api/js?key=${apiKey};
         script.async = true;
         script.defer = true;
         script.onload = initMap;
@@ -182,7 +177,7 @@ if (isset($zonaRelacionada['coordenadas'])) {
     function initMap() {
         const titleToMatch = 'Dpto Ing y Arq'; // Cambia esto según sea necesario.
 
-        const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(titleToMatch)}&key=${apiKey}`;
+        const geocodeUrl = https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(titleToMatch)}&key=${apiKey};
 
         fetch(geocodeUrl)
             .then(response => response.json())
