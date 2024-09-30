@@ -1,3 +1,6 @@
+
+
+
 <?php
 // Establecemos un número mínimo de imágenes que queremos en el grid
 $minImagesCount = 5; 
@@ -34,6 +37,7 @@ if (isset($zonaRelacionada['coordenadas'])) {
 <link rel="stylesheet" href="{{ asset('css/minerva-la.css') }}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+<<<<<<< HEAD
 <style>
         .map-wrapper {
             width: 600px; /* Ajusta el ancho del mapa */
@@ -53,6 +57,8 @@ if (isset($zonaRelacionada['coordenadas'])) {
             height: 100%;
         }
     </style>
+=======
+>>>>>>> 9173d3b5440d26f9aa2d07ce66358d07924a95cf
 @endsection
 
 @section('content')
@@ -64,6 +70,7 @@ if (isset($zonaRelacionada['coordenadas'])) {
     </div>
 </a>
 
+<<<<<<< HEAD
 <!-- Contenedor principal -->
 <div class="container">
   <!-- Cuadrícula de imágenes -->
@@ -81,6 +88,12 @@ if (isset($zonaRelacionada['coordenadas'])) {
     <!-- Botón flotante sobre la última imagen del grid -->
     <div class="button-box" onclick="location.href='{{ route('minerva-overley') }}'">
       <div class="button-text">Mostrar todas las fotos</div>
+=======
+<!-- Botón de compartir en la parte superior derecha -->
+<a href="{{ route('minerva') }}" class="compartir">
+    <div class="inner-circle">
+        <i class="bi bi-share"></i>
+>>>>>>> 9173d3b5440d26f9aa2d07ce66358d07924a95cf
     </div>
   </div>
   
@@ -140,11 +153,18 @@ if (isset($zonaRelacionada['coordenadas'])) {
       <p>No se encontró información para este elemento.</p>
     @endif
   </div>
+<<<<<<< HEAD
 </div>
 <br><br><br>
+=======
+</section>
+
+<script src="{{ asset('js/minerva-la.js') }}"></script>
+>>>>>>> 9173d3b5440d26f9aa2d07ce66358d07924a95cf
 
 <!-- Cargar Google Maps con coordenadas dinámicas -->
 <script>
+   
     const apiKey = 'AIzaSyAPOp7CDPpzRDuYqF1z4pP1ifIPnQN0c2M';
 
     function loadGoogleMapsAPI() {
@@ -157,117 +177,110 @@ if (isset($zonaRelacionada['coordenadas'])) {
     }
 
     function initMap() {
-        const titleToMatch = 'Dpto Ing y Arq'; // Cambia esto según sea necesario.
+       
+        const titleToMatch = 'Dpto Ing y Arq';
 
+<<<<<<< HEAD
         const geocodeUrl = https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(titleToMatch)}&key=${apiKey};
+=======
+       
+        const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(titleToMatch)}&key=${apiKey}`;
+>>>>>>> 9173d3b5440d26f9aa2d07ce66358d07924a95cf
 
+     
         fetch(geocodeUrl)
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'OK' && data.results.length > 0) {
+                  
                     const location = data.results[0].geometry.location;
 
+                  
                     const map = new google.maps.Map(document.getElementById('map-container'), {
                         center: location,
-                        zoom: 19,
+                        zoom: 19, 
                         styles: [
                             {
                                 featureType: "all",
                                 elementType: "geometry.fill",
-                                stylers: [{ color: "#b0e57c" }]
+                                stylers: [
+                                    { color: "#b0e57c" }
+                                ]
                             },
                             {
                                 featureType: "road",
                                 elementType: "geometry.stroke",
-                                stylers: [{ color: "#73a857" }]
+                                stylers: [
+                                    { color: "#73a857" }
+                                ]
                             },
                             {
                                 featureType: "landscape",
                                 elementType: "geometry",
-                                stylers: [{ color: "#cbe785" }]
+                                stylers: [
+                                    { color: "#cbe785" }
+                                ]
                             },
                             {
                                 featureType: "water",
                                 elementType: "geometry.fill",
-                                stylers: [{ color: "#a2daf2" }]
+                                stylers: [
+                                    { color: "#a2daf2" }
+                                ]
                             },
                             {
                                 featureType: "poi",
                                 elementType: "geometry",
-                                stylers: [{ color: "#aed581" }]
+                                stylers: [
+                                    { color: "#aed581" }
+                                ]
                             },
                             {
                                 featureType: "road.highway",
                                 elementType: "geometry.fill",
-                                stylers: [{ color: "#c5e1a5" }]
+                                stylers: [
+                                    { color: "#c5e1a5" }
+                                ]
                             },
                             {
                                 featureType: "road.highway",
                                 elementType: "geometry.stroke",
-                                stylers: [{ color: "#8bc34a" }]
+                                stylers: [
+                                    { color: "#8bc34a" }
+                                ]
                             },
                             {
                                 featureType: "road.arterial",
                                 elementType: "geometry",
-                                stylers: [{ color: "#d4e157" }]
-                            },
-                            {
-                                featureType: "road.local",
-                                elementType: "geometry",
-                                stylers: [{ color: "#ffeb3b" }]
-                            },
+                                stylers: [
+                                    { color: "#d4e157" }
+                                ]
+                            }
                         ]
                     });
 
+    
                     new google.maps.Marker({
                         position: location,
                         map: map,
-                        title: titleToMatch
+                        title: titleToMatch,
+                        animation: google.maps.Animation.BOUNCE 
                     });
                 } else {
-                    console.error('Error fetching geocode data:', data.status);
+                    console.error('No se encontraron resultados para la ubicación solicitada.');
                 }
             })
             .catch(error => {
-                console.error('Error fetching geocode:', error);
+                console.error('Error al obtener las coordenadas:', error);
             });
     }
 
-    // Iniciar Google Maps API
+  
     loadGoogleMapsAPI();
-
-    // Inicializar el carrusel
-    let currentIndex = 0;
-    const images = document.querySelectorAll('#carouselImages img');
-    const totalImages = images.length;
-
-    function moveCarousel(direction) {
-        currentIndex = (currentIndex + direction + totalImages) % totalImages; // Circular
-        updateCarousel();
-    }
-
-    function updateCarousel() {
-        images.forEach((img, index) => {
-            img.style.display = index === currentIndex ? 'block' : 'none';
-        });
-    }
-
-    document.getElementById("abrirModal").onclick = function() {
-        document.getElementById("myModal").style.display = "block";
-        updateCarousel();
-    }
-
-    document.querySelector('.close').onclick = function() {
-        document.getElementById("myModal").style.display = "none";
-    }
-
-    // Cerrar modal si se hace clic fuera de él
-    window.onclick = function(event) {
-        const modal = document.getElementById("myModal");
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    }
 </script>
+<<<<<<< HEAD
 <script src="{{ asset('js/model.js') }}"></script>
 @endsection
+=======
+@endsection
+>>>>>>> 9173d3b5440d26f9aa2d07ce66358d07924a95cf
