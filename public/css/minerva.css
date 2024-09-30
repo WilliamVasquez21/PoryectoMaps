@@ -6,32 +6,24 @@
 
 body {
     height: 100%;
-
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     width: 100%;
-    /* Asegura que tomen toda la anchura del viewport */
     margin: 0;
-    /* Elimina los márgenes */
     padding: 0;
-    /* Elimina los paddings */
     overflow-x: hidden;
-
-
+    background-color: #e8e8e8;
 }
 
 #root {
     display: flex;
     flex-direction: column;
-
     min-height: 100vh;
-    /* 100% de la altura del viewport */
-
     width: 100vw;
 }
 
 .header {
-
-    background: linear-gradient(180deg, rgba(170, 0, 0, 0.800) 0%, #ff1f1f80 100%), url(https://firebasestorage.googleapis.com/v0/b/dbasistenciadocente.appspot.com/o/collage_header-removebg.png?alt=media&token=1f8d6e9c-cc5c-4570-ae82-525bb7ce6543);
+    background: linear-gradient(180deg, rgba(170, 0, 0, 0.8) 0%, #ff1f1f80 100%),
+        url(https://firebasestorage.googleapis.com/v0/b/dbasistenciadocente.appspot.com/o/collage_header-removebg.png?alt=media&token=1f8d6e9c-cc5c-4570-ae82-525bb7ce6543);
 
     color: white;
     padding: 15px;
@@ -39,10 +31,8 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-
-    background-color: #AA0000;
+    background-color: #aa0000;
 }
-
 
 .logo {
     display: flex;
@@ -51,14 +41,9 @@ body {
     grid-column: 2;
     grid-row: 1 / 4;
     margin-left: 20%;
-
-    /* Esto limitará el tamaño sin distorsionar la imagen */
     max-width: 170px;
-    /* Limita el ancho máximo de la imagen */
     height: auto;
-    /* Mantiene la proporción */
 }
-
 
 /* Busqueda */
 .busqueda {
@@ -66,7 +51,6 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-
 }
 .busqueda__titulo {
     color: var(--blanco);
@@ -78,10 +62,8 @@ body {
 
 @media (min-width: 768px) {
     .busqueda__titulo {
-
         font-size: 4rem;
         /* Ajustar el tamaño de fuente */
-
     }
 }
 
@@ -125,13 +107,11 @@ input::placeholder {
 .content {
     padding: 10px;
 
-
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 
     flex-grow: 1;
     gap: 10px;
-
 
     flex-grow: 1;
     gap: 10px;
@@ -140,55 +120,49 @@ input::placeholder {
 /* Footer al final del contenido sin dejar espacios */
 .footer {
     width: 100%;
-    height: 108px;
+    height: 100px;
     padding: 32px 0px;
-
-    background: linear-gradient(180deg, #A00 0%, #FF1F1F 100%);
-
+    background: linear-gradient(180deg, #a00 0%, #ff1f1f 100%);
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 0;
-
 }
 
 .footer-text {
     color: white;
     font-size: 25px;
     font-family: Inter, sans-serif;
-    font-weight: 700;
+    font-weight: 400;
     word-wrap: break-word;
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .footer {
+        padding: 20px 0;
+    }
+
+    .footer-text {
+        font-size: 18px; /* Tamaño de texto más pequeño */
+    }
+}
+
+@media (min-width: 320px) {
+    .footer {
+        padding: 15px 0;
+        text-align: center;
+    }
+
+    .footer-text {
+        font-size: 16px;
+    }
 }
 
 .material-symbols-outlined {
     color: #000000;
 
-    font-variation-settings:
-
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
-
-}
-
-/* Contenedor del menú desplazable */
-.menu-container {
-    display: flex;
-
-    overflow-x: hidden;
-    /* Evitar que la barra de desplazamiento sea visible */
-
-    white-space: nowrap;
-    margin: 20px;
-    padding: 10px 0;
-    scroll-behavior: smooth;
-
-    cursor: grab;
-    /* Indicar al usuario que se puede arrastrar */
-    user-select: none;
-    /* Evitar selección de texto mientras se arrastra */
-
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
 /* Contenedor del menú desplazable */
@@ -201,21 +175,28 @@ input::placeholder {
     scroll-behavior: smooth;
     cursor: grab; /* Indicar al usuario que se puede arrastrar */
     user-select: none; /* Evitar selección de texto mientras se arrastra */
-
-    
 }
-
-
 
 /* Personalizar la barra de desplazamiento */
 .menu-container::-webkit-scrollbar {
     height: 8px; /* Ajustar el alto de la barra */
     opacity: 0; /* Hacer la barra invisible por defecto */
     transition: opacity 0.01s ease; /* Transición suave */
-    width: 0;/*tamaño */
+    width: 0; /*tamaño */
     height: 0;
-
 }
+
+.menu-container:hover::-webkit-scrollbar {
+    opacity: 0; /* Mostrar la barra al hacer hover */
+}
+
+.menu-container::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Color de la barra */
+    border-radius: 10px; /* Esquinas redondeadas */
+    border: 2px solid transparent; /* Espacio alrededor de la barra */
+    background-clip: padding-box; /* Evitar que el borde corte la barra */
+}
+
 .menu-container::-webkit-scrollbar-thumb:hover {
     background-color: transparent; /* Color al pasar el ratón */
 }
@@ -231,32 +212,25 @@ input::placeholder {
     padding: 15px 25px;
     margin: 0 10px;
     font-size: 20px;
-
-    color: #AA0000;
+    color: #aa0000;
     font-weight: bold;
-    border: 2px solid #AA0000;
+    border: 2px solid #aa0000;
     border-radius: 15px;
-    background-color: white;
+    background-color: transparent;
     cursor: pointer;
     transition: all 0.7s ease;
     flex-shrink: 0;
-    /* Para evitar que las opciones se compriman */
-
 }
 
-/* Estilo para la opción activa */
-.menu-item.active {
-
-    background-color: #AA0000;
-
-    color: white;
+.menu-item {
+    text-decoration: none;
+    /* Elimina la línea debajo del texto */
+    display: inline-block;
+    font-size: 16px;
 }
-
-/* Efecto al pasar el mouse */
 
 .menu-item:hover {
-    background-color: #AA0000;
-
+    background-color: #aa0000;
     color: white;
 }
 
@@ -279,13 +253,12 @@ input::placeholder {
 .section-title {
     font-size: 31px;
 
-    color: #AA0000;
+    color: #aa0000;
 
     font-weight: bold;
     margin-bottom: 10px;
     text-align: left;
 }
-
 
 .section-container {
     display: flex;
@@ -300,8 +273,7 @@ input::placeholder {
 }
 
 .section-title {
-
-    color: #AA0000;
+    color: #aa0000;
 
     padding: 10px 0;
     font-size: 18px;
@@ -320,40 +292,20 @@ input::placeholder {
 }
 
 .card {
-    flex: 1 1 200px;
     padding: 15px;
-    background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    margin-bottom: 20px;
-    /* Asegurar margen entre tarjetas */
-    text-decoration: none;
-    /* Elimina el subrayado */
-    color: inherit;
-    /* Asegura que el texto mantenga su color original */
     display: block;
-    /* Asegura que el enlace cubra toda la tarjeta */
-
 }
 
 .card:hover {
-
     text-decoration: none;
-    /* Asegura que no aparezca un subrayado al hacer hover */
 }
 
 .card img {
     width: 100%;
-    /* Asegura que la imagen cubra el ancho de la tarjeta */
-    max-width: 200px;
-    /* Limita el tamaño máximo de la imagen */
-    height: auto;
-    /* Mantiene la proporción de la imagen */
-
+    height: 300px;
+    object-fit: cover;
 }
 
 .hidden-cards {
@@ -367,20 +319,35 @@ input::placeholder {
 
 .btn {
     padding: 10px 20px;
-
-    background-color: #AA0000;
-
+    background-color: #aa0000;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
+.btn:hover {
+    background-color: transparent;
+    color: #aa0000;
+    border: 1px solid #aa0000;
+}
+
+.title-card {
+    color: #aa0000;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.text-card {
+    color: #aa0000;
+    font-size: 15px;
+}
+
 .material-symbols-outlined {
     color: #000000;
 
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
 /* Estilos para las tarjetas */
@@ -402,7 +369,7 @@ input::placeholder {
 .card-body h3 {
     font-size: 25px;
 
-    color: #AA0000;
+    color: #aa0000;
 
     margin: 0;
 }
@@ -410,7 +377,7 @@ input::placeholder {
 .card-body p {
     font-size: 15px;
 
-    color: #AA0000;
+    color: #aa0000;
 
     margin: 5px 0;
 }
@@ -425,13 +392,12 @@ input::placeholder {
 .view-more-btn .btn {
     padding: 10px 20px;
 
-    border: 1px solid #FF1F1F;
+    border: 1px solid #ff1f1f;
     border-radius: 10px;
-    color: #FF1F1F;
+    color: #ff1f1f;
     font-size: 15px;
     cursor: pointer;
-    font-family: 'Roboto', sans-serif;
-
+    font-family: "Roboto", sans-serif;
 }
 
 /* Ocultar inicialmente las tarjetas adicionales */
@@ -442,7 +408,6 @@ input::placeholder {
 /* Media queries for responsive design */
 @media (max-width: 768px) {
     .header-grid {
-
         grid-template-columns: 1fr;
         /* Stack columns on small screens */
         grid-template-rows: auto auto auto;
@@ -475,19 +440,7 @@ input::placeholder {
     }
 }
 
-.menu-item {
-    text-decoration: none;
-    /* Elimina la línea debajo del texto */
-    display: inline-block;
-    font-size: 16px;
-}
-
-.menu-item:hover {
-    color: #f04;
-    /* Cambia el color al pasar el mouse si es necesario */
-}
-
-@media(max-width:480px) {
+@media (max-width: 480px) {
     .busqueda {
         width: 50%;
     }
@@ -527,7 +480,4 @@ input::placeholder {
         width: 2rem;
         height: 2rem;
     }
-
-
 }
-
