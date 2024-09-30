@@ -238,11 +238,13 @@ font-variation-settings:
   color: white;
 }
 
+
 /* Efecto al pasar el mouse */
 .menu-item:hover {
   background-color: #AA0000;
-  color: white;
+  color: white !important; /* Forzar el texto blanco */
 }
+
 
 /* Sección correspondiente a cada aula */
 .section {
@@ -328,14 +330,15 @@ text-align: left;
   text-align: center;
 }
 
-.btn {
+button.btn {
   padding: 10px 20px;
   background-color: #AA0000;
-  color: #fff;
+  color: #ffffff !important; /* Fuerza el color blanco */
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
+
 
 
 
