@@ -16,6 +16,3 @@ Route::get('/minerva-la/aula/{id}', [MinervaLaController::class, 'showAula'])->n
 
 // Ruta para mostrar referencias
 Route::get('/minerva-la/referencia/{id}', [MinervaLaController::class, 'showReferencia'])->name('minerva-la.referencia');
-
-// Ruta para otro overlay (por si tienes alguna funcionalidad adicional)
-Route::get('/minerva-overley', [MinervaOverlayController::class, 'index'])->name('minerva-overley');
