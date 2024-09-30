@@ -68,9 +68,11 @@ if (isset($zonaRelacionada['coordenadas'])) {
         @endif
         @endforeach
 
-        <button class="imagenes__mostrar" onclick="location.href='{{ route('minerva-overley') }}'">
-        Mostrar todas las fotos
-        </button>
+    <!-- Botón flotante sobre la última imagen del grid -->
+   <div style="background: #B81414;" class="button-box" id="abrirModal">
+  <i class="bi bi-plus fs-1" style="color: white;"></i>
+</div>
+
 
     </section>
 </main>
@@ -131,6 +133,24 @@ if (isset($zonaRelacionada['coordenadas'])) {
 </section>
 
 <script src="{{ asset('js/minerva-la.js') }}"></script>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="carousel-container">
+            <div class="carousel-images" id="carouselImages">
+                @foreach ($imagenes as $imagen)
+                    <img src="{{ $imagen }}" alt="Imagen del carrusel">
+                @endforeach
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <button class="prev" onclick="moveCarousel(-1)">&#10094;</button>
+            <button class="next" onclick="moveCarousel(1)">&#10095;</button>
+        </div>
+    </div>
+</div>
 
 <!-- Cargar Google Maps con coordenadas dinámicas -->
 <script>
@@ -241,6 +261,38 @@ if (isset($zonaRelacionada['coordenadas'])) {
             });
     }
 
+ // Inicializar el carrusel
+ let currentIndex = 0;
+    const images = document.querySelectorAll('#carouselImages img');
+    const totalImages = images.length;
+
+    function moveCarousel(direction) {
+        currentIndex = (currentIndex + direction + totalImages) % totalImages; // Circular
+        updateCarousel();
+    }
+
+    function updateCarousel() {
+        images.forEach((img, index) => {
+            img.style.display = index === currentIndex ? 'block' : 'none';
+        });
+    }
+
+    document.getElementById("abrirModal").onclick = function() {
+        document.getElementById("myModal").style.display = "block";
+        updateCarousel();
+    }
+
+    document.querySelector('.close').onclick = function() {
+        document.getElementById("myModal").style.display = "none";
+    }
+
+    // Cerrar modal si se hace clic fuera de él
+    window.onclick = function(event) {
+        const modal = document.getElementById("myModal");
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
   
     loadGoogleMapsAPI();
 </script>
