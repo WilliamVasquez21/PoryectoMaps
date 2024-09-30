@@ -37,28 +37,6 @@ if (isset($zonaRelacionada['coordenadas'])) {
 <link rel="stylesheet" href="{{ asset('css/minerva-la.css') }}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-<<<<<<< HEAD
-<style>
-        .map-wrapper {
-            width: 600px; /* Ajusta el ancho del mapa */
-            height: 400px; /* Ajusta la altura del mapa */
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #fff;
-        }
-
-        #map-container {
-            width: 100%;
-            height: 100%;
-        }
-    </style>
-=======
->>>>>>> 9173d3b5440d26f9aa2d07ce66358d07924a95cf
 @endsection
 
 @section('content')
@@ -70,30 +48,10 @@ if (isset($zonaRelacionada['coordenadas'])) {
     </div>
 </a>
 
-<<<<<<< HEAD
-<!-- Contenedor principal -->
-<div class="container">
-  <!-- Cuadrícula de imágenes -->
-  <div class="image-grid">
-    @foreach ($imagenes as $index => $imagen)
-      @if ($index == 0)
-        <!-- Primera imagen más grande -->
-        <img class="main-image" src="{{ $imagen }}" alt="Imagen principal" />
-      @else
-        <!-- Imágenes secundarias en grid -->
-        <img class="grid-image" src="{{ $imagen }}" alt="Imagen secundaria" />
-      @endif
-    @endforeach
-    
-    <!-- Botón flotante sobre la última imagen del grid -->
-    <div class="button-box" onclick="location.href='{{ route('minerva-overley') }}'">
-      <div class="button-text">Mostrar todas las fotos</div>
-=======
 <!-- Botón de compartir en la parte superior derecha -->
 <a href="{{ route('minerva') }}" class="compartir">
     <div class="inner-circle">
         <i class="bi bi-share"></i>
->>>>>>> 9173d3b5440d26f9aa2d07ce66358d07924a95cf
     </div>
   </div>
   
@@ -153,14 +111,9 @@ if (isset($zonaRelacionada['coordenadas'])) {
       <p>No se encontró información para este elemento.</p>
     @endif
   </div>
-<<<<<<< HEAD
-</div>
-<br><br><br>
-=======
 </section>
 
 <script src="{{ asset('js/minerva-la.js') }}"></script>
->>>>>>> 9173d3b5440d26f9aa2d07ce66358d07924a95cf
 
 <!-- Cargar Google Maps con coordenadas dinámicas -->
 <script>
@@ -180,12 +133,8 @@ if (isset($zonaRelacionada['coordenadas'])) {
        
         const titleToMatch = 'Dpto Ing y Arq';
 
-<<<<<<< HEAD
-        const geocodeUrl = https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(titleToMatch)}&key=${apiKey};
-=======
        
         const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(titleToMatch)}&key=${apiKey}`;
->>>>>>> 9173d3b5440d26f9aa2d07ce66358d07924a95cf
 
      
         fetch(geocodeUrl)
@@ -278,9 +227,4 @@ if (isset($zonaRelacionada['coordenadas'])) {
   
     loadGoogleMapsAPI();
 </script>
-<<<<<<< HEAD
-<script src="{{ asset('js/model.js') }}"></script>
 @endsection
-=======
-@endsection
->>>>>>> 9173d3b5440d26f9aa2d07ce66358d07924a95cf
