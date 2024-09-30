@@ -52,7 +52,7 @@ if (isset($zonaRelacionada['coordenadas'])) {
             width: 100%;
             height: 100%;
         }
-</style>
+    </style>
 @endsection
 
 @section('content')
@@ -79,8 +79,8 @@ if (isset($zonaRelacionada['coordenadas'])) {
     @endforeach
     
     <!-- Botón flotante sobre la última imagen del grid -->
-    <div style="background: #B81414;" class="button-box" id="abrirModal">
-      <i style="color: white;" class="fas fa-arrow-right arrow"></i>
+    <div class="button-box" onclick="location.href='{{ route('minerva-overley') }}'">
+      <div class="button-text">Mostrar todas las fotos</div>
     </div>
   </div>
   
@@ -142,24 +142,6 @@ if (isset($zonaRelacionada['coordenadas'])) {
   </div>
 </div>
 <br><br><br>
-<!-- Modal -->
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <div class="carousel-container">
-            <div class="carousel-images" id="carouselImages">
-                @foreach ($imagenes as $imagen)
-                    <img src="{{ $imagen }}" alt="Imagen del carrusel">
-                @endforeach
-            </div>
-        </div>
-        <div class="carousel-controls">
-            <button class="prev" onclick="moveCarousel(-1)">&#10094;</button>
-            <button class="next" onclick="moveCarousel(1)">&#10095;</button>
-        </div>
-    </div>
-</div>
-
 
 <!-- Cargar Google Maps con coordenadas dinámicas -->
 <script>

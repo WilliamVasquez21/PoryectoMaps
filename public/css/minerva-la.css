@@ -1,31 +1,31 @@
 /* General body styling */
 body {
 
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #e8e8e8;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #e8e8e8;
 
 }
 
 /* Círculo flotante para "volver atrás" */
 .back-button {
 
-width: 77px;
-height: 77px;
-padding: 17.71px;
-background: #AA0000;
-border-radius: 50%;
-display: flex;
+  width: 77px;
+  height: 77px;
+  padding: 17.71px;
+  background: #AA0000;
+  border-radius: 50%;
+  display: flex;
 
-cursor: pointer;
-margin-top: 20px;
-margin-bottom: 30px; /* Separa el botón del grid de imágenes */
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 30px; /* Separa el botón del grid de imágenes */
 
 
 }
@@ -62,333 +62,161 @@ background-color: #FF1F1F; /* Cambio de color al pasar el mouse */
 text-decoration: none;
 }
 
-
-.back-button .icon-box {
-width: 40.81px;
-height: 40.81px;
-position: relative;
-
-}
-
-.back-button .icon-arrow {
-
-border: solid white;
-border-width: 0 3.4px 3.4px 0;
-display: inline-block;
-padding: 10px;
-transform: rotate(135deg);
--webkit-transform: rotate(135deg);
-
-}
-
-/* Contenedor principal */
-.container {
-
-  width: 100%;
-  max-width: 1233px;
-  flex-grow: 1;
+/*imagenes*/
+.slider{
   position: relative;
-  background: white;
+  width: 100%;
+  overflow: hidden;
+}
+@media(min-width:768px){
+  .slider{
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+}
+.imagenes{
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  height: 45rem;
+}
+@media(min-width:768px){
+  .imagenes {
+    width: 80%;
+    height: 50rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 40% 30% 30%;
+    grid-template-rows: repeat(2, 1fr);    
+    grid-auto-flow: column;      
+    gap: 1rem;   
+    transition: none;      
+  }
+}
+.slider__foto {
+  min-width: 100%;
+  height: auto;
+}
+@media(min-width:768px){
+  .imagenes__principal {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    grid-row: 1 / 3; 
+    grid-column: 1;        
+  }
+}
+@media(min-width:768px){
+  .imagenes__secundaria {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+  }
+}
+.imagenes__mostrar{
+  display: none;
+}
+@media(min-width:768px){
+  .imagenes__mostrar{
+    display: block;
+    grid-column: 3;
+    grid-row: 2;
+    z-index: 1;
+    justify-self: end;
+    align-self: end;
+    background-color: #D2D2D2;
+    width: 18.1rem;
+    height: 3.8rem;
+    border-radius: 1rem;
+    font-size: 1.545rem;
+    color: var(--negro);
+    cursor: pointer;
+  }
+}
+@media(min-width:768px){
+  .imagenes__secundaria:nth-of-type(5) {
+    grid-column: 3; 
+    grid-row: 2;    
+    z-index: 0;     
+  } 
+}
+/*informacion*/
+.informacion{
+  width: 80%;
+  margin: 2rem auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding-top: 50px; /* Añadir espacio para el botón flotante */
-
+  row-gap: 1rem;
 }
-
-/* Footer al final del contenido sin dejar espacios */
-.footer {
-
+@media(min-width:768px){
+  .informacion{
+    display: flex;
+    flex-direction: row;
+    gap: 0 3rem;
+  }
+}
+#map-container {
   width: 100%;
-  height: 60px;
-  padding: 32px 0px;
-  background: linear-gradient(180deg, #a00 0%, #ff1f1f 100%);
+  height: 100%;
+}
+.informacion__ubicacion{
+  width: 50%;
+  height: 40rem;
+}
+.informacion__ubicacion{
+  width: 100%;
+  max-width: 60rem; /* Ajusta el ancho del mapa */
+  height: 40rem; /* Ajusta la altura del mapa */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0;
+  background-color: #fff;
 }
-
-.footer-text {
-  color: white;
-  font-size: 25px;
-  font-family: Inter, sans-serif;
-  font-weight: 400;
-  word-wrap: break-word;
-}
-
-@media (max-width: 768px) {
-  .footer {
-      padding: 20px 0;
-  }
-
-  .footer-text {
-      font-size: 18px;
-  }
-}
-
-@media (min-width: 320px) {
-  .footer {
-      padding: 15px 0;
-      text-align: center;
-  }
-
-  .footer-text {
-      font-size: 16px;
-  }
+@media (min-width:768px){
 
 }
-
-/* Contenedor de imágenes */
-.image-grid {
-
-width: 1233px;
-height: 676.59px;
-margin-top: 20px; /* Reducimos el margen para ajustarlo mejor */
-position: relative;
-}
-
-.main-image {
-width: 501.91px;
-height: 676.59px;
-position: absolute;
-border-radius: 11.06px 0 0 11.06px;
-
-}
-
-.grid-image {
-width: 346.03px;
-height: 331.66px;
-position: absolute;
-}
-
-.grid-image:nth-child(2) {
-left: 520.90px;
-top: 0;
-}
-
-.grid-image:nth-child(3) {
-left: 886.97px;
-top: 0;
-border-radius: 0  11.06px 0 0;
-}
-
-.grid-image:nth-child(4) {
-left: 520.90px;
-top: 344.93px;
-}
-
-.grid-image:nth-child(5) {
-left: 886.97px;
-top: 344.93px;
-border-radius: 0 0  11.06px 0;
-position: relative; /* Para que el botón esté dentro de la imagen */
-}
-
-/* Botón de fotos flotante en la parte inferior de la quinta imagen del grid */
-.button-box {
-
-background-color: #aa0000; /* Color de fondo del botón */
-border-radius: 50%; /* Forma redonda */
-display: flex; /* Centra el ícono en el botón */
-justify-content: center; /* Centrado horizontal del ícono */
-align-items: center; /* Centrado vertical del ícono */
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para el botón */
-z-index: 1000; /* Asegura que el botón esté sobre otros elementos */
-cursor: pointer; /* Cursor en forma de mano al pasar sobre el botón */
-position: absolute; /* Fijo en la pantalla, no se mueve al hacer scroll */
-bottom: 0; /* Posición desde la parte inferior de la pantalla */
-right: 0; /* Posición desde la parte derecha de la pantalla */
-width: 60px; /* Tamaño del botón */
-height: 60px; /* Tamaño del botón */
-margin: 20px; /* Margen del botón */
-}
-
-.button-text {
-color: black;
-font-size: 15.45px;
-font-family: Roboto, sans-serif;
-font-weight: 400;
-word-wrap: break-word;
-text-align: center;
-
-}
-
-/* Contenedor de imagen destacada y texto */
-.highlighted-container {
-
-display: flex;
-justify-content: space-between;
-align-items: flex-start;
-margin-top: 20px;
-width: 100%;
-max-width: 1233px;
-
-}
-
-/* Imagen destacada ajustada al tamaño de las dos filas del grid */
-.highlighted-image {
-
-width: 712px;
-height: 676.59px;
-border-radius: 15.68px;
-margin-left: 0;
-}
-
-.info-box {
-width: 501.91px;
+/*datos*/
+.datos{
 display: flex;
 flex-direction: column;
-gap: 19px;
-text-align: left;
-margin-left: 20px;
-
+gap: 2rem 0;
+}
+.datos__titulo{
+  font-size: 4.8rem;
+  font-weight: bold;
+  margin: 0;
+}
+@media(min-width:768px){
+  .datos__titulo{
+    font-size: 3.7rem;
+  }
+}
+.datos__ubicacion,
+.datos__informacion,
+.datos__espacios,
+.datos__departamento{
+  display: flex;
+  font-size: 1.9rem;
+  font-weight: lighter;
+  text-align: left;
+}
+@media(min-width:768px){
+  .datos__ubicacion,
+  .datos__informacion,
+  .datos__espacios,
+  .datos__departamento{
+    font-size: 2.4rem;
+  }
+}
+.datos-margin{
+  margin: auto 2rem;
 }
 
-.auditorio-text {
-color: #AA0000;
-font-size: 48px;
-font-family: Roboto, sans-serif;
-font-weight: 700;
-}
-
-/* Estilos de los iconos usando Bootstrap Icons */
-.icon {
-width: 24px;
-height: 24px;
-margin-right: 8px;
-}
-
-.location,
-.address,
-.capacity {
-display: flex;
-gap: 8px;
-align-items: center;
-}
-
-.location-icon::before {
-content: '\f041';
-font-family: 'Bootstrap Icons';
-font-size: 24px;
-display: inline-block;
-}
-
-.address-icon::before {
-content: '\f042';
-font-family: 'Bootstrap Icons';
-font-size: 24px;
-display: inline-block;
-}
-
-.capacity-icon::before {
-content: '\f043';
-font-family: 'Bootstrap Icons';
-font-size: 24px;
-display: inline-block;
-}
-
-.location-text,
-.address-text,
-.capacity-text {
-color: #AA0000;
-font-size: 24px;
-font-family: Roboto, sans-serif;
-font-weight: 300;
-}
-
-.black-box {
-width: 24px;
-height: 24px;
-position: relative;
-}
-
-.black-icon {
-
-width: 20px;
-height: 20px;
-position: absolute;
-left: 2px;
-top: 2px;
-border: 2px solid black;
-
-}
-/* Estilos del modal */
-/* Estilos del modal */
-.modal {
-display: none; /* Ocultar el modal por defecto */
-position: fixed; /* Fijo en pantalla */
-z-index: 1000; /* En la parte superior */
-left: 50%; /* Centrar horizontalmente */
-top: 50%; /* Centrar verticalmente */
-transform: translate(-50%, -50%); /* Ajustar posición exacta al centro */
-width: auto; /* El ancho se ajusta automáticamente */
-max-width: 80%; /* Ajuste máximo para pantallas grandes */
-height: auto; /* Altura automática */
-max-height: 80%; /* Ajuste máximo de altura */
-overflow: auto; /* Desplazamiento si es necesario */
-background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con opacidad */
-}
-
-/* Contenido del modal */
-.modal-content {
-background-color: #fefefe;
-padding: 20px;
-border-radius: 8px; /* Bordes redondeados */
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
-text-align: left; /* Centrar el contenido dentro del modal */
-max-width: 100%; /* Para asegurar que no se desborde */
-height: auto;
-}
-
-.carousel-images {
-position: relative; /* Asegura que el contenedor tenga un contexto de posicionamiento */
-width: 100%; /* Ancho completo del modal */
-height: 600px; /* Altura fija del carrusel */
-overflow: hidden; /* Oculta cualquier contenido que exceda el contenedor */
-}
-
-.carousel-images img {
-width: 100%; /* Imagen ocupa el ancho completo del contenedor */
-height: auto; /* Altura automática para mantener la proporción */
-max-height: 100%; /* Asegura que la imagen no exceda la altura del contenedor */
-object-fit: contain; /* Ajustar imágenes sin deformarlas */
-border-radius: 5px; /* Bordes redondeados en imágenes */
-}
-
-
-
-.carousel-controls {
-text-align: center; /* Centrar controles */
-margin-top: 10px; /* Margen superior */
-}
-
-.carousel-controls button {
-background-color: #B81414; /* Color de fondo */
-color: white; /* Color del texto */
-border: none; /* Sin borde */
-padding: 10px 15px; /* Espaciado interno */
-margin: 0 5px; /* Margen lateral */
-cursor: pointer; /* Cambiar cursor a mano */
-border-radius: 5px; /* Bordes redondeados */
-font-size: 18px; /* Tamaño de fuente */
-}
-
-.carousel-controls button:hover {
-background-color: #a31212; /* Color de fondo al pasar el mouse */
-}
-
-.close {
-color: #aaa; /* Color del botón de cerrar */
-float: right; /* Posicionar a la derecha */
-font-size: 28px; /* Tamaño de fuente */
-font-weight: bold; /* Negrita */
-}
-
-.close:hover,
-.close:focus {
-color: black; /* Color al pasar el mouse */
-text-decoration: none; /* Sin subrayado */
-cursor: pointer; /* Cambiar cursor a mano */
-}
