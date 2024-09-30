@@ -1,66 +1,76 @@
-/* General body styling */
-body {
-
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #e8e8e8;
-
+:root{
+  --colorPrincipal:#AA0000;
+  --colorSecundario:#FF1F1F;
+  --blanco:#ffffff;
+  --negro:#000000;
+  --fuentePrincipal: 'Roboto', sans-serif;
 }
-
-/* Círculo flotante para "volver atrás" */
-.back-button {
-
-  width: 77px;
-  height: 77px;
-  padding: 17.71px;
-  background: #AA0000;
-  border-radius: 50%;
-  display: flex;
-
-  cursor: pointer;
-  margin-top: 20px;
-  margin-bottom: 30px; /* Separa el botón del grid de imágenes */
-
-
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
 }
-
-/* Botón de retorno (flecha) */
-.circle-button {
-position: fixed; /* Fijo en la pantalla, no se mueve al hacer scroll */
-top: 20px; /* Posición desde la parte superior de la pantalla */
-left: 20px; /* Posición desde la parte izquierda de la pantalla, ajustado a la izquierda */
-width: 60px; /* Tamaño del botón */
-height: 60px; /* Tamaño del botón */
-background-color: #AA0000; /* Color de fondo del botón */
-border-radius: 50%; /* Forma redonda */
-display: flex; /* Centra el ícono en el botón */
-justify-content: center; /* Centrado horizontal del ícono */
-align-items: center; /* Centrado vertical del ícono */
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para el botón */
-z-index: 1000; /* Asegura que el botón esté sobre otros elementos */
-cursor: pointer; /* Cursor en forma de mano al pasar sobre el botón */
+body{
+  font-family: var(--fuentePrincipal);
+  color: var(--colorPrincipal);
 }
-
-.circle-button .inner-circle {
-font-size: 24px; /* Tamaño del ícono */
-color: white; /* Color del ícono */
-}
-
-.circle-button:hover {
-background-color: #FF1F1F; /* Cambio de color al pasar el mouse */
-}
-
-
-/* Asegurarse de que el ícono no se subraye */
-.circle-button a {
-text-decoration: none;
-}
+/*volver y compartir*/
+.volver {
+  position: fixed; 
+  top: 20px; 
+  left: 20px; 
+  width: 60px; 
+  height: 60px; 
+  background-color: #AA0000; 
+  border-radius: 50%; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  z-index: 1000; 
+  cursor: pointer; 
+  }
+.compartir {
+  position: fixed; 
+  top: 20px; 
+  right: 20px; 
+  width: 60px; 
+  height: 60px; 
+  background-color: #AA0000; 
+  border-radius: 50%; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  z-index: 1000; 
+  cursor: pointer; 
+  }
+  
+  .volver .inner-circle {
+  font-size: 24px; /* Tamaño del ícono */
+  color: white; /* Color del ícono */
+  }
+  .compartir .inner-circle {
+  font-size: 24px; /* Tamaño del ícono */
+  color: white; /* Color del ícono */
+  }
+  
+  .volver:hover {
+  background-color: #FF1F1F; /* Cambio de color al pasar el mouse */
+  }
+  .compartir:hover {
+  background-color: #FF1F1F; /* Cambio de color al pasar el mouse */
+  }
+  
+  /* Asegurarse de que el ícono no se subraye */
+  .volver a {
+  text-decoration: none;
+  }
+  .compartir a {
+  text-decoration: none;
+  }
 
 /*imagenes*/
 .slider{
