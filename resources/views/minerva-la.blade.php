@@ -1,6 +1,3 @@
-
-
-
 <?php
 // Establecemos un número mínimo de imágenes que queremos en el grid
 $minImagesCount = 5; 
@@ -38,7 +35,7 @@ if (isset($zonaRelacionada['coordenadas'])) {
 <link rel="stylesheet" href="{{ asset('css/minerva-la.css') }}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-@endsection
+
 
 @section('content')
 
@@ -49,10 +46,25 @@ if (isset($zonaRelacionada['coordenadas'])) {
     </div>
 </a>
 
-<!-- Botón de compartir en la parte superior derecha -->
-<a href="{{ route('minerva') }}" class="compartir">
-    <div class="inner-circle">
-        <i class="bi bi-share"></i>
+
+<!-- Contenedor principal -->
+<div class="container">
+  <!-- Cuadrícula de imágenes -->
+  <div class="image-grid">
+    @foreach ($imagenes as $index => $imagen)
+      @if ($index == 0)
+        <!-- Primera imagen más grande -->
+        <img class="main-image" src="{{ $imagen }}" alt="Imagen principal" />
+      @else
+        <!-- Imágenes secundarias en grid -->
+        <img class="grid-image" src="{{ $imagen }}" alt="Imagen secundaria" />
+      @endif
+    @endforeach
+    
+    <!-- Botón flotante sobre la última imagen del grid -->
+    <div style="background: #B81414;" class="button-box" id="abrirModal">
+      <i style="color: white;" class="fas fa-arrow-right arrow"></i>
+
     </div>
 </a>
 
@@ -128,13 +140,34 @@ if (isset($zonaRelacionada['coordenadas'])) {
       <p>No se encontró información para este elemento.</p>
     @endif
   </div>
-</section>
+
+</div>
+<br><br><br>
+<!-- Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="carousel-container">
+            <div class="carousel-images" id="carouselImages">
+                @foreach ($imagenes as $imagen)
+                    <img src="{{ $imagen }}" alt="Imagen del carrusel">
+                @endforeach
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <button class="prev" onclick="moveCarousel(-1)">&#10094;</button>
+            <button class="next" onclick="moveCarousel(1)">&#10095;</button>
+        </div>
+    </div>
+</div>
+
+
 
 <script src="{{ asset('js/minerva-la.js') }}"></script>
 
+
 <!-- Cargar Google Maps con coordenadas dinámicas -->
 <script>
-   
     const apiKey = 'AIzaSyAPOp7CDPpzRDuYqF1z4pP1ifIPnQN0c2M';
 
     function loadGoogleMapsAPI() {
@@ -147,101 +180,117 @@ if (isset($zonaRelacionada['coordenadas'])) {
     }
 
     function initMap() {
-       
-        const titleToMatch = 'Dpto Ing y Arq';
+        const titleToMatch = 'Dpto Ing y Arq'; // Cambia esto según sea necesario.
 
-       
         const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(titleToMatch)}&key=${apiKey}`;
 
-     
         fetch(geocodeUrl)
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'OK' && data.results.length > 0) {
-                  
                     const location = data.results[0].geometry.location;
 
-                  
                     const map = new google.maps.Map(document.getElementById('map-container'), {
                         center: location,
-                        zoom: 19, 
+                        zoom: 19,
                         styles: [
                             {
                                 featureType: "all",
                                 elementType: "geometry.fill",
-                                stylers: [
-                                    { color: "#b0e57c" }
-                                ]
+                                stylers: [{ color: "#b0e57c" }]
                             },
                             {
                                 featureType: "road",
                                 elementType: "geometry.stroke",
-                                stylers: [
-                                    { color: "#73a857" }
-                                ]
+                                stylers: [{ color: "#73a857" }]
                             },
                             {
                                 featureType: "landscape",
                                 elementType: "geometry",
-                                stylers: [
-                                    { color: "#cbe785" }
-                                ]
+                                stylers: [{ color: "#cbe785" }]
                             },
                             {
                                 featureType: "water",
                                 elementType: "geometry.fill",
-                                stylers: [
-                                    { color: "#a2daf2" }
-                                ]
+                                stylers: [{ color: "#a2daf2" }]
                             },
                             {
                                 featureType: "poi",
                                 elementType: "geometry",
-                                stylers: [
-                                    { color: "#aed581" }
-                                ]
+                                stylers: [{ color: "#aed581" }]
                             },
                             {
                                 featureType: "road.highway",
                                 elementType: "geometry.fill",
-                                stylers: [
-                                    { color: "#c5e1a5" }
-                                ]
+                                stylers: [{ color: "#c5e1a5" }]
                             },
                             {
                                 featureType: "road.highway",
                                 elementType: "geometry.stroke",
-                                stylers: [
-                                    { color: "#8bc34a" }
-                                ]
+                                stylers: [{ color: "#8bc34a" }]
                             },
                             {
                                 featureType: "road.arterial",
                                 elementType: "geometry",
-                                stylers: [
-                                    { color: "#d4e157" }
-                                ]
-                            }
+                                stylers: [{ color: "#d4e157" }]
+                            },
+                            {
+                                featureType: "road.local",
+                                elementType: "geometry",
+                                stylers: [{ color: "#ffeb3b" }]
+                            },
                         ]
                     });
 
-    
                     new google.maps.Marker({
                         position: location,
                         map: map,
-                        title: titleToMatch,
-                        animation: google.maps.Animation.BOUNCE 
+                        title: titleToMatch
                     });
                 } else {
-                    console.error('No se encontraron resultados para la ubicación solicitada.');
+                    console.error('Error fetching geocode data:', data.status);
                 }
             })
             .catch(error => {
-                console.error('Error al obtener las coordenadas:', error);
+                console.error('Error fetching geocode:', error);
             });
     }
 
-  
+    // Iniciar Google Maps API
     loadGoogleMapsAPI();
+
+    // Inicializar el carrusel
+    let currentIndex = 0;
+    const images = document.querySelectorAll('#carouselImages img');
+    const totalImages = images.length;
+
+    function moveCarousel(direction) {
+        currentIndex = (currentIndex + direction + totalImages) % totalImages; // Circular
+        updateCarousel();
+    }
+
+    function updateCarousel() {
+        images.forEach((img, index) => {
+            img.style.display = index === currentIndex ? 'block' : 'none';
+        });
+    }
+
+    document.getElementById("abrirModal").onclick = function() {
+        document.getElementById("myModal").style.display = "block";
+        updateCarousel();
+    }
+
+    document.querySelector('.close').onclick = function() {
+        document.getElementById("myModal").style.display = "none";
+    }
+
+    // Cerrar modal si se hace clic fuera de él
+    window.onclick = function(event) {
+        const modal = document.getElementById("myModal");
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
 </script>
+<script src="{{ asset('js/model.js') }}"></script>
 @endsection
