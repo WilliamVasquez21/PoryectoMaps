@@ -177,47 +177,6 @@ body{
   width: 50%;
   height: 40rem;
 }
-
-
-/* Botón de fotos flotante en la parte inferior de la quinta imagen del grid */
-.button-box {
-  /*ajustamos el boton como circular*/
-  background-color: #aa0000; /* Color de fondo del botón */
-  border-radius: 50%; /* Forma redonda */
-  display: flex; /* Centra el ícono en el botón */
-  justify-content: center; /* Centrado horizontal del ícono */
-  align-items: center; /* Centrado vertical del ícono */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para el botón */
-  z-index: 1000; /* Asegura que el botón esté sobre otros elementos */
-  cursor: pointer; /* Cursor en forma de mano al pasar sobre el botón */
-  position: absolute; /* Fijo en la pantalla, no se mueve al hacer scroll */
-  bottom: 0; /* Posición desde la parte inferior de la pantalla */
-  right: 0; /* Posición desde la parte derecha de la pantalla */
-  width: 60px; /* Tamaño del botón */
-  height: 60px; /* Tamaño del botón */
-  margin: 20px; /* Margen del botón */
-}
-
-.button-text {
-  color: black;
-  font-size: 15.45px;
-  font-family: Roboto, sans-serif;
-  font-weight: 400;
-  word-wrap: break-word;
-  text-align: center;
-
-}
-
-/* Contenedor de imagen destacada y texto */
-.highlighted-container {
-
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-top: 20px;
-  width: 100%;
-  max-width: 1233px;
-
 .informacion__ubicacion{
   width: 100%;
   max-width: 60rem; /* Ajusta el ancho del mapa */
@@ -230,7 +189,6 @@ body{
   justify-content: center;
   align-items: center;
   background-color: #fff;
-
 }
 @media (min-width:768px){
 
@@ -271,95 +229,4 @@ gap: 2rem 0;
 .datos-margin{
   margin: auto 2rem;
 }
-
-
-.black-icon {
-
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  left: 2px;
-  top: 2px;
-  border: 2px solid black;
-
-}
-/* Estilos del modal */
-/* Estilos del modal */
-.modal {
-  display: none; /* Ocultar el modal por defecto */
-  position: fixed; /* Fijo en pantalla */
-  z-index: 1000; /* En la parte superior */
-  left: 50%; /* Centrar horizontalmente */
-  top: 50%; /* Centrar verticalmente */
-  transform: translate(-50%, -50%); /* Ajustar posición exacta al centro */
-  width: auto; /* El ancho se ajusta automáticamente */
-  max-width: 80%; /* Ajuste máximo para pantallas grandes */
-  height: auto; /* Altura automática */
-  max-height: 80%; /* Ajuste máximo de altura */
-  overflow: auto; /* Desplazamiento si es necesario */
-  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con opacidad */
-}
-
-/* Contenido del modal */
-.modal-content {
-  background-color: #fefefe;
-  padding: 20px;
-  border-radius: 8px; /* Bordes redondeados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
-  text-align: left; /* Centrar el contenido dentro del modal */
-  max-width: 100%; /* Para asegurar que no se desborde */
-  height: auto;
-}
-
-.carousel-images {
-  position: relative; /* Asegura que el contenedor tenga un contexto de posicionamiento */
-  width: 100%; /* Ancho completo del modal */
-  height: 600px; /* Altura fija del carrusel */
-  overflow: hidden; /* Oculta cualquier contenido que exceda el contenedor */
-}
-
-.carousel-images img {
-  width: 100%; /* Imagen ocupa el ancho completo del contenedor */
-  height: auto; /* Altura automática para mantener la proporción */
-  max-height: 100%; /* Asegura que la imagen no exceda la altura del contenedor */
-  object-fit: contain; /* Ajustar imágenes sin deformarlas */
-  border-radius: 5px; /* Bordes redondeados en imágenes */
-}
-
-
-
-.carousel-controls {
-  text-align: center; /* Centrar controles */
-  margin-top: 10px; /* Margen superior */
-}
-
-.carousel-controls button {
-  background-color: #B81414; /* Color de fondo */
-  color: white; /* Color del texto */
-  border: none; /* Sin borde */
-  padding: 10px 15px; /* Espaciado interno */
-  margin: 0 5px; /* Margen lateral */
-  cursor: pointer; /* Cambiar cursor a mano */
-  border-radius: 5px; /* Bordes redondeados */
-  font-size: 18px; /* Tamaño de fuente */
-}
-
-.carousel-controls button:hover {
-  background-color: #a31212; /* Color de fondo al pasar el mouse */
-}
-
-.close {
-  color: #aaa; /* Color del botón de cerrar */
-  float: right; /* Posicionar a la derecha */
-  font-size: 28px; /* Tamaño de fuente */
-  font-weight: bold; /* Negrita */
-}
-
-.close:hover,
-.close:focus {
-  color: black; /* Color al pasar el mouse */
-  text-decoration: none; /* Sin subrayado */
-  cursor: pointer; /* Cambiar cursor a mano */
-}
-
 
