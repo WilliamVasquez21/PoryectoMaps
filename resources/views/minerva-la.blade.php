@@ -73,6 +73,11 @@ if (isset($zonaRelacionada['coordenadas'])) {
         </button>
 
     </section>
+    
+    <div class="slider__dots"></div>
+    <button class="slider__button slider__button--left">‹</button>
+    <button class="slider__button slider__button--right">›</button>
+
 </main>
   
   <!-- Contenedor de detalles y mapa -->

@@ -78,12 +78,61 @@ body{
   width: 100%;
   overflow: hidden;
 }
+
+.slider__dots {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.slider__dots button {
+  background: #fff;
+  border: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.slider__dots button.active {
+  background: #000;
+}
+
+.slider__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #fff;
+  font-size: 60px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.slider__button--left {
+  left: 2rem;
+}
+
+.slider__button--right {
+  right: 2rem;
+}
 @media(min-width:768px){
   .slider{
     position: static;
     width: 100%;
     max-width: 100%;
     overflow: hidden;
+  }
+  .slider__dots{
+    display: none;
+  }
+  .slider__button{
+    display: none;
   }
 }
 .imagenes{
