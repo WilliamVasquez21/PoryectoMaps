@@ -168,43 +168,56 @@ input::placeholder {
 /* Contenedor del menú desplazable */
 .menu-container {
     display: flex;
-    overflow-x: scroll; /* Evitar que la barra de desplazamiento sea visible */
+    overflow-x: auto; /* Cambia scroll a auto para mejor compatibilidad */
     white-space: nowrap;
     margin: 20px;
     padding: 10px 0;
-    scroll-behavior: smooth;
-    cursor: grab; /* Indicar al usuario que se puede arrastrar */
-    user-select: none; /* Evitar selección de texto mientras se arrastra */
+    scroll-behavior: smooth; /* Comportamiento suave del scroll */
+    cursor: grab;
+    user-select: none;
 }
 
-/* Personalizar la barra de desplazamiento */
+/* Soporte para navegadores Webkit */
 .menu-container::-webkit-scrollbar {
-    height: 8px; /* Ajustar el alto de la barra */
-    opacity: 0; /* Hacer la barra invisible por defecto */
-    transition: opacity 0.01s ease; /* Transición suave */
-    width: 0; /*tamaño */
-    height: 0;
+    height: 8px; /* Altura de la barra */
+    opacity: 0; /* Hacer la barra invisible */
+    transition: opacity 0.01s ease;
 }
 
 .menu-container:hover::-webkit-scrollbar {
-    opacity: 0; /* Mostrar la barra al hacer hover */
+    opacity: 1; /* Mostrar la barra al hacer hover */
 }
 
 .menu-container::-webkit-scrollbar-thumb {
-    background-color: transparent; /* Color de la barra */
+    background-color: rgba(0, 0, 0, 0.2); /* Color de la barra */
     border-radius: 10px; /* Esquinas redondeadas */
-    border: 2px solid transparent; /* Espacio alrededor de la barra */
-    background-clip: padding-box; /* Evitar que el borde corte la barra */
-}
-
-.menu-container::-webkit-scrollbar-thumb:hover {
-    background-color: transparent; /* Color al pasar el ratón */
 }
 
 .menu-container::-webkit-scrollbar-track {
-    background-color: transparent; /* Color del fondo de la barra */
-    border-radius: 10px; /* Esquinas redondeadas del track */
+    background-color: transparent; /* Color del fondo */
 }
+
+/* Para Firefox */
+.menu-container {
+    scrollbar-width: thin; /* Ancho de la barra */
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent; /* Color de la barra y del fondo */
+}
+
+/* Comportamiento del cursor al hacer clic */
+.menu-container:active {
+    cursor: grabbing;
+}
+
+/* Soporte para navegadores más antiguos con JavaScript opcional para scroll suave (si es necesario) */
+/* Vista móvil */
+@media (max-width: 768px) {
+    .menu-container {
+        overflow-x: scroll; /* Habilitar desplazamiento horizontal en móviles */
+        -webkit-overflow-scrolling: touch; /* Desplazamiento suave en móviles */
+        scroll-behavior: smooth;
+    }
+}
+
 
 /* Estilo para cada opción del menú */
 .menu-item {
