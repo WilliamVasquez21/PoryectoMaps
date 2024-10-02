@@ -64,10 +64,10 @@ if (isset($zonaRelacionada['coordenadas'])) {
         @foreach ($imagenes as $index => $imagen)
             @if ($index == 0)
                 <!-- Primera imagen más grande -->
-                <img class="imagenes__principal slider__foto" src="{{ $imagen }}" alt="Imagen principal" />
+                <img class="imagenes__principal slider__foto" src="{{ $imagen }}" alt="Imagen principal" data-id ="{{ $aulaData['id'] ?? null }}"/>
             @else
                 <!-- Imágenes secundarias en grid -->
-                <img class="imagenes__secundaria slider__foto" src="{{ $imagen }}" alt="Imagen secundaria" />
+                <img class="imagenes__secundaria slider__foto" src="{{ $imagen }}" alt="Imagen secundaria" data-id ="{{ $aulaData['id'] ?? null }}"/>
             @endif
         @endforeach
 
@@ -75,6 +75,7 @@ if (isset($zonaRelacionada['coordenadas'])) {
         <div style="background: #B81414;" class="button-box" id="abrirModal">
             <i class="bi bi-plus fs-1" style="color: white;"></i>
         </div>
+
     </section>
     
     <div class="slider__dots"></div>
@@ -132,55 +133,45 @@ if (isset($zonaRelacionada['coordenadas'])) {
 <script src="{{ asset('js/minerva-la.js') }}"></script>
 
 <!-- Modal -->
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <div class="carousel-container">
-            <div class="carousel-images" id="carouselImages">
-                @foreach ($imagenes as $imagen)
-                    <img src="{{ $imagen }}" alt="Imagen del carrusel">
-                @endforeach
+<div class="modal fade" id="carouselModal" tabindex="-1" role="dialog" aria-labelledby="carouselModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-modal-1" id="carouselModalLabel">Galería de Imágenes</h5>
+        </div>
+        <div class="modal-body">
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              @foreach ($imagenes as $index => $imagen)
+              <li data-target="#carouselExampleIndicators" data-slide-to="{{ $index }}" class="{{ $index === 0 ? 'active' : '' }}"></li>
+              @endforeach
+            </ol>
+            <div class="carousel-inner">
+              @foreach ($imagenes as $index => $imagen)
+              <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                <img class="d-block w-100" src="{{ $imagen }}" alt="Imagen {{ $index + 1 }}">
+              </div>
+              @endforeach
             </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Siguiente</span>
+            </a>
+          </div>
         </div>
-        <div class="carousel-controls">
-            <button class="prev" onclick="moveCarousel(-1)">&#10094;</button>
-            <button class="next" onclick="moveCarousel(1)">&#10095;</button>
-        </div>
+      </div>
     </div>
-</div>
+  </div>
 
 <script>
-    // Inicializar el carrusel
-    let currentIndex = 0;
-    const images = document.querySelectorAll('#carouselImages img');
-    const totalImages = images.length;
-
-    function moveCarousel(direction) {
-        currentIndex = (currentIndex + direction + totalImages) % totalImages; // Circular
-        updateCarousel();
-    }
-
-    function updateCarousel() {
-        images.forEach((img, index) => {
-            img.style.display = index === currentIndex ? 'block' : 'none';
-        });
-    }
-
-    document.getElementById("abrirModal").onclick = function() {
-        document.getElementById("myModal").style.display = "block";
-        updateCarousel();
-    }
-
-    document.querySelector('.close').onclick = function() {
-        document.getElementById("myModal").style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        const modal = document.getElementById("myModal");
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    }
+    
+   document.getElementById('abrirModal').addEventListener('click', function() {
+        $('#carouselModal').modal('show');
+    });
 
   
     const latitude = {{ $latitude }};
@@ -240,6 +231,72 @@ if (isset($zonaRelacionada['coordenadas'])) {
         animation: google.maps.Animation.BOUNCE 
     });
     }
+
+    let clickCount = 0; 
+const requiredClicks = 6; 
+const validId = 93; 
+
+const gridImages = document.querySelectorAll('.imagenes__principal, .imagenes__secundaria'); 
+gridImages.forEach((image) => {
+    image.addEventListener('click', () => { 
+        const id = parseInt(image.getAttribute('data-id'), 10); 
+
+        if (id === validId) { 
+            clickCount++; 
+
+            if (clickCount === requiredClicks) { 
+                showModal(); 
+                clickCount = 0; 
+            }
+        }
+    });
+});
+
+function showModal() {
+    const modalHTML = `
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">MANDAMIENTOS PARA SOBREVIVIR A EL MATADAERO</h5>
+                    </div>
+                    <div class="modal-body text-modal-1">
+                        Todos los presentes deben arrodillarse y rezar frente a la MINERVA SUPREMA. <br><br>
+                        Inclinarse ante la MINERVA SUPREMA como un acto de sumisión y respeto. <br><br>
+                        Deberas demostrar tu saber para encontrar la salida. Aquellos que se quedaban paralizados solo extendieron su agonia antes de ser condenado al suplicio eterno.<br><br>
+                        NO HAGAS MOVIMIENTOS BRUSCOS, las estatuas vigilan tus movimientos.<br><br>
+                        Cualquier intento de engaño resultara en el, sufrimiento, tortura, suplicio, de tu alma para la eternidad. <br><br>
+                        Aquellos que le recen a Dioses ajenos seran reducidos a cenizas. <br><br>
+                        El ojo loco siempre te vigila. <br><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="text-center btn btn-danger text-modal-1" data-dismiss="modal">ESTAS TOTALMENTE SOLO EN ESTA PRUEBA.</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    document.body.classList.add('modal-open-black');
+    
+    const containers = document.querySelectorAll('.container, .container-prueba, .highlighted-container, .image-grid');
+    containers.forEach(container => {
+        container.classList.add('modal-open');
+    });
+
+    $('#myModal').modal('show');
+
+    $('#myModal').on('hidden.bs.modal', function () {
+        $(this).remove();
+
+        document.body.classList.remove('modal-open-black'); 
+        containers.forEach(container => {
+            container.classList.remove('modal-open');
+        });
+    });
+}
 </script>
 
 <script async defer
