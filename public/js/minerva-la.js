@@ -88,8 +88,9 @@ window.addEventListener('resize', () => {
 
 /*copiar link de referencia*/
 document.getElementById('shareLink').addEventListener('click', function(event) {
-    event.preventDefault();
+    event.preventDefault(); // Evita que el enlace redirija a la página
     
+    // Crear un elemento temporal de input para copiar el enlace
     const tempInput = document.createElement('input');
     tempInput.value = this.href;
     document.body.appendChild(tempInput);
@@ -110,4 +111,5 @@ function showToast() {
         toast.classList.remove('show');
     }, 3000); // 3 segundos
 }
+
 /*fin copiar link de referencia*/

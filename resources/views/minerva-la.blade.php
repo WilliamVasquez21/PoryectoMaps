@@ -58,7 +58,7 @@ if (isset($zonaRelacionada['coordenadas'])) {
     </div>
 </a>
 
-<div id="toast" class="toast" style="display:none;">
+<div id="toast" class="toast">
     <p>Enlace copiado al portapapeles</p>
 </div>
 
