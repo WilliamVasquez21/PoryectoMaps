@@ -1,36 +1,30 @@
-<?php
-$images = [
-    ['url' => 'https://via.placeholder.com/502x677', 'caption' => 'Imagen principal'],
-    ['url' => 'https://via.placeholder.com/346x332', 'caption' => 'Imagen secundaria'],
-    ['url' => 'https://via.placeholder.com/346x332', 'caption' => 'Imagen secundaria'],
-    ['url' => 'https://via.placeholder.com/346x332', 'caption' => 'Imagen secundaria'],
-    ['url' => 'https://via.placeholder.com/346x332', 'caption' => 'Imagen secundaria']
-];
 
-$highlightedImages = [
-  [
-      'url' => 'https://via.placeholder.com/712x677',
-      'title' => 'Auditorio 1',
-      'location' => 'CRQV+V24, San Miguel',
-      'address' => 'Frente a la Plaza Roque Daltón, Costado Poniente del Parqueo de Visitantes.',
-      'capacity' => '250 personas'
-  ]
-];
+
+
+<?php
+// Establecemos un número mínimo de imágenes que queremos en el grid
+$minImagesCount = 5; 
+
+// Llenar el grid de imágenes con la última si no hay suficientes
+while (count($imagenes) < $minImagesCount) {
+    $imagenes[] = end($imagenes);  // Añadir la última imagen disponible hasta llenar
+}
+
+// Extraer las coordenadas de la zona relacionada si existen para aulas, o las de referencia
+if (isset($zonaRelacionada['coordenadas'])) {
+    $coordenadas = explode(',', $zonaRelacionada['coordenadas']);
+    $latitude = $coordenadas[0] ?? '13.4834'; // Valor por defecto si no existe
+    $longitude = $coordenadas[1] ?? '-88.1834'; // Valor por defecto si no existe
+} elseif (isset($referenciaData['coordenadas'])) {
+    $coordenadas = explode(',', $referenciaData['coordenadas']);
+    $latitude = $coordenadas[0] ?? '13.4834'; // Coordenada predeterminada para referencias
+    $longitude = $coordenadas[1] ?? '-88.1834'; // Coordenada predeterminada para referencias
+} else {
+    $latitude = '13.4834';  // Valor por defecto si no hay coordenadas
+    $longitude = '-88.1834'; // Valor por defecto si no hay coordenadas
+}
 ?>
 
-<<<<<<< Updated upstream
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minerva Maps UES-FMO</title>
-    <link rel="stylesheet" href="{{ asset('css/minerva-la.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-</head>
-<body>
-=======
 @extends('base')
 
 @section('title', 'Minerva Maps UES-FMO')
@@ -40,101 +34,95 @@ $highlightedImages = [
 @endphp
 
 @section('styles')
+<link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
 <link rel="stylesheet" href="{{ asset('css/minerva-la.css') }}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-<style>
-        .map-wrapper {
-            width: 600px; /* Ajusta el ancho del mapa */
-            height: 400px; /* Ajusta la altura del mapa */
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #fff;
-        }
-
-        #map-container {
-            width: 100%;
-            height: 100%;
-        }
-    </style>
 @endsection
 
 @section('content')
 
->>>>>>> Stashed changes
 <!-- Botón de retorno en la parte superior izquierda -->
-<a href="{{ route('minerva') }}"class="circle-button">
+<a href="{{ route('minerva') }}" class="volver">
     <div class="inner-circle">
         <i class="fas fa-arrow-left"></i>
     </div>
 </a>
 
-<<<<<<< Updated upstream
-<div class="container">
-  <div class="image-grid">
-    @foreach ($images as $index => $image)
-      @if ($index == 0)
-        <!-- Primera imagen más grande -->
-        <img class="main-image" src="{{ $image['url'] }}" alt="{{ $image['caption'] }}" />
-      @else
-        <!-- Imágenes secundarias en grid -->
-        <img class="grid-image" src="{{ $image['url'] }}" alt="{{ $image['caption'] }}" />
-      @endif
-    @endforeach
-    
-    <!-- Botón flotante sobre la última imagen del grid -->
-    <div class="button-box" onclick="location.href='{{ route('minerva-overley') }}'">
-      <div class="button-text">Mostrar todas las fotos</div>
-=======
 <!-- Botón de compartir en la parte superior derecha -->
 <a href="{{ route('minerva') }}" class="compartir">
     <div class="inner-circle">
         <i class="bi bi-share"></i>
->>>>>>> Stashed changes
     </div>
-  </div>
-  
-  <div class="container">
-    <!-- Contenedor de imagen destacada y texto -->
-    @foreach ($highlightedImages as $image)
-    <div class="highlighted-container">
-        <div class="info-box">
-            <div class="auditorio-text">{{ $image['title'] }}</div>
-            <div class="location">
-                <i class="bi bi-geo-alt" style="font-size: 24px;"></i>
-                <div class="location-text">{{ $image['location'] }}</div>
-            </div>
-            <div class="address">
-                <i class="bi bi-map" style="font-size: 24px;"></i>
-                <div class="address-text">{{ $image['address'] }}</div>
-            </div>
-<<<<<<< Updated upstream
-            <div class="capacity">
-                <i class="bi bi-people" style="font-size: 24px;"></i>
-                <div class="capacity-text">{{ $image['capacity'] }}</div>
-            </div>
-        </div>
-        <img class="highlighted-image" src="{{ $image['url'] }}" alt="{{ $image['title'] }}" />
-    </div>
-    @endforeach
-</div>
-</div>
-<br><br><br>
-<!-- Footer al final del contenido -->
-<div class="footer">
-  <div class="footer-text">© Realizado por estudiantes de Ingeniería en Sistemas Informáticos 2024.</div>
-</div>
+</a>
 
-<script src="{{ asset('js/minerva.js') }}"></script>
-</body>
-</html>
-=======
+<main class="slider">
+    <section class="imagenes">
+        @foreach ($imagenes as $index => $imagen)
+        @if ($index == 0)
+            <!-- Primera imagen más grande -->
+            <img class="imagenes__principal slider__foto" src="{{ $imagen }}" alt="Imagen principal" />
+        @else
+            <!-- Imágenes secundarias en grid -->
+            <img class="imagenes__secundaria slider__foto" src="{{ $imagen }}" alt="Imagen secundaria" />
+        @endif
+        @endforeach
+
+        <button class="imagenes__mostrar" onclick="location.href='{{ route('minerva-overley') }}'">
+        Mostrar todas las fotos
+        </button>
+
+    </section>
+</main>
+  
+  <!-- Contenedor de detalles y mapa -->
+<section class="informacion">
+    @if (isset($aulaData) && $aulaData)
+      <!-- Contenedor de detalles del aula -->
+      <div class="datos">
+              <div class="datos__titulo">{{ $aulaData['numero'] ?? 'Aula' }}</div>
+              <div class="datos__ubicacion">
+                  <i class="bi bi-geo-alt icon"></i>
+                  <div class="datos-margin">{{ $zonaRelacionada['nombre'] ?? 'Sin zona asociada' }}</div>
+              </div>
+              <div class="datos__espacios">
+                  <i class="bi bi-people icon"></i>
+                  <div class="datos-margin">Capacidad: {{ $aulaData['capacidad'] ?? 'No especificada' }} personas</div>
+              </div>
+              <div class="datos__departamento">
+                  <i class="bi bi-map icon"></i>
+                  <div class="datos-margin">Coordenadas: {{ $zonaRelacionada['coordenadas'] ?? 'Sin coordenadas' }}</div>
+              </div>
       </div>
+      <!-- Contenedor para Google Maps -->
+        <div class="informacion__ubicacion">
+            <div id="map-container"></div>
+        </div>
+
+    @elseif (isset($referenciaData) && $referenciaData)
+      <!-- Contenedor de detalles de la referencia -->
+      <div class="datos">
+              <div class="datos__titulo">{{ $referenciaData['nombre'] ?? 'Referencia' }}</div>
+              
+              <!-- Descripción de la referencia con ícono -->
+              @if (!empty($referenciaData['descripcion']))
+                  <div class="datos__ubicacion">
+                      <i class="bi bi-info-circle icon"></i>
+                      <div class="datos-margin">{{ $referenciaData['descripcion'] }}</div>
+                  </div>
+              @endif
+
+              <!-- Coordenadas de la referencia -->
+              <div class="datos__departamento">
+                  <i class="bi bi-geo-alt icon"></i>
+                  <div class="datos-margin">Coordenadas: {{ $referenciaData['coordenadas'] ?? 'Sin coordenadas' }}</div>
+              </div>
+      </div>
+      <!-- Contenedor para Google Maps -->
+        <div class="informacion__ubicacion">
+            <div id="map-container"></div>
+        </div>
+
     @else
       <!-- Mensaje si no hay datos -->
       <p>No se encontró información para este elemento.</p>
@@ -151,7 +139,7 @@ $highlightedImages = [
 
     function loadGoogleMapsAPI() {
         const script = document.createElement('script');
-        script.src = https://maps.googleapis.com/maps/api/js?key=${apiKey};
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
         script.async = true;
         script.defer = true;
         script.onload = initMap;
@@ -257,4 +245,3 @@ $highlightedImages = [
     loadGoogleMapsAPI();
 </script>
 @endsection
->>>>>>> Stashed changes
