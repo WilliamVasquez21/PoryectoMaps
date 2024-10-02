@@ -70,13 +70,9 @@
                                         <h5 class=" title-card">{{ $card['nombre'] }}</h5>
                                         @if(isset($card['fotos']))
                                         <p class="card-text text-card">Zonarelaciona: {{ $department }}</p>
-                                        <p class="card-text text-card">Coordenadas de la zona:
-                                            {{ $card['coordenadas'] ?? 'No coordinates available' }}</p>
-                                        @else
+                                       @else
                                         <p class="card-text text-card">
                                             {{ $card['descripcion'] ?? 'No description available' }}</p>
-                                        <p class="card-text text-card">Coordenadas:
-                                            {{ $card['coordenadas'] ?? 'No coordinates available' }}</p>
                                         @endif
                                     </div>
                                 </a>
