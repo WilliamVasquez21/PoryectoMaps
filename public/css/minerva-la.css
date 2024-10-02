@@ -53,29 +53,49 @@ body{
 }
 
   
-  .volver .inner-circle {
-  font-size: 24px; /* Tamaño del ícono */
-  color: white; /* Color del ícono */
-  }
-  .compartir .inner-circle {
-  font-size: 24px; /* Tamaño del ícono */
-  color: white; /* Color del ícono */
-  }
-  
-  .volver:hover {
-  background-color: #FF1F1F; /* Cambio de color al pasar el mouse */
-  }
-  .compartir:hover {
-  background-color: #FF1F1F; /* Cambio de color al pasar el mouse */
-  }
-  
-  /* Asegurarse de que el ícono no se subraye */
-  .volver a {
-  text-decoration: none;
-  }
-  .compartir a {
-  text-decoration: none;
-  }
+.volver .inner-circle {
+font-size: 24px; 
+color: white; 
+}
+.compartir .inner-circle {
+font-size: 24px; 
+color: white; 
+}
+
+.volver:hover {
+background-color: #FF1F1F; 
+}
+.compartir:hover {
+background-color: #FF1F1F; 
+}
+
+
+.volver a {
+text-decoration: none;
+}
+.compartir a {
+text-decoration: none;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.5s, transform 0.5s;
+  transform: translateY(50px);
+}
+
+.toast.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 /*imagenes*/
 .slider{

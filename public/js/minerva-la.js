@@ -9,12 +9,12 @@ let index = 0;
 let startX = 0;
 let endX = 0;
 
-// Crear los circulitos según la cantidad de imágenes
+/*slider*/
 function createDots() {
     for (let i = 0; i < totalFotos; i++) {
         const dot = document.createElement('button');
         dot.classList.add('slider__dot');
-        if (i === 0) dot.classList.add('active'); // Activar el primer dot por defecto
+        if (i === 0) dot.classList.add('active'); 
         dot.addEventListener('click', () => showSlide(i));
         dotsContainer.appendChild(dot);
     }
@@ -84,3 +84,30 @@ window.addEventListener('resize', () => {
         showSlide(0); // Vuelve a la primera imagen
     }
 });
+/* fin slider*/
+
+/*copiar link de referencia*/
+document.getElementById('shareLink').addEventListener('click', function(event) {
+    event.preventDefault();
+    
+    const tempInput = document.createElement('input');
+    tempInput.value = this.href;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+
+    // Mostrar el toast de confirmación
+    showToast();
+});
+
+function showToast() {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+
+    // Ocultar el toast después de 3 segundos
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000); // 3 segundos
+}
+/*fin copiar link de referencia*/

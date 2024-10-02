@@ -52,11 +52,15 @@ if (isset($zonaRelacionada['coordenadas'])) {
 </a>
 
 <!-- Botón de compartir en la parte superior derecha -->
-<a href="{{ route('minerva') }}" class="compartir">
+<a href="" class="compartir" id="shareLink">
     <div class="inner-circle">
         <i class="bi bi-share"></i>
     </div>
 </a>
+
+<div id="toast" class="toast" style="display:none;">
+    <p>Enlace copiado al portapapeles</p>
+</div>
 
 <main class="slider">
     <section class="imagenes">
