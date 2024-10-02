@@ -5,6 +5,7 @@
   --negro:#000000;
   --fuentePrincipal: 'Roboto', sans-serif;
 }
+
 html {
     font-size: 62.5%;
     box-sizing: border-box;
@@ -12,10 +13,12 @@ html {
   *, *:before, *:after {
     box-sizing: inherit;
 }
+
 body{
   font-family: var(--fuentePrincipal);
   color: var(--colorPrincipal);
 }
+
 /*volver y compartir*/
 .volver {
   position: fixed; 
@@ -31,7 +34,8 @@ body{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
   z-index: 1000; 
   cursor: pointer; 
-  }
+}
+
 .compartir {
   position: fixed; 
   top: 20px; 
@@ -46,7 +50,8 @@ body{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
   z-index: 1000; 
   cursor: pointer; 
-  }
+}
+
   
   .volver .inner-circle {
   font-size: 24px; /* Tamaño del ícono */
@@ -365,81 +370,104 @@ gap: 2rem 0;
   border: 2px solid black;
 
 }
-/* Estilos del modal */
-/* Estilos del modal */
-.modal {
-  display: none; /* Ocultar el modal por defecto */
-  position: fixed; /* Fijo en pantalla */
-  z-index: 1000; /* En la parte superior */
-  left: 50%; /* Centrar horizontalmente */
-  top: 50%; /* Centrar verticalmente */
-  transform: translate(-50%, -50%); /* Ajustar posición exacta al centro */
-  width: auto; /* El ancho se ajusta automáticamente */
-  max-width: 80%; /* Ajuste máximo para pantallas grandes */
-  height: auto; /* Altura automática */
-  max-height: 80%; /* Ajuste máximo de altura */
-  overflow: auto; /* Desplazamiento si es necesario */
-  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con opacidad */
-}
 
-/* Contenido del modal */
-.modal-content {
-  background-color: #fefefe;
+
+.modal-dialog {
+  max-width: 50%; 
+  margin: 30px auto; 
   padding: 20px;
-  border-radius: 8px; /* Bordes redondeados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
-  text-align: left; /* Centrar el contenido dentro del modal */
-  max-width: 100%; /* Para asegurar que no se desborde */
-  height: auto;
 }
 
-.carousel-images {
-  position: relative; /* Asegura que el contenedor tenga un contexto de posicionamiento */
-  width: 90rem; /* Ancho completo del modal */
-  height: 60rem; /* Altura fija del carrusel */
-  overflow: hidden; /* Oculta cualquier contenido que exceda el contenedor */
+.carousel-item img {
+  max-height: 400px;
+  object-fit: contain;
+  width: 100%;
+  padding: 15px; 
+  border-radius: 15px;
 }
 
-.carousel-images img {
-  width: 100%; /* Imagen ocupa el ancho completo del contenedor */
-  height: auto; /* Altura automática para mantener la proporción */
-  max-height: 100%; /* Asegura que la imagen no exceda la altura del contenedor */
-  object-fit: contain; /* Ajustar imágenes sin deformarlas */
-  border-radius: 5px; /* Bordes redondeados en imágenes */
+.modal-body {
+  padding: 20px; 
+  
+}
+
+#myModal.modal-open {
+  background-color: black;
+}
+
+#myModal .modal-content {
+  background-color: black; 
+  color: red;
+}
+
+#myModal .modal-text {
+  color: red;
+}
+
+#myModal .modal-color {
+  background-color: black;
+}
+
+#myModal .modal-content {
+  background-color: #1c1c1c; 
+  color: red; 
+}
+
+#myModal .modal-footer {
+  background-color: #1c1c1c !important;
+}
+
+#myModal .modal-header {
+  background-color: #1c1c1c; 
+  color: red; 
+}
+
+#myModal .modal-body {
+  background-color: #1c1c1c; 
+  color: red; 
+}
+
+#myModal .container-prueba.modal-open {
+  background-color: black;
+}
+
+#myModal .image-grid.modal-open {
+  background-color: black;
+}
+
+.text-modal-1{
+  font-size: medium;
+}
+
+.text-modal-2{
+  color: red;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.modal-footer .btn {
+  background-color: red; 
+  color: white; 
+  border-color: black; 
+}
+
+.modal-header h5 {
+  color: red;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+body.modal-open-black {
+  background-color: black; 
+}
+
+#myModal .modal-content {
+  background-color: #1c1c1c; 
+  color: red;
 }
 
 
-
-.carousel-controls {
-  text-align: center; /* Centrar controles */
-  margin-top: 10px; /* Margen superior */
-}
-
-.carousel-controls button {
-  background-color: #B81414; /* Color de fondo */
-  color: white; /* Color del texto */
-  border: none; /* Sin borde */
-  padding: 10px 15px; /* Espaciado interno */
-  margin: 0 5px; /* Margen lateral */
-  cursor: pointer; /* Cambiar cursor a mano */
-  border-radius: 5px; /* Bordes redondeados */
-  font-size: 18px; /* Tamaño de fuente */
-}
-
-.carousel-controls button:hover {
-  background-color: #a31212; /* Color de fondo al pasar el mouse */
-}
-
-.close {
-  color: #aaa; /* Color del botón de cerrar */
-  float: right; /* Posicionar a la derecha */
-  font-size: 28px; /* Tamaño de fuente */
-  font-weight: bold; /* Negrita */
-}
-
-.close:hover,
-.close:focus {
-  color: black; /* Color al pasar el mouse */
-  text-decoration: none; /* Sin subrayado */
-  cursor: pointer; /* Cambiar cursor a mano */
+#myModal .modal-body {
+  background-color: #1c1c1c; 
+  color: red; 
 }
