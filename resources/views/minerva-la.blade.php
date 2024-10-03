@@ -253,31 +253,6 @@ gridImages.forEach((image) => {
 });
 
 function showModal() {
-    const modalHTML = `
-        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabel">MANDAMIENTOS PARA SOBREVIVIR A EL MATADAERO</h5>
-                    </div>
-                    <div class="modal-body text-modal-1">
-                        Todos los presentes deben arrodillarse y rezar frente a la MINERVA SUPREMA. <br><br>
-                        Inclinarse ante la MINERVA SUPREMA como un acto de sumisión y respeto. <br><br>
-                        Deberas demostrar tu saber para encontrar la salida. Aquellos que se quedaban paralizados solo extendieron su agonia antes de ser condenado al suplicio eterno.<br><br>
-                        NO HAGAS MOVIMIENTOS BRUSCOS, las estatuas vigilan tus movimientos.<br><br>
-                        Cualquier intento de engaño resultara en el, sufrimiento, tortura, suplicio, de tu alma para la eternidad. <br><br>
-                        Aquellos que le recen a Dioses ajenos seran reducidos a cenizas. <br><br>
-                        El ojo loco siempre te vigila. <br><br>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="text-center btn btn-danger text-modal-1" data-dismiss="modal">ESTAS TOTALMENTE SOLO EN ESTA PRUEBA.</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
 
     document.body.classList.add('modal-open-black');
     
