@@ -50,7 +50,7 @@
     @yield('content')
 
     <div class="footer">
-        <div class="footer-text">© Realizado por estudiantes de Ingeniería en Sistemas Informáticos 2024.</div>
+        <div class="footer-text">© Realizado por estudiantes de Tecnicas de Programación para Internet 2024.</div>
     </div>
  
     <script src="{{ asset('js/minerva.js') }}"></script>
