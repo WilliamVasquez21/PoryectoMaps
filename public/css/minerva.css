@@ -197,6 +197,19 @@ input::placeholder {
     background-color: transparent; /* Color del fondo de la barra */
     border-radius: 10px; /* Esquinas redondeadas del track */
 }
+/* Vista móvil */
+@media (max-width: 768px) {
+    .menu-container {
+        overflow-x: scroll; /* Mantener el scroll horizontal en móviles */
+        -webkit-overflow-scrolling: touch; /* Desplazamiento suave en móviles */
+        scrollbar-width: none; /* Ocultar barra de desplazamiento en Firefox para móviles */
+    }
+
+    /* Ocultar barra de scroll en móviles (Webkit) */
+    .menu-container::-webkit-scrollbar {
+        display: none; /* Ocultar la barra de desplazamiento en móviles */
+    }
+}
 
 /* Estilo para cada opción del menú */
 .menu-item {
