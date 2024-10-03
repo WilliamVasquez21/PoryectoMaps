@@ -3,6 +3,8 @@
 @section('title', 'Minerva Maps UES-FMO')
 
 @section('content')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Sección con las tarjetas -->
 <div class="container-fluid">
@@ -94,3 +96,21 @@
     </div>
 </div>
 @endsection
+
+<!-- Modal Bootstrap -->
+<div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-centered-custom">
+        <div class="modal-content">
+            <div class="modal-header position-relative p-0">
+                <img src="https://i.pinimg.com/originals/59/05/20/590520c029d4c0445ecdcbb617193d62.png" alt="Bienvenido" class="img-fluid w-100">
+                <!-- Botón de cerrar personalizado -->
+                <button type="button" class="close-btn position-absolute top-0 end-0 m-3" id="floatingCloseBtn" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body text-center">
+                <h2 class="fw-bold text-maroon">¡Bienvenido a Minerva Maps UES-FMO!</h2>
+                <p class="mt-3">La herramienta perfecta para localizar aulas y sitios clave de la universidad. Navega fácilmente por el campus, encuentra tu aula para el próximo examen o descubre lugares importantes.</p>
+                <p>¡Explora el mapa y optimiza tu experiencia universitaria en la UES-FMO!</p>
+            </div>
+        </div>
+    </div>
+</div>

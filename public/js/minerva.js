@@ -104,3 +104,27 @@ searchInput.addEventListener('input', function () {
   });
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+  if (!localStorage.getItem("hasVisited")) {
+      var myModal = new bootstrap.Modal(document.getElementById('welcomeModal'), {
+          keyboard: true,
+          backdrop: true
+      });
+      myModal.show(); 
+      localStorage.setItem("hasVisited", "true");
+  }
+
+  // Funcionalidad del botón 
+  var closeBtn = document.getElementById('floatingCloseBtn');
+  closeBtn.onclick = function() {
+      var myModalEl = document.getElementById('welcomeModal');
+      var modalInstance = bootstrap.Modal.getInstance(myModalEl);
+      modalInstance.hide(); 
+  };
+
+  // Cerrar el modal 
+  var modalEl = document.getElementById('welcomeModal');
+  modalEl.addEventListener('hidden.bs.modal', function () {
+      closeBtn.remove(); 
+  });
+});
