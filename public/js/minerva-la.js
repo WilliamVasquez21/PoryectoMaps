@@ -113,3 +113,37 @@ function showToast() {
 }
 
 /*fin copiar link de referencia*/
+
+/*btn mostrar mas*/
+const MAX_CHARACTERS = 100;
+let isExpanded = false;
+
+function mostrarContenido() {
+  const indicaciones = document.getElementById("indicaciones");
+  const fullText = indicaciones.dataset.fulltext;
+  const boton = document.getElementById("verMasBtn");
+
+  if (!isExpanded) {
+    indicaciones.textContent = fullText;
+    boton.textContent = "Ver menos";
+    isExpanded = true;
+  } else {
+    indicaciones.textContent = fullText.substring(0, MAX_CHARACTERS) + "...";
+    boton.textContent = "Ver más";
+    isExpanded = false;
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const indicaciones = document.getElementById("indicaciones");
+  const fullText = indicaciones.textContent; 
+
+  
+  indicaciones.dataset.fulltext = fullText;
+
+  if (fullText.length > MAX_CHARACTERS) {
+    indicaciones.textContent = fullText.substring(0, MAX_CHARACTERS) + "...";
+  }
+});
+/*btn mostrar mas*/
+  

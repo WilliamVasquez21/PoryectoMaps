@@ -97,6 +97,13 @@ if (isset($zonaRelacionada['coordenadas'])) {
                 <i class="bi bi-people icon"></i>
                 <div class="datos-margin">Capacidad: {{ $aulaData['capacidad'] ?? 'No especificada' }} personas</div>
             </div>
+            <div class="datos__indicaciones">
+                <i class="bi bi-compass"></i>
+                <div id="indicaciones" class="datos-margin">{{ $aulaData['indicaciones'] ?? 'No especificada' }}</div>
+            </div>
+            <div class="center">
+                <button class="btnVerMas" id="verMasBtn" onclick="mostrarContenido()">Ver más</button>
+            </div>
             <div class="datos__departamento">
                 <i class="bi bi-map icon"></i>
                 <div class="datos-margin">Coordenadas: {{ $zonaRelacionada['coordenadas'] ?? 'Sin coordenadas' }}</div>

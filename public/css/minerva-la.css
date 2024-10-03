@@ -140,7 +140,7 @@ text-decoration: none;
   font-size: 60px;
   cursor: pointer;
   z-index: 10;
-  background: none; /* Eliminar el color de fondo */
+  background: none;
 }
 
 
@@ -262,8 +262,8 @@ text-decoration: none;
 }
 .informacion__ubicacion{
   width: 100%;
-  max-width: 60rem; /* Ajusta el ancho del mapa */
-  height: 40rem; /* Ajusta la altura del mapa */
+  max-width: 60rem; 
+  height: 40rem; 
   border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
@@ -289,6 +289,9 @@ gap: 2rem 0;
   margin: 0;
 }
 @media(min-width:768px){
+  .datos{
+    max-width: 50%;
+    }
   .datos__titulo{
     font-size: 3.7rem;
   }
@@ -296,11 +299,31 @@ gap: 2rem 0;
 .datos__ubicacion,
 .datos__informacion,
 .datos__espacios,
-.datos__departamento{
+.datos__departamento,
+.datos__indicaciones{
   display: flex;
   font-size: 1.9rem;
   font-weight: lighter;
   text-align: left;
+}
+.datos__indicaciones{
+  text-align: center;
+}
+.center{
+  display: flex;
+  justify-content: center;
+}
+.btnVerMas{
+  padding: 1rem;
+  width: 8rem;
+  border-radius: 10%;
+  background-color: var(--colorPrincipal);
+  border-color: var(--colorPrincipal);
+  color: var(--blanco);
+}
+.btnVerMas:hover{
+  background: var(--blanco);
+  color: var(--colorPrincipal);
 }
 @media(min-width:768px){
   .datos__ubicacion,
@@ -308,6 +331,9 @@ gap: 2rem 0;
   .datos__espacios,
   .datos__departamento{
     font-size: 2.4rem;
+  }
+  .datos__indicaciones{
+    text-align: left;
   }
 }
 .datos-margin{
@@ -469,87 +495,6 @@ gap: 2rem 0;
   
 }
 
-#myModal.modal-open {
-  background-color: black;
-}
-
-#myModal .modal-content {
-  background-color: black; 
-  color: red;
-}
-
-#myModal .modal-text {
-  color: red;
-}
-
-#myModal .modal-color {
-  background-color: black;
-}
-
-#myModal .modal-content {
-  background-color: #1c1c1c; 
-  color: red; 
-}
-
-#myModal .modal-footer {
-  background-color: #1c1c1c !important;
-}
-
-#myModal .modal-header {
-  background-color: #1c1c1c; 
-  color: red; 
-}
-
-#myModal .modal-body {
-  background-color: #1c1c1c; 
-  color: red; 
-}
-
-#myModal .container-prueba.modal-open {
-  background-color: black;
-}
-
-#myModal .image-grid.modal-open {
-  background-color: black;
-}
-
-.text-modal-1{
-  font-size: medium;
-}
-
-.text-modal-2{
-  color: red;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.modal-footer .btn {
-  background-color: red; 
-  color: white; 
-  border-color: black; 
-}
-
-.modal-header h5 {
-  color: red;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-body.modal-open-black {
-  background-color: black; 
-}
-
-#myModal .modal-content {
-  background-color: #1c1c1c; 
-  color: red;
-}
-
-
-#myModal .modal-body {
-  background-color: #1c1c1c; 
-  color: red; 
-}
-
 .carousel-control-prev,
 .carousel-control-next {
   position: absolute;
@@ -558,8 +503,8 @@ body.modal-open-black {
   z-index: 10;
   width: 50px;
   height: 50px;
-  background-color: #000; /* Círculo negro */
-  border-radius: 50%; /* Círculo completo */
+  background-color: #000; 
+  border-radius: 50%; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -567,28 +512,28 @@ body.modal-open-black {
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  width: 20px; /* Tamaño de la flecha */
+  width: 20px; 
   height: 20px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-/* Flecha blanca hacia la izquierda */
+
 .carousel-control-prev-icon {
   background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23FFFFFF" viewBox="0 0 16 16"%3E%3Cpath fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L6.707 7l4.647 4.646a.5.5 0 0 1-.708.708l-5-5a.5.5 0 0 1 0-.708l5-5a.5.5 0 0 1 .708 0z"/%3E%3C/svg%3E');
 }
-/* Flecha blanca hacia la derecha */
+
 .carousel-control-next-icon {
   background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23FFFFFF" viewBox="0 0 16 16"%3E%3Cpath fill-rule="evenodd" d="M4.646 14.354a.5.5 0 0 1 0-.708L9.293 8 4.646 3.354a.5.5 0 1 1 .708-.708l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708 0z"/%3E%3C/svg%3E');
 }
-/* Cuando se pasa el cursor por encima de los controles del carrusel */
+
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
-  background-color: #1a1818; /* Cambia el círculo a blanco al hacer hover */
+  background-color: #1a1818; 
 }
 
 .carousel-control-prev-icon:hover,
 .carousel-control-next-icon:hover {
-  filter: invert(1); /* Invierte el color del SVG, haciendo que la flecha sea negra */
+  filter: invert(1); 
 }
