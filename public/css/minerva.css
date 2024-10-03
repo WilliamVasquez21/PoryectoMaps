@@ -23,7 +23,7 @@ body {
 
 .header {
     background: linear-gradient(180deg, rgba(170, 0, 0, 0.8) 0%, #ff1f1f80 100%),
-        url(https://firebasestorage.googleapis.com/v0/b/dbasistenciadocente.appspot.com/o/collage_header-removebg.png?alt=media&token=1f8d6e9c-cc5c-4570-ae82-525bb7ce6543);
+        url(https://firebasestorage.googleapis.com/v0/b/prueba-49b43.appspot.com/o/collage_header-removebg.png?alt=media&token=d9c5d015-3518-49aa-bb70-3c651392b22f);
 
     color: white;
     padding: 15px;
@@ -194,28 +194,8 @@ input::placeholder {
 }
 
 .menu-container::-webkit-scrollbar-track {
-    background-color: transparent; /* Color del fondo */
-}
-
-/* Para Firefox */
-.menu-container {
-    scrollbar-width: thin; /* Ancho de la barra */
-    scrollbar-color: rgba(0, 0, 0, 0.2) transparent; /* Color de la barra y del fondo */
-}
-
-/* Comportamiento del cursor al hacer clic */
-.menu-container:active {
-    cursor: grabbing;
-}
-
-/* Soporte para navegadores más antiguos con JavaScript opcional para scroll suave (si es necesario) */
-/* Vista móvil */
-@media (max-width: 768px) {
-    .menu-container {
-        overflow-x: scroll; /* Habilitar desplazamiento horizontal en móviles */
-        -webkit-overflow-scrolling: touch; /* Desplazamiento suave en móviles */
-        scroll-behavior: smooth;
-    }
+    background-color: transparent; /* Color del fondo de la barra */
+    border-radius: 10px; /* Esquinas redondeadas del track */
 }
 
 /* Estilo para cada opción del menú */
@@ -329,7 +309,7 @@ input::placeholder {
     text-align: center;
 }
 
-.btn {
+.btn2 {
     padding: 10px 20px;
     background-color: #aa0000;
     color: #fff;
@@ -338,7 +318,7 @@ input::placeholder {
     cursor: pointer;
 }
 
-.btn:hover {
+.btn2:hover {
     background-color: transparent;
     color: #aa0000;
     border: 1px solid #aa0000;
