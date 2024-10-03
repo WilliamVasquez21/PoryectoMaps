@@ -118,7 +118,7 @@ text-decoration: none;
 }
 
 .slider__dots button {
-  background: #fff;
+  background: #000;
   border: none;
   width: 12px;
   height: 12px;
@@ -135,13 +135,14 @@ text-decoration: none;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
   border: none;
   color: #fff;
   font-size: 60px;
   cursor: pointer;
   z-index: 10;
+  background: none; /* Eliminar el color de fondo */
 }
+
 
 .slider__button--left {
   left: 2rem;
@@ -184,6 +185,9 @@ text-decoration: none;
     transition: none; 
   }
 }
+
+
+
 .slider__foto {
   min-width: 100%;
   height: auto;
@@ -387,6 +391,7 @@ gap: 2rem 0;
   width: 24px;
   height: 24px;
   margin-right: 8px;
+  
 }
 
 .location,
@@ -543,4 +548,47 @@ body.modal-open-black {
 #myModal .modal-body {
   background-color: #1c1c1c; 
   color: red; 
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  background-color: #000; /* Círculo negro */
+  border-radius: 50%; /* Círculo completo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 20px; /* Tamaño de la flecha */
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Flecha blanca hacia la izquierda */
+.carousel-control-prev-icon {
+  background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23FFFFFF" viewBox="0 0 16 16"%3E%3Cpath fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L6.707 7l4.647 4.646a.5.5 0 0 1-.708.708l-5-5a.5.5 0 0 1 0-.708l5-5a.5.5 0 0 1 .708 0z"/%3E%3C/svg%3E');
+}
+/* Flecha blanca hacia la derecha */
+.carousel-control-next-icon {
+  background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23FFFFFF" viewBox="0 0 16 16"%3E%3Cpath fill-rule="evenodd" d="M4.646 14.354a.5.5 0 0 1 0-.708L9.293 8 4.646 3.354a.5.5 0 1 1 .708-.708l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708 0z"/%3E%3C/svg%3E');
+}
+/* Cuando se pasa el cursor por encima de los controles del carrusel */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: #1a1818; /* Cambia el círculo a blanco al hacer hover */
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+  filter: invert(1); /* Invierte el color del SVG, haciendo que la flecha sea negra */
 }

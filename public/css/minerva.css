@@ -218,6 +218,33 @@ input::placeholder {
     }
 }
 
+/* Para Firefox */
+.menu-container {
+    scrollbar-width: thin; /* Ancho de la barra */
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent; /* Color de la barra y del fondo */
+}
+
+/* Comportamiento del cursor al hacer clic */
+.menu-container:active {
+    cursor: grabbing;
+}
+
+/* Soporte para navegadores más antiguos con JavaScript opcional para scroll suave (si es necesario) */
+/* Vista móvil */
+@media (max-width: 768px) {
+    .menu-container {
+        overflow-x: scroll; /* Mantener el scroll horizontal en móviles */
+        -webkit-overflow-scrolling: touch; /* Desplazamiento suave en móviles */
+        scrollbar-width: none; /* Ocultar barra de desplazamiento en Firefox para móviles */
+    }
+
+    /* Ocultar barra de scroll en móviles (Webkit) */
+    .menu-container::-webkit-scrollbar {
+        display: none; /* Ocultar la barra de desplazamiento en móviles */
+    }
+}
+
+
 /* Estilo para cada opción del menú */
 .menu-item {
     display: inline-block;
