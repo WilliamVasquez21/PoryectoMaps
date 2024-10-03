@@ -1,9 +1,9 @@
 * {
     margin: 0;
     padding: 0;
+    border: 0;
     box-sizing: border-box;
 }
-
 body {
     height: 100%;
     font-family: "Roboto", sans-serif;
@@ -478,6 +478,7 @@ input::placeholder {
     margin: 10vh auto; 
     max-width: 80%; 
     width: 100%;
+    
 }
 
 .modal-content {
@@ -486,6 +487,7 @@ input::placeholder {
     border: none;
     max-height: 80vh; 
     overflow: hidden; 
+    padding: 15px;
 }
 
 .modal-header {
@@ -507,6 +509,25 @@ input::placeholder {
 .modal-body {
     color:#ffffff;
 }
+
+.modal-header {
+    border: 1px solid rgb(255, 255, 255); /* Temporal, solo para identificar el problema */
+    color: white;
+    margin-bottom:  10px;
+}
+
+.modal-body {
+    border: 1px solid rgb(255, 255, 255); /* Temporal, solo para identificar el problema */
+}
+
+.img {
+    display: block; /* Asegúrate de que la imagen no tenga comportamiento inline */
+    margin-bottom: 10px;
+    padding: 0;
+    border: none;
+
+}
+
 
 .modal-body h2, .modal-body p {
     color: #aa0000;
