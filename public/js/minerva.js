@@ -18,7 +18,7 @@ const dragging = (e) => {
   if (!isDragging) return;
   e.preventDefault();
   const x = (e.pageX || e.touches[0].pageX) - menuContainer.offsetLeft;
-  const walk = (x - startX) * 6; // Ajustar la velocidad del desplazamiento
+  const walk = (x - startX) * 2; // Ajustar la velocidad del desplazamiento
   menuContainer.scrollLeft = scrollLeft - walk;
   velocity = walk; // Registrar velocidad del desplazamiento
 };

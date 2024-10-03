@@ -1,6 +1,3 @@
-
-
-
 <?php
 // Establecemos un número mínimo de imágenes que queremos en el grid
 $minImagesCount = 5; 
@@ -65,14 +62,16 @@ if (isset($zonaRelacionada['coordenadas'])) {
 <main class="slider">
     <section class="imagenes">
         @foreach ($imagenes as $index => $imagen)
-        @if ($index == 0)
-        <img class="imagenes__principal slider__foto" src="{{ $imagen }}" alt="Imagen principal " data-id ="{{ $aulaData['id'] ?? null }}" />
-
-        @else
-            <img class="imagenes__secundaria slider__foto" src="{{ $imagen }}" alt="Imagen secundaria " data-id="{{ $aulaData['id'] ?? null }}" />
-        @endif
+            @if ($index == 0)
+                <!-- Primera imagen más grande -->
+                <img class="imagenes__principal slider__foto" src="{{ $imagen }}" alt="Imagen principal" data-id ="{{ $aulaData['id'] ?? null }}"/>
+            @else
+                <!-- Imágenes secundarias en grid -->
+                <img class="imagenes__secundaria slider__foto" src="{{ $imagen }}" alt="Imagen secundaria" data-id ="{{ $aulaData['id'] ?? null }}"/>
+            @endif
         @endforeach
 
+        <!-- Botón flotante sobre la última imagen del grid -->
         <div style="background: #B81414;" class="button-box" id="abrirModal">
             <i class="bi bi-plus fs-1" style="color: white;"></i>
         </div>
@@ -85,6 +84,54 @@ if (isset($zonaRelacionada['coordenadas'])) {
 
 </main>
   
+<section class="informacion">
+    @if (isset($aulaData) && $aulaData)
+        <!-- Contenedor de detalles del aula -->
+        <div class="datos">
+            <div class="datos__titulo">{{ $aulaData['numero'] ?? 'Aula' }}</div>
+            <div class="datos__ubicacion">
+                <i class="bi bi-geo-alt icon"></i>
+                <div class="datos-margin">{{ $zonaRelacionada['nombre'] ?? 'Sin zona asociada' }}</div>
+            </div>
+            <div class="datos__espacios">
+                <i class="bi bi-people icon"></i>
+                <div class="datos-margin">Capacidad: {{ $aulaData['capacidad'] ?? 'No especificada' }} personas</div>
+            </div>
+            <div class="datos__departamento">
+                <i class="bi bi-map icon"></i>
+                <div class="datos-margin">Coordenadas: {{ $zonaRelacionada['coordenadas'] ?? 'Sin coordenadas' }}</div>
+            </div>
+        </div>
+        <div class="informacion__ubicacion">
+            <div id="map-container" style="width: 100%; height: 400px;"></div>
+        </div>
+
+    @elseif (isset($referenciaData) && $referenciaData)
+        <!-- Contenedor de detalles de la referencia -->
+        <div class="datos">
+            <div class="datos__titulo">{{ $referenciaData['nombre'] ?? 'Referencia' }}</div>
+            @if (!empty($referenciaData['descripcion']))
+                <div class="datos__ubicacion">
+                    <i class="bi bi-info-circle icon"></i>
+                    <div class="datos-margin">{{ $referenciaData['descripcion'] }}</div>
+                </div>
+            @endif
+            <div class="datos__departamento">
+                <i class="bi bi-geo-alt icon"></i>
+                <div class="datos-margin">Coordenadas: {{ $referenciaData['coordenadas'] ?? 'Sin coordenadas' }}</div>
+            </div>
+        </div>
+        <div class="informacion__ubicacion">
+            <div id="map-container" style="width: 100%; height: 400px;"></div>
+        </div>
+
+    @else
+        <p>No se encontró información para este elemento.</p>
+    @endif
+</section>
+
+<script src="{{ asset('js/minerva-la.js') }}"></script>
+
 <!-- Modal -->
 <div class="modal fade" id="carouselModal" tabindex="-1" role="dialog" aria-labelledby="carouselModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -119,180 +166,71 @@ if (isset($zonaRelacionada['coordenadas'])) {
       </div>
     </div>
   </div>
-  
-  <!-- Contenedor de detalles y mapa -->
-<section class="informacion">
-    @if (isset($aulaData) && $aulaData)
-      <!-- Contenedor de detalles del aula -->
-      <div class="datos">
-              <div class="datos__titulo">{{ $aulaData['numero'] ?? 'Aula' }}</div>
-              <div class="datos__ubicacion">
-                  <i class="bi bi-geo-alt icon"></i>
-                  <div class="datos-margin">{{ $zonaRelacionada['nombre'] ?? 'Sin zona asociada' }}</div>
-              </div>
-              <div class="datos__espacios">
-                  <i class="bi bi-people icon"></i>
-                  <div class="datos-margin">Capacidad: {{ $aulaData['capacidad'] ?? 'No especificada' }} personas</div>
-              </div>
-              <div class="datos__departamento">
-                  <i class="bi bi-map icon"></i>
-                  <div class="datos-margin">Coordenadas: {{ $zonaRelacionada['coordenadas'] ?? 'Sin coordenadas' }}</div>
-              </div>
-      </div>
-      <!-- Contenedor para Google Maps -->
-        <div class="informacion__ubicacion">
-            <div id="map-container"></div>
-        </div>
 
-    @elseif (isset($referenciaData) && $referenciaData)
-      <!-- Contenedor de detalles de la referencia -->
-      <div class="datos">
-              <div class="datos__titulo">{{ $referenciaData['nombre'] ?? 'Referencia' }}</div>
-              
-              <!-- Descripción de la referencia con ícono -->
-              @if (!empty($referenciaData['descripcion']))
-                  <div class="datos__ubicacion">
-                      <i class="bi bi-info-circle icon"></i>
-                      <div class="datos-margin">{{ $referenciaData['descripcion'] }}</div>
-                  </div>
-              @endif
-
-              <!-- Coordenadas de la referencia -->
-              <div class="datos__departamento">
-                  <i class="bi bi-geo-alt icon"></i>
-                  <div class="datos-margin">Coordenadas: {{ $referenciaData['coordenadas'] ?? 'Sin coordenadas' }}</div>
-              </div>
-      </div>
-      <!-- Contenedor para Google Maps -->
-        <div class="informacion__ubicacion">
-            <div id="map-container"></div>
-        </div>
-
-    @else
-      <!-- Mensaje si no hay datos -->
-      <p>No se encontró información para este elemento.</p>
-    @endif
-  </div>
-</section>
-
-<script src="{{ asset('js/minerva-la.js') }}"></script>
-
-<!-- Cargar Google Maps con coordenadas dinámicas -->
 <script>
-   
-    document.getElementById('abrirModal').addEventListener('click', function() {
+    
+   document.getElementById('abrirModal').addEventListener('click', function() {
         $('#carouselModal').modal('show');
     });
 
-
-    const apiKey = 'AIzaSyAPOp7CDPpzRDuYqF1z4pP1ifIPnQN0c2M';
-
-    function loadGoogleMapsAPI() {
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
-        script.async = true;
-        script.defer = true;
-        script.onload = initMap;
-        document.head.appendChild(script);
-    }
+  
+    const latitude = {{ $latitude }};
+    const longitude = {{ $longitude }};
+    const titleToMatch = '{{ $referenciaData['nombre'] ?? 'Referencia' }}'; 
+    const apiKey = 'AIzaSyAPOp7CDPpzRDuYqF1z4pP1ifIPnQN0c2M'; 
 
     function initMap() {
-       
-        const titleToMatch = 'Dpto Ing y Arq';
-
-       
-        const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(titleToMatch)}&key=${apiKey}`;
-
-     
-        fetch(geocodeUrl)
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'OK' && data.results.length > 0) {
-                  
-                    const location = data.results[0].geometry.location;
-
-                  
-                    const map = new google.maps.Map(document.getElementById('map-container'), {
-                        center: location,
-                        zoom: 19, 
-                        styles: [
-                            {
-                                featureType: "all",
-                                elementType: "geometry.fill",
-                                stylers: [
-                                    { color: "#b0e57c" }
-                                ]
-                            },
-                            {
-                                featureType: "road",
-                                elementType: "geometry.stroke",
-                                stylers: [
-                                    { color: "#73a857" }
-                                ]
-                            },
-                            {
-                                featureType: "landscape",
-                                elementType: "geometry",
-                                stylers: [
-                                    { color: "#cbe785" }
-                                ]
-                            },
-                            {
-                                featureType: "water",
-                                elementType: "geometry.fill",
-                                stylers: [
-                                    { color: "#a2daf2" }
-                                ]
-                            },
-                            {
-                                featureType: "poi",
-                                elementType: "geometry",
-                                stylers: [
-                                    { color: "#aed581" }
-                                ]
-                            },
-                            {
-                                featureType: "road.highway",
-                                elementType: "geometry.fill",
-                                stylers: [
-                                    { color: "#c5e1a5" }
-                                ]
-                            },
-                            {
-                                featureType: "road.highway",
-                                elementType: "geometry.stroke",
-                                stylers: [
-                                    { color: "#8bc34a" }
-                                ]
-                            },
-                            {
-                                featureType: "road.arterial",
-                                elementType: "geometry",
-                                stylers: [
-                                    { color: "#d4e157" }
-                                ]
-                            }
-                        ]
-                    });
-
-    
-                    new google.maps.Marker({
-                        position: location,
-                        map: map,
-                        title: titleToMatch,
-                        animation: google.maps.Animation.BOUNCE 
-                    });
-                } else {
-                    console.error('No se encontraron resultados para la ubicación solicitada.');
+        const map = new google.maps.Map(document.getElementById('map-container'), {
+            center: { lat: latitude, lng: longitude },
+            zoom: 19,
+            styles: [
+                {
+                    featureType: "all",
+                    elementType: "geometry.fill",
+                    stylers: [{ color: "#b0e57c" }]
+                },
+                {
+                    featureType: "road",
+                    elementType: "geometry.stroke",
+                    stylers: [{ color: "#73a857" }]
+                },
+                {
+                    featureType: "landscape",
+                    elementType: "geometry",
+                    stylers: [{ color: "#cbe785" }]
+                },
+                {
+                    featureType: "water",
+                    elementType: "geometry.fill",
+                    stylers: [{ color: "#a2daf2" }]
+                },
+                {
+                    featureType: "poi",
+                    elementType: "geometry",
+                    stylers: [{ color: "#aed581" }]
+                },
+                {
+                    featureType: "road.highway",
+                    elementType: "geometry.fill",
+                    stylers: [{ color: "#c5e1a5" }]
+                },
+                {
+                    featureType: "road.highway",
+                    elementType: "geometry.stroke",
+                    stylers: [{ color: "#7cb342" }]
                 }
-            })
-            .catch(error => {
-                console.error('Error al obtener las coordenadas:', error);
-            });
-    }
+            ]
+        });
 
-  
-    loadGoogleMapsAPI();
+        const markerPosition = { lat: latitude, lng: longitude }; 
+
+        const marker = new google.maps.Marker({
+        position: markerPosition, 
+        map: map,
+        title: titleToMatch,
+        animation: google.maps.Animation.BOUNCE 
+    });
+    }
 
     let clickCount = 0; 
 const requiredClicks = 6; 
@@ -315,31 +253,6 @@ gridImages.forEach((image) => {
 });
 
 function showModal() {
-    const modalHTML = `
-        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabel">MANDAMIENTOS PARA SOBREVIVIR A EL MATADAERO</h5>
-                    </div>
-                    <div class="modal-body text-modal-1">
-                        Todos los presentes debían arrodillarse y rezar frente a la MINERVA SUPREMA. <br><br>
-                        Inclinarse ante la MINERVA SUPREMA como un acto de sumisión y respeto. <br><br>
-                        Deberas demostrar tu saber para encontrar la salida. Aquellos que se quedaban paralizados solo extendieron su agonia antes de ser condenaco al suplicio eterno.<br><br>
-                        NO HAGAS MOVIMIENTOS BRUSCOS, las estatuas vigilan tus movimientos.<br><br>
-                        Cualquier intento de engaño resultara en el, sufrimiento, tortura, suplicio, de tu alma para la eternidad. <br><br>
-                        Aquellos que le recen a Dioses ajenos seran reducidos a cenizas. <br><br>
-                        El ojo loco siempre te vigila. <br><br>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="text-center btn btn-danger text-modal-1" data-dismiss="modal">ESTAS TOTALMENTE SOLO EN ESTA PRUEBA.</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
 
     document.body.classList.add('modal-open-black');
     
@@ -353,13 +266,16 @@ function showModal() {
     $('#myModal').on('hidden.bs.modal', function () {
         $(this).remove();
 
-        document.body.classList.remove('modal-open-black'); // Cambiar aquí
+        document.body.classList.remove('modal-open-black'); 
         containers.forEach(container => {
             container.classList.remove('modal-open');
         });
     });
 }
-
-
 </script>
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPOp7CDPpzRDuYqF1z4pP1ifIPnQN0c2M&callback=initMap">
+</script>
+
 @endsection

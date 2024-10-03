@@ -56,4 +56,5 @@
     <script src="{{ asset('js/minerva.js') }}"></script>
     
 </body>
+
 </html>
