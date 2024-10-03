@@ -183,7 +183,7 @@ if (isset($zonaRelacionada['coordenadas'])) {
   
     const latitude = {{ $latitude }};
     const longitude = {{ $longitude }};
-    const titleToMatch = '{{ $referenciaData['nombre'] ?? 'Referencia' }}'; 
+    const titleToMatch = document.querySelector('.datos__titulo').textContent.trim();
     const apiKey = 'AIzaSyAPOp7CDPpzRDuYqF1z4pP1ifIPnQN0c2M'; 
 
     function initMap() {
