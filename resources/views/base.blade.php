@@ -48,11 +48,9 @@
     @endif
 </div>
     @yield('content')
-
-    <div class="footer">
-        <div class="footer-text">© Realizado por estudiantes de Ingeniería en Sistemas Informáticos 2024.</div>
+    <div class="footer" onclick="window.location.href='{{ route('integrantes') }}';"> 
+            <div class="footer-text">© Realizado por estudiantes de Técnicas de Programación para Internet 2024.</div>
     </div>
- 
     <script src="{{ asset('js/minerva.js') }}"></script>
     
 </body>

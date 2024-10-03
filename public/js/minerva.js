@@ -18,7 +18,7 @@ const dragging = (e) => {
   if (!isDragging) return;
   e.preventDefault();
   const x = (e.pageX || e.touches[0].pageX) - menuContainer.offsetLeft;
-  const walk = (x - startX) * 6; // Ajustar la velocidad del desplazamiento
+  const walk = (x - startX) * 2; // Ajustar la velocidad del desplazamiento
   menuContainer.scrollLeft = scrollLeft - walk;
   velocity = walk; // Registrar velocidad del desplazamiento
 };
@@ -104,33 +104,27 @@ searchInput.addEventListener('input', function () {
   });
 });
 
-const menuContainer = document.querySelector('.menu-container');
+document.addEventListener("DOMContentLoaded", function() {
+  if (!localStorage.getItem("hasVisited")) {
+      var myModal = new bootstrap.Modal(document.getElementById('welcomeModal'), {
+          keyboard: true,
+          backdrop: true
+      });
+      myModal.show(); 
+      localStorage.setItem("hasVisited", "true");
+  }
 
-let isDown = false;
-let startX;
-let scrollLeft;
+  // Funcionalidad del botón 
+  var closeBtn = document.getElementById('floatingCloseBtn');
+  closeBtn.onclick = function() {
+      var myModalEl = document.getElementById('welcomeModal');
+      var modalInstance = bootstrap.Modal.getInstance(myModalEl);
+      modalInstance.hide(); 
+  };
 
-// Detectar si es un dispositivo móvil
-const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-if (isMobile) {
-    // Para arrastrar con el dedo en dispositivos móviles
-    menuContainer.addEventListener('touchstart', (e) => {
-        isDown = true;
-        const touch = e.touches[0];
-        startX = touch.pageX - menuContainer.offsetLeft;
-        scrollLeft = menuContainer.scrollLeft;
-    });
-
-    menuContainer.addEventListener('touchmove', (e) => {
-        if (!isDown) return;
-        const touch = e.touches[0];
-        const x = touch.pageX - menuContainer.offsetLeft;
-        const walk = (x - startX) * 3; // Ajusta el multiplicador para controlar la velocidad del desplazamiento
-        menuContainer.scrollLeft = scrollLeft - walk;
-    });
-
-    menuContainer.addEventListener('touchend', () => {
-        isDown = false;
-    });
-}
+  // Cerrar el modal 
+  var modalEl = document.getElementById('welcomeModal');
+  modalEl.addEventListener('hidden.bs.modal', function () {
+      closeBtn.remove(); 
+  });
+});
