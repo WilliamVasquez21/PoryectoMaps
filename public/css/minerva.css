@@ -1,9 +1,9 @@
 * {
     margin: 0;
     padding: 0;
+    border: 0;
     box-sizing: border-box;
 }
-
 body {
     height: 100%;
     font-family: "Roboto", sans-serif;
@@ -492,4 +492,103 @@ input::placeholder {
         width: 2rem;
         height: 2rem;
     }
+}
+
+.modal-dialog.modal-centered-custom {
+    margin: 10vh auto; 
+    max-width: 80%; 
+    width: 100%;
+    
+}
+
+.modal-content {
+    color:#ffffff;
+    border-radius: 8px;
+    border: none;
+    max-height: 80vh; 
+    overflow: hidden; 
+    padding: 15px;
+}
+
+.modal-header {
+    color:#ffffff;
+    padding: 0; 
+    margin: 0;  
+    border-bottom: none; 
+}
+
+.modal-header img {
+    width: 100%; 
+    height: auto; 
+    max-height: 40vh; 
+    object-fit: contain; 
+    display: block; 
+    border-bottom: none; 
+    margin-bottom: 0; 
+}
+.modal-body {
+    color:#ffffff;
+}
+
+.modal-header {
+    border: 1px solid rgb(255, 255, 255); /* Temporal, solo para identificar el problema */
+    color: white;
+    margin-bottom:  10px;
+}
+
+.modal-body {
+    border: 1px solid rgb(255, 255, 255); /* Temporal, solo para identificar el problema */
+}
+
+.img {
+    display: block; /* Asegúrate de que la imagen no tenga comportamiento inline */
+    margin-bottom: 10px;
+    padding: 0;
+    border: none;
+
+}
+
+
+.modal-body h2, .modal-body p {
+    color: #aa0000;
+}
+
+.modal-body h2 {
+    font-size: 2rem; 
+}
+
+.modal-body p {
+    font-size: 1.2rem; 
+}
+
+@media (max-width: 768px) {
+    .modal-dialog.modal-centered-custom {
+        margin: 5vh auto;
+        max-width: 90%;
+    }
+
+    .modal-body h2 {
+        font-size: 1.5rem;
+    }
+
+    .modal-body p {
+        font-size: 1rem; 
+    }
+
+    .modal-header img {
+        max-height: 30vh; 
+    }
+}
+
+.close-btn {
+    color: #aa0000; 
+    z-index: 1055; 
+    font-size: 2rem; 
+    cursor: pointer;
+    top: 10px; 
+    right: 10px; 
+    position: absolute; 
+    background: none; 
+    border: none; 
+    padding: 0; 
 }
