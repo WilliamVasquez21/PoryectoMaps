@@ -30,7 +30,7 @@
                                 <div class="mt-3">
                                     <h5 class="title-card">{{ $card['nombre'] }}</h5>
                                     @if(isset($card['fotos']))
-                                    <p class="card-text text-card">Zonarelaciona: {{ $department }}</p>
+                                    <p class="card-text text-card">{{ $department }}</p>
 
                                     @else
                                     <p class="card-text text-card">
