@@ -27,7 +27,7 @@ if (isset($zonaRelacionada['coordenadas'])) {
 @section('title', 'Minerva Maps UES-FMO')
 
 @php
-    $hideHeader = true;
+$hideHeader = true;
 @endphp
 
 @section('styles')
@@ -55,6 +55,8 @@ if (isset($zonaRelacionada['coordenadas'])) {
     </div>
 </a>
 
+<!--Botón para compartir en la parte superior derecha-->
+
 <div id="toast" class="toast">
     <p>Enlace copiado al portapapeles</p>
 </div>
@@ -62,13 +64,15 @@ if (isset($zonaRelacionada['coordenadas'])) {
 <main class="slider">
     <section class="imagenes">
         @foreach ($imagenes as $index => $imagen)
-            @if ($index == 0)
-                <!-- Primera imagen más grande -->
-                <img class="imagenes__principal slider__foto" src="{{ $imagen }}" alt="Imagen principal" data-id ="{{ $aulaData['id'] ?? null }}"/>
-            @else
-                <!-- Imágenes secundarias en grid -->
-                <img class="imagenes__secundaria slider__foto" src="{{ $imagen }}" alt="Imagen secundaria" data-id ="{{ $aulaData['id'] ?? null }}"/>
-            @endif
+        @if ($index == 0)
+        <!-- Primera imagen más grande -->
+        <img class="imagenes__principal slider__foto" src="{{ $imagen }}" alt="Imagen principal"
+            data-id="{{ $aulaData['id'] ?? null }}" />
+        @else
+        <!-- Imágenes secundarias en grid -->
+        <img class="imagenes__secundaria slider__foto" src="{{ $imagen }}" alt="Imagen secundaria"
+            data-id="{{ $aulaData['id'] ?? null }}" />
+        @endif
         @endforeach
 
         <!-- Botón flotante sobre la última imagen del grid -->
@@ -77,183 +81,261 @@ if (isset($zonaRelacionada['coordenadas'])) {
         </div>
 
     </section>
-    
+
     <div class="slider__dots"></div>
     <button class="slider__button slider__button--left">‹</button>
     <button class="slider__button slider__button--right">›</button>
 
 </main>
-  
+
 <section class="informacion">
     @if (isset($aulaData) && $aulaData)
-        <!-- Contenedor de detalles del aula -->
-        <div class="datos">
-            <div class="datos__titulo">{{ $aulaData['numero'] ?? 'Aula' }}</div>
-            <div class="datos__ubicacion">
-                <i class="bi bi-geo-alt icon"></i>
-                <div class="datos-margin">{{ $zonaRelacionada['nombre'] ?? 'Sin zona asociada' }}</div>
-            </div>
-            <div class="datos__espacios">
-                <i class="bi bi-people icon"></i>
-                <div class="datos-margin">Capacidad: {{ $aulaData['capacidad'] ?? 'No especificada' }} personas</div>
-            </div>
-            <div class="datos__indicaciones">
-                <i class="bi bi-compass"></i>
-                <div id="indicaciones" class="datos-margin">{{ $aulaData['indicaciones'] ?? 'No especificada' }}</div>
-            </div>
-            <div class="center">
-                <button class="btnVerMas" id="verMasBtn" onclick="mostrarContenido()">Ver más</button>
-            </div>
-            <div class="datos__departamento">
-                <i class="bi bi-map icon"></i>
-                <div class="datos-margin">Coordenadas: {{ $zonaRelacionada['coordenadas'] ?? 'Sin coordenadas' }}</div>
-            </div>
+    <!-- Contenedor de detalles del aula -->
+    <div class="datos">
+        <div class="datos__titulo">{{ $aulaData['numero'] ?? 'Aula' }}</div>
+        <div class="datos__ubicacion">
+            <i class="bi bi-geo-alt icon"></i>
+            <div class="datos-margin">{{ $zonaRelacionada['nombre'] ?? 'Sin zona asociada' }}</div>
         </div>
-        <div class="informacion__ubicacion">
-            <div id="map-container" style="width: 100%; height: 400px;"></div>
+        <div class="datos__espacios">
+            <i class="bi bi-people icon"></i>
+            <div class="datos-margin">Capacidad: {{ $aulaData['capacidad'] ?? 'No especificada' }} personas</div>
         </div>
+        <div class="datos__indicaciones">
+            <i class="bi bi-compass"></i>
+            <div id="indicaciones" class="datos-margin">{{ $aulaData['indicaciones'] ?? 'No especificada' }}</div>
+        </div>
+        <div class="center">
+            <button class="btnVerMas" id="verMasBtn" onclick="mostrarContenido()">Ver más</button>
+        </div>
+        <div class="datos__departamento">
+            <i class="bi bi-map icon"></i>
+            <div class="datos-margin">Coordenadas: {{ $zonaRelacionada['coordenadas'] ?? 'Sin coordenadas' }}</div>
+        </div>
+    </div>
+    <div class="informacion__ubicacion">
+        <div id="map-container" style="width: 100%; height: 400px;"></div>
+    </div>
 
     @elseif (isset($referenciaData) && $referenciaData)
-        <!-- Contenedor de detalles de la referencia -->
-        <div class="datos">
-            <div class="datos__titulo">{{ $referenciaData['nombre'] ?? 'Referencia' }}</div>
-            @if (!empty($referenciaData['descripcion']))
-                <div class="datos__ubicacion">
-                    <i class="bi bi-info-circle icon"></i>
-                    <div class="datos-margin">{{ $referenciaData['descripcion'] }}</div>
-                </div>
-            @endif
-            <div class="datos__departamento">
-                <i class="bi bi-geo-alt icon"></i>
-                <div class="datos-margin">Coordenadas: {{ $referenciaData['coordenadas'] ?? 'Sin coordenadas' }}</div>
-            </div>
+    <!-- Contenedor de detalles de la referencia -->
+    <div class="datos">
+        <div class="datos__titulo">{{ $referenciaData['nombre'] ?? 'Referencia' }}</div>
+        @if (!empty($referenciaData['descripcion']))
+        <div class="datos__ubicacion">
+            <i class="bi bi-info-circle icon"></i>
+            <div class="datos-margin">{{ $referenciaData['descripcion'] }}</div>
         </div>
-        <div class="informacion__ubicacion">
-            <div id="map-container" style="width: 100%; height: 400px;"></div>
+        @endif
+        <div class="datos__departamento">
+            <i class="bi bi-geo-alt icon"></i>
+            <div class="datos-margin">Coordenadas: {{ $referenciaData['coordenadas'] ?? 'Sin coordenadas' }}</div>
         </div>
+    </div>
+    <div class="informacion__ubicacion">
+        <div id="map-container" style="width: 100%; height: 400px;"></div>
+    </div>
 
     @else
-        <p>No se encontró información para este elemento.</p>
+    <p>No se encontró información para este elemento.</p>
     @endif
+
+
 </section>
 
 <script src="{{ asset('js/minerva-la.js') }}"></script>
 
-<!-- Modal -->
-<div class="modal fade" id="carouselModal" tabindex="-1" role="dialog" aria-labelledby="carouselModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title text-modal-1" id="carouselModalLabel">Galería de Imágenes</h5>
-        </div>
-        <div class="modal-body">
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              @foreach ($imagenes as $index => $imagen)
-              <li data-target="#carouselExampleIndicators" data-slide-to="{{ $index }}" class="{{ $index === 0 ? 'active' : '' }}"></li>
-              @endforeach
-            </ol>
-            <div class="carousel-inner">
-              @foreach ($imagenes as $index => $imagen)
-              <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                <img class="d-block w-100" src="{{ $imagen }}" alt="Imagen {{ $index + 1 }}">
-              </div>
-              @endforeach
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Anterior</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Siguiente</span>
-            </a>
-          </div>
-        </div>
-      </div>
+<!--Modal para video-->
+<!-- Button trigger modal -->
+<a href="" class="video" data-toogle="modal" id="openModal">
+    <div class="inner-circle">
+        <i class="fa-brands fa-youtube"></i>
     </div>
-  </div>
+</a>
+
+
+<!-- Modal video -->
+<div class="ventanaModal ml-2 mt-3">
+    <p>Presiona el botón para ver el video.</p>
+    <a href="#myModal" class="btn btn-lg btn-primary" data-toggle="modal">Ver video</a>
+
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <iframe id="four-seasons-video" width="100%" height="315"
+                        src="https://www.youtube.com/embed/GRxofEmo3HA" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="carouselModal" tabindex="-1" role="dialog" aria-labelledby="carouselModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-modal-1" id="carouselModalLabel">Galería de Imágenes</h5>
+            </div>
+            <div class="modal-body">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        @foreach ($imagenes as $index => $imagen)
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ $index }}"
+                            class="{{ $index === 0 ? 'active' : '' }}"></li>
+                        @endforeach
+                    </ol>
+                    <div class="carousel-inner">
+                        @foreach ($imagenes as $index => $imagen)
+                        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                            <img class="d-block w-100" src="{{ $imagen }}" alt="Imagen {{ $index + 1 }}">
+                        </div>
+                        @endforeach
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Anterior</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Siguiente</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
-    
-   document.getElementById('abrirModal').addEventListener('click', function() {
-        $('#carouselModal').modal('show');
+document.getElementById('abrirModal').addEventListener('click', function() {
+    $('#carouselModal').modal('show');
+});
+
+$(document).ready(function() {
+    /*Almacenar como variable la URL (valor del atributo src del elemento iframe) del video*/
+    var url = $("#four-seasons-video").attr('src');
+
+    /*Valor vacío para el atributo src de iframe cuando se cierra la ventana modal, con lo cual se detiene la reproducción del video*/
+    $("#myModal").on('hide.bs.modal', function() {
+        $("#four-seasons-video").attr('src', '');
     });
 
-  
-    const latitude = {{ $latitude }};
-    const longitude = {{ $longitude }};
-    const titleToMatch = document.querySelector('.datos__titulo').textContent.trim();
-    const apiKey = 'AIzaSyAPOp7CDPpzRDuYqF1z4pP1ifIPnQN0c2M'; 
+    /*Volver a asignar la url almaceneda*/
+    $("#myModal").on('show.bs.modal', function() {
+        $("#four-seasons-video").attr('src', url);
+    });
+});
 
-    function initMap() {
-        const map = new google.maps.Map(document.getElementById('map-container'), {
-            center: { lat: latitude, lng: longitude },
-            zoom: 19,
-            styles: [
-                {
-                    featureType: "all",
-                    elementType: "geometry.fill",
-                    stylers: [{ color: "#b0e57c" }]
-                },
-                {
-                    featureType: "road",
-                    elementType: "geometry.stroke",
-                    stylers: [{ color: "#73a857" }]
-                },
-                {
-                    featureType: "landscape",
-                    elementType: "geometry",
-                    stylers: [{ color: "#cbe785" }]
-                },
-                {
-                    featureType: "water",
-                    elementType: "geometry.fill",
-                    stylers: [{ color: "#a2daf2" }]
-                },
-                {
-                    featureType: "poi",
-                    elementType: "geometry",
-                    stylers: [{ color: "#aed581" }]
-                },
-                {
-                    featureType: "road.highway",
-                    elementType: "geometry.fill",
-                    stylers: [{ color: "#c5e1a5" }]
-                },
-                {
-                    featureType: "road.highway",
-                    elementType: "geometry.stroke",
-                    stylers: [{ color: "#7cb342" }]
-                }
-            ]
-        });
 
-        const markerPosition = { lat: latitude, lng: longitude }; 
 
-        const marker = new google.maps.Marker({
-        position: markerPosition, 
+const latitude = {
+    {
+        $latitude
+    }
+};
+const longitude = {
+    {
+        $longitude
+    }
+};
+const titleToMatch = document.querySelector('.datos__titulo').textContent.trim();
+const apiKey = 'AIzaSyAPOp7CDPpzRDuYqF1z4pP1ifIPnQN0c2M';
+
+function initMap() {
+    const map = new google.maps.Map(document.getElementById('map-container'), {
+        center: {
+            lat: latitude,
+            lng: longitude
+        },
+        zoom: 19,
+        styles: [{
+                featureType: "all",
+                elementType: "geometry.fill",
+                stylers: [{
+                    color: "#b0e57c"
+                }]
+            },
+            {
+                featureType: "road",
+                elementType: "geometry.stroke",
+                stylers: [{
+                    color: "#73a857"
+                }]
+            },
+            {
+                featureType: "landscape",
+                elementType: "geometry",
+                stylers: [{
+                    color: "#cbe785"
+                }]
+            },
+            {
+                featureType: "water",
+                elementType: "geometry.fill",
+                stylers: [{
+                    color: "#a2daf2"
+                }]
+            },
+            {
+                featureType: "poi",
+                elementType: "geometry",
+                stylers: [{
+                    color: "#aed581"
+                }]
+            },
+            {
+                featureType: "road.highway",
+                elementType: "geometry.fill",
+                stylers: [{
+                    color: "#c5e1a5"
+                }]
+            },
+            {
+                featureType: "road.highway",
+                elementType: "geometry.stroke",
+                stylers: [{
+                    color: "#7cb342"
+                }]
+            }
+        ]
+    });
+
+    const markerPosition = {
+        lat: latitude,
+        lng: longitude
+    };
+
+    const marker = new google.maps.Marker({
+        position: markerPosition,
         map: map,
         title: titleToMatch,
-        animation: google.maps.Animation.BOUNCE 
+        animation: google.maps.Animation.BOUNCE
     });
-    }
+}
 
-    let clickCount = 0; 
-const requiredClicks = 6; 
-const validId = 93; 
+let clickCount = 0;
+const requiredClicks = 6;
+const validId = 93;
 
-const gridImages = document.querySelectorAll('.imagenes__principal, .imagenes__secundaria'); 
+const gridImages = document.querySelectorAll('.imagenes__principal, .imagenes__secundaria');
 gridImages.forEach((image) => {
-    image.addEventListener('click', () => { 
-        const id = parseInt(image.getAttribute('data-id'), 10); 
+    image.addEventListener('click', () => {
+        const id = parseInt(image.getAttribute('data-id'), 10);
 
-        if (id === validId) { 
-            clickCount++; 
+        if (id === validId) {
+            clickCount++;
 
-            if (clickCount === requiredClicks) { 
-                showModal(); 
-                clickCount = 0; 
+            if (clickCount === requiredClicks) {
+                showModal();
+                clickCount = 0;
             }
         }
     });
@@ -262,18 +344,19 @@ gridImages.forEach((image) => {
 function showModal() {
 
     document.body.classList.add('modal-open-black');
-    
-    const containers = document.querySelectorAll('.container, .container-prueba, .highlighted-container, .image-grid');
+
+    const containers = document.querySelectorAll(
+        '.container, .container-prueba, .highlighted-container, .image-grid');
     containers.forEach(container => {
         container.classList.add('modal-open');
     });
 
     $('#myModal').modal('show');
 
-    $('#myModal').on('hidden.bs.modal', function () {
+    $('#myModal').on('hidden.bs.modal', function() {
         $(this).remove();
 
-        document.body.classList.remove('modal-open-black'); 
+        document.body.classList.remove('modal-open-black');
         containers.forEach(container => {
             container.classList.remove('modal-open');
         });
