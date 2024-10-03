@@ -19,3 +19,8 @@ Route::get('/minerva-la/referencia/{id}', [MinervaLaController::class, 'showRefe
 
 // Ruta para otro overlay (por si tienes alguna funcionalidad adicional)
 Route::get('/minerva-overley', [MinervaOverlayController::class, 'index'])->name('minerva-overley');
+
+// Ruta para la página de "integrantes"
+Route::get('/integrantes', function () {
+    return view('integrantes');
+})->name('integrantes');
