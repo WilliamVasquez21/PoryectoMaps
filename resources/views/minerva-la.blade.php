@@ -72,7 +72,7 @@ if (isset($zonaRelacionada['coordenadas'])) {
         @endforeach
 
         <!-- Botón flotante sobre la última imagen del grid -->
-        <div style="background: #B81414;" class="button-box" id="abrirModal">
+        <div class="button-box" id="abrirModal">
             <i class="bi bi-plus fs-1" style="color: white;"></i>
         </div>
 
