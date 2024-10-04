@@ -18,6 +18,9 @@ body {
     font-family: 'Exo', sans-serif;
     position: relative;
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    min-height: 200vh; /* Hacemos el body más alto para probar el scroll */
 }
 
 .context {
@@ -198,6 +201,31 @@ body {
     text-align: center;
     color: #fff;
 }
+
+.area {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Asegura que esté detrás del contenido */
+}
+
+.area::before {
+    content: '';
+    position: fixed; /* La imagen de fondo permanecerá fija en su lugar */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), /* Color negro con 50% de opacidad */
+                url(https://scontent.fsal2-1.fna.fbcdn.net/v/t39.30808-6/236899758_2992999797647318_6265414759634020742_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=ClEysNERb4UQ7kNvgGGauNq&_nc_ht=scontent.fsal2-1.fna&_nc_gid=AmI0KEZBaPU6yos5QUd4xR_&oh=00_AYDnxUJHy3k_JbxcLdJ3Kl_1yVoYKdpENly5yvdDdMz6vg&oe=670498E6);
+    background-size: cover; /* Cubre toda el área sin estirarse */
+    background-position: center center; /* Centra la imagen */
+    background-repeat: no-repeat; /* No repite la imagen */
+    z-index: -1;
+}
+
+
 
     </style>
 </head>
