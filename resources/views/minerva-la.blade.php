@@ -62,12 +62,15 @@ if (isset($zonaRelacionada['coordenadas'])) {
 <main class="slider">
     <section class="imagenes">
         @foreach ($imagenes as $index => $imagen)
-        @if ($index == 0)
-            <img class="imagenes__principal slider__foto" src="{{ $imagen }}" alt="Imagen principal" data-id ="{{ $aulaData['id'] ?? null }}"/>
-        @else
-            <img class="imagenes__secundaria slider__foto" src="{{ $imagen }}" alt="Imagen secundaria" data-id ="{{ $aulaData['id'] ?? null }}"/>
-        @endif
-    @endforeach
+            @if ($index == 0)
+                <!-- Primera imagen más grande -->
+                <img class="imagenes__principal slider__foto" src="{{ $imagen }}" alt="Imagen principal" data-id ="{{ $aulaData['id'] ?? null }}"/>
+            @else
+                <!-- Imágenes secundarias en grid -->
+                <img class="imagenes__secundaria slider__foto" src="{{ $imagen }}" alt="Imagen secundaria" data-id ="{{ $aulaData['id'] ?? null }}"/>
+            @endif
+        @endforeach
+
         <!-- Botón flotante sobre la última imagen del grid -->
         <div class="button-box" id="abrirModal">
             <i class="bi bi-plus fs-1" style="color: white;"></i>
@@ -135,6 +138,34 @@ if (isset($zonaRelacionada['coordenadas'])) {
 </section>
 
 <script src="{{ asset('js/minerva-la.js') }}"></script>
+
+<div class="ventanaModal">
+    <a href="#myModal" class="btn" data-toggle="modal">
+        <div class="inner-circle1">
+            <i class="fa-brands fa-youtube"></i>
+        </div>
+    </a>
+
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Video</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <iframe id="four-seasons-video" width="100%" height="315"
+                        src="https://www.youtube.com/embed/GRxofEmo3HA" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="carouselModal" tabindex="-1" role="dialog" aria-labelledby="carouselModalLabel" aria-hidden="true">
@@ -236,7 +267,7 @@ if (isset($zonaRelacionada['coordenadas'])) {
     });
     }
 
-let clickCount = 0; 
+    let clickCount = 0; 
 const requiredClicks = 6; 
 const validId = 93; 
 
@@ -257,31 +288,6 @@ gridImages.forEach((image) => {
 });
 
 function showModal() {
-    const modalHTML = `
-        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabel">MANDAMIENTOS PARA SOBREVIVIR A EL MATADAERO</h5>
-                    </div>
-                    <div class="modal-body text-modal-1">
-                        Todos los presentes deben arrodillarse y rezar frente a la MINERVA SUPREMA. <br><br>
-                        Inclinarse ante la MINERVA SUPREMA como un acto de sumisión y respeto. <br><br>
-                        Deberas demostrar tu saber para encontrar la salida. Aquellos que se quedaban paralizados solo extendieron su agonia antes de ser condenado al suplicio eterno.<br><br>
-                        NO HAGAS MOVIMIENTOS BRUSCOS, las estatuas vigilan tus movimientos.<br><br>
-                        Cualquier intento de engaño resultara en el, sufrimiento, tortura, suplicio, de tu alma para la eternidad. <br><br>
-                        Aquellos que le recen a Dioses ajenos seran reducidos a cenizas. <br><br>
-                        El ojo loco siempre te vigila. <br><br>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="text-center btn btn-danger text-modal-1" data-dismiss="modal">ESTAS TOTALMENTE SOLO EN ESTA PRUEBA.</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
 
     document.body.classList.add('modal-open-black');
     

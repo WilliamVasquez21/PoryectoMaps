@@ -19,6 +19,39 @@ body{
   color: var(--colorPrincipal);
 }
 
+.ventanaModal{
+  margin: 20px;
+}
+
+.inner-circle1 {
+  position: fixed;
+  top: 95px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #aa0000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.inner-circle1 {
+  font-size: 24px;
+  color: white;
+}
+
+.inner-circle1:hover {
+  background-color: #ff1f1f;
+}
+
+.inner-circle1 a {
+  text-decoration: none;
+}
+
 /*volver y compartir*/
 .volver {
   position: fixed; 
@@ -103,7 +136,6 @@ text-decoration: none;
 .slider{
   position: relative;
   width: 100%;
-  overflow: hidden;
 }
 
 .slider__dots {
@@ -154,7 +186,7 @@ text-decoration: none;
     position: static;
     width: 100%;
     max-width: 100%;
-    /* overflow: hidden; */
+    overflow: hidden;
   }
   .slider__dots{
     display: none;
@@ -169,6 +201,7 @@ text-decoration: none;
   width: 100%;
   height: 45rem;
   margin: 0 auto;
+
 }
 @media(min-width:768px){
   .imagenes {
@@ -188,7 +221,6 @@ text-decoration: none;
   min-width: 100%;
   height: auto;
 }
-
 @media(min-width:768px){
   .imagenes__principal {
     width: 100%;
