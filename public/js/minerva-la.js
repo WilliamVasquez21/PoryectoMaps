@@ -146,4 +146,20 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 /*btn mostrar mas*/
-  
+
+/*modal*/
+$(document).ready(function() {
+    $('#myModal').modal({
+        show: false
+    });
+
+$('.ventanaModal a').click(function(e) {
+    e.preventDefault();
+    $('#myModal').modal('show');
+});
+$(document).on('click', function(e) {
+    if ($(e.target).is('.modal')) {
+        $('#myModal').modal('hide');
+        }
+    });
+});

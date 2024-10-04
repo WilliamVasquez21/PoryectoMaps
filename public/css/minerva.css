@@ -26,12 +26,24 @@ body {
         url(https://firebasestorage.googleapis.com/v0/b/prueba-49b43.appspot.com/o/collage_header-removebg.png?alt=media&token=d9c5d015-3518-49aa-bb70-3c651392b22f);
 
     color: white;
+    background-size: cover;
+    background-position: 0 10;
+    animation: move-background 10s linear infinite;
     padding: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
     background-color: #aa0000;
+}
+
+@keyframes move-background {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
 }
 
 .logo {
@@ -430,41 +442,6 @@ input::placeholder {
     display: none;
 }
 
-/* Media queries for responsive design */
-@media (max-width: 768px) {
-    .header-grid {
-        grid-template-columns: 1fr;
-        /* Stack columns on small screens */
-        grid-template-rows: auto auto auto;
-        /* Adjust rows to accommodate changes */
-    }
-
-    .header-title,
-    .header-subtitle {
-        grid-column: 1;
-        text-align: center;
-    }
-
-    .header-title {
-        font-size: 30px;
-        /* Reduce title size for smaller screens */
-    }
-
-    .header-subtitle {
-        font-size: 20px;
-    }
-
-    .logo img {
-        max-width: 80px;
-        /* Smaller logo for small screens */
-    }
-
-    .search-bar {
-        grid-column: 1;
-        /* Keep search bar in the same column */
-    }
-}
-
 @media (max-width: 480px) {
     .busqueda {
         width: 50%;
@@ -504,6 +481,20 @@ input::placeholder {
     .type__icon {
         width: 2rem;
         height: 2rem;
+    }
+}
+
+@media (min-width: 320px){
+    .header {
+        animation: move-background 90s linear infinite;
+    }
+    @keyframes move-background-large {
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: -900% 0;
+        }
     }
 }
 

@@ -139,6 +139,34 @@ if (isset($zonaRelacionada['coordenadas'])) {
 
 <script src="{{ asset('js/minerva-la.js') }}"></script>
 
+<div class="ventanaModal">
+    <a href="#myModal" class="btn" data-toggle="modal">
+        <div class="inner-circle1">
+            <i class="fa-brands fa-youtube"></i>
+        </div>
+    </a>
+
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Video</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <iframe id="four-seasons-video" width="100%" height="315"
+                        src="https://www.youtube.com/embed/GRxofEmo3HA" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Modal -->
 <div class="modal fade" id="carouselModal" tabindex="-1" role="dialog" aria-labelledby="carouselModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
