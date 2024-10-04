@@ -88,7 +88,7 @@ window.addEventListener('resize', () => {
 
 /*copiar link de referencia*/
 document.getElementById('shareLink').addEventListener('click', function(event) {
-    event.preventDefault(); // Evita que el enlace redirija a la página
+    event.preventDefault(); 
     
     // Crear un elemento temporal de input para copiar el enlace
     const tempInput = document.createElement('input');
