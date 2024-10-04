@@ -26,8 +26,8 @@
                                 <a href="{{ route('minerva-la.referencia', ['id' => $card['id']]) }}" class="text-decoration-none">
                                     <img src="{{ $card['fotos'][0] }}" class="card-img-top img-fluid" alt="{{ $card['nombre'] }}">
                                 </a>
-                            @else
-                                <!-- Es un aula -->
+                            @elseif(isset($card['zonaRelacionada']['nombre']))
+                                <!-- Es un aula y mostramos zonaRelacionada.nombre -->
                                 <a href="{{ route('minerva-la.aula', ['id' => $card['id']]) }}" class="text-decoration-none">
                                     <img src="{{ $card['fotos'][0] }}" class="card-img-top img-fluid" alt="{{ $card['nombre'] }}">
                                 </a>
@@ -40,7 +40,8 @@
                         <div class="mt-3">
                             <h5 class="title-card">{{ $card['nombre'] }}</h5>
                             <p class="card-text text-card">
-                                {{ $card['descripcion'] ?? 'No description available' }}
+                                <!-- Mostrar descripción para referencias o zonaRelacionada.nombre para aulas -->
+                                {{ $card['descripcion'] ?? $card['zonaRelacionada']['nombre'] ?? 'No description available' }}
                             </p>
                         </div>
                     </div>
@@ -64,8 +65,8 @@
                                     <a href="{{ route('minerva-la.referencia', ['id' => $card['id']]) }}" class="text-decoration-none">
                                         <img src="{{ $card['fotos'][0] }}" class="card-img-top img-fluid" alt="{{ $card['nombre'] }}">
                                     </a>
-                                @else
-                                    <!-- Es un aula -->
+                                @elseif(isset($card['zonaRelacionada']['nombre']))
+                                    <!-- Es un aula y mostramos zonaRelacionada.nombre -->
                                     <a href="{{ route('minerva-la.aula', ['id' => $card['id']]) }}" class="text-decoration-none">
                                         <img src="{{ $card['fotos'][0] }}" class="card-img-top img-fluid" alt="{{ $card['nombre'] }}">
                                     </a>
@@ -78,7 +79,8 @@
                             <div class="mt-3">
                                 <h5 class="title-card">{{ $card['nombre'] }}</h5>
                                 <p class="card-text text-card">
-                                    {{ $card['descripcion'] ?? 'No description available' }}
+                                    <!-- Mostrar descripción para referencias o zonaRelacionada.nombre para aulas -->
+                                    {{ $card['descripcion'] ?? $card['zonaRelacionada']['nombre'] ?? 'No description available' }}
                                 </p>
                             </div>
                         </div>
