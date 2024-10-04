@@ -557,3 +557,38 @@ gap: 2rem 0;
 .inner-circle1 a {
   text-decoration: none;
 }
+
+.modal-content {
+  padding: 15px;
+  max-height: 90vh; /
+}
+.modal-dialog {
+  max-width: 40%; 
+  margin: 30px auto;
+}
+
+@media (min-width: 1024px) {
+  .modal-dialog {
+      max-width: 40%; /
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-dialog {
+      max-width: 90%;
+      margin-top: 60px;
+  }
+}
+
+@media (max-width: 320px) {
+  .modal-dialog {
+      max-width: 95%;
+      margin-top: 60px;
+  }
+}
+
+.modal-body iframe {
+  width: 100%;
+  height: 400;
+  aspect-ratio: 9/16;
+}
