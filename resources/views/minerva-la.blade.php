@@ -207,8 +207,12 @@ if (isset($zonaRelacionada['coordenadas'])) {
     </div>
   </div>
 
+  
+
 <script>
     
+    
+
    document.getElementById('abrirModal').addEventListener('click', function() {
         $('#carouselModal').modal('show');
     });
@@ -269,6 +273,12 @@ if (isset($zonaRelacionada['coordenadas'])) {
         map: map,
         title: titleToMatch,
         animation: google.maps.Animation.BOUNCE 
+        
+    });
+
+    marker.addListener('click', function() {
+        const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
+        window.open(googleMapsUrl, '_blank');
     });
     }
 
