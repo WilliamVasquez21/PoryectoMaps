@@ -6,6 +6,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="{{ asset('css/minerva.css') }}">  
+
 <!-- Sección con las tarjetas -->
 <div class="container-fluid">
     <div class="row m-3">
@@ -17,30 +18,22 @@
                 @if(isset($card['id']) && isset($card['nombre']))
                 <div class="col-md-3 mb-4">
                     <div class="card h-100 d-flex flex-column">
-                        @if(isset($card['fotos']))
+                        <!-- Mostrar la primera foto de referencias o aulas si están disponibles -->
+                        @if(isset($card['fotos']) && count($card['fotos']) > 0)
                         <a href="{{ route('minerva-la.aula', ['id' => $card['id']]) }}" class="text-decoration-none">
-                            @php
-                            $fotos = explode(',', $card['fotos']);
-                            @endphp
-                            <img src="{{ $fotos[0] }}" class="card-img-top img-fluid" alt="{{ $card['nombre'] }}">
-                            @elseif(isset($card['foto']))
-                            <a href="{{ route('minerva-la.referencia', ['id' => $card['id']]) }}"
-                                class="text-decoration-none">
-                                <img src="{{ explode(',', $card['foto'])[0] }}" class="card-img-top img-fluid"
-                                    alt="{{ $card['nombre'] }}">
-                                @endif
-                                <div class="mt-3">
-                                    <h5 class="title-card">{{ $card['nombre'] }}</h5>
-                                    @if(isset($card['fotos']))
-                                    <p class="card-text text-card">{{ $department }}</p>
+                            <img src="{{ $card['fotos'][0] }}" class="card-img-top img-fluid" alt="{{ $card['nombre'] }}">
+                        </a>
+                        @else
+                        <!-- Imagen por defecto si no hay fotos -->
+                        <img src="https://via.placeholder.com/150" class="card-img-top img-fluid" alt="{{ $card['nombre'] }}">
+                        @endif
 
-                                    @else
-                                    <p class="card-text text-card">
-                                        {{ $card['descripcion'] ?? 'No description available' }}</p>
-
-                                    @endif
-                                </div>
-                            </a>
+                        <div class="mt-3">
+                            <h5 class="title-card">{{ $card['nombre'] }}</h5>
+                            <p class="card-text text-card">
+                                {{ $card['descripcion'] ?? 'No description available' }}
+                            </p>
+                        </div>
                     </div>
                 </div>
                 @endif
@@ -48,36 +41,28 @@
             </div>
 
             @if(count($cards) > 8)
-            <div class="col-13 mb-4" id="more-{{ strtolower(str_replace(' ', '', $department)) }}"
-                style="display: none;">
+            <div class="col-12 mb-4" id="more-{{ strtolower(str_replace(' ', '', $department)) }}" style="display: none;">
                 <div class="row">
                     @foreach(array_slice($cards, 8) as $card)
                     @if(isset($card['id']) && isset($card['nombre']))
                     <div class="col-md-3 mb-4 card-container">
                         <div class="card h-100 d-flex flex-column">
-                            @if(isset($card['fotos']))
-                            <a href="{{ route('minerva-la.aula', ['id' => $card['id']]) }}"
-                                class="text-decoration-none">
-                                @php
-                                $fotos = explode(',', $card['fotos']);
-                                @endphp
-                                <img src="{{ $fotos[0] }}" class="card-img-top img-fluid" alt="{{ $card['nombre'] }}">
-                                @elseif(isset($card['foto']))
-                                <a href="{{ route('minerva-la.referencia', ['id' => $card['id']]) }}"
-                                    class="text-decoration-none">
-                                    <img src="{{ explode(',', $card['foto'])[0] }}" class="card-img-top img-fluid"
-                                        alt="{{ $card['nombre'] }}">
-                                    @endif
-                                    <div class="mt-3">
-                                        <h5 class=" title-card">{{ $card['nombre'] }}</h5>
-                                        @if(isset($card['fotos']))
-                                        <p class="card-text text-card">Zonarelaciona: {{ $department }}</p>
-                                       @else
-                                        <p class="card-text text-card">
-                                            {{ $card['descripcion'] ?? 'No description available' }}</p>
-                                        @endif
-                                    </div>
-                                </a>
+                            <!-- Mostrar la primera foto de referencias o aulas si están disponibles -->
+                            @if(isset($card['fotos']) && count($card['fotos']) > 0)
+                            <a href="{{ route('minerva-la.referencia', ['id' => $card['id']]) }}" class="text-decoration-none">
+                                <img src="{{ $card['fotos'][0] }}" class="card-img-top img-fluid" alt="{{ $card['nombre'] }}">
+                            </a>
+                            @else
+                            <!-- Imagen por defecto si no hay fotos -->
+                            <img src="https://via.placeholder.com/150" class="card-img-top img-fluid" alt="{{ $card['nombre'] }}">
+                            @endif
+
+                            <div class="mt-3">
+                                <h5 class="title-card">{{ $card['nombre'] }}</h5>
+                                <p class="card-text text-card">
+                                    {{ $card['descripcion'] ?? 'No description available' }}
+                                </p>
+                            </div>
                         </div>
                     </div>
                     @endif
@@ -85,10 +70,11 @@
                 </div>
             </div>
 
+            <!-- Botón para ver más tarjetas -->
             <div class="text-center">
-                <button class=" btn2 " id="toggle-{{ strtolower(str_replace(' ', '', $department)) }}"
-                    onclick="showMoreCards('more-{{ strtolower(str_replace(' ', '', $department)) }}', this)">Ver
-                    más</button>
+                <button class="btn2" id="toggle-{{ strtolower(str_replace(' ', '', $department)) }}" onclick="showMoreCards('more-{{ strtolower(str_replace(' ', '', $department)) }}', this)">
+                    Ver más
+                </button>
             </div>
             @endif
         </div>

@@ -8,18 +8,22 @@ class MinervaController extends Controller
 {
     public function index()
     {
-        // Consumir la API de zonas, referencias y aulas
+        // Consumir la API de zonas, referencias, aulas, fotos de aulas y fotos de referencias
         $zonasResponse = Http::get('https://ues-api-production.up.railway.app/zonas');
         $referenciasResponse = Http::get('https://ues-api-production.up.railway.app/referencias');
         $aulasResponse = Http::get('https://ues-api-production.up.railway.app/aulas');
+        $fotosAulasResponse = Http::get('https://ues-api-production.up.railway.app/aula_fotos');
+        $fotosReferenciasResponse = Http::get('https://ues-api-production.up.railway.app/fotos_referencias');
 
         $departments = [];
 
         // Verificar que todas las respuestas fueron exitosas
-        if ($zonasResponse->successful() && $referenciasResponse->successful() && $aulasResponse->successful()) {
+        if ($zonasResponse->successful() && $referenciasResponse->successful() && $aulasResponse->successful() && $fotosAulasResponse->successful() && $fotosReferenciasResponse->successful()) {
             $zonasData = $zonasResponse->json()['data']; // Zonas
             $referenciasData = $referenciasResponse->json()['data']; // Referencias
             $aulasData = $aulasResponse->json()['data']; // Aulas
+            $fotosAulasData = $fotosAulasResponse->json()['data']; // Fotos de aulas
+            $fotosReferenciasData = $fotosReferenciasResponse->json()['data']; // Fotos de referencias
 
             // Agrupar referencias y aulas por zona
             foreach ($zonasData as $zona) {
@@ -32,17 +36,42 @@ class MinervaController extends Controller
                     return $ref['zona'] == $zonaId;
                 });
 
+                // Añadir fotos a las referencias correspondientes
+                foreach ($filteredReferencias as &$referencia) {
+                    $referenciaId = $referencia['id'];
+                    $referenciaFotos = array_filter($fotosReferenciasData, function($foto) use ($referenciaId) {
+                        return $foto['referencia_id'] == $referenciaId;
+                    });
+
+                    // Extraer las URLs de las fotos
+                    $referencia['fotos'] = [];
+                    foreach ($referenciaFotos as $foto) {
+                        $referencia['fotos'][] = $foto['foto']['url_foto'];
+                    }
+                }
+
                 // Filtrar las aulas que coincidan con la zona actual
                 $filteredAulas = array_filter($aulasData, function($aula) use ($zonaId) {
                     return $aula['zona'] == $zonaId;
                 });
 
-                // Cambiar el nombre de clave 'numero' a 'nombre' y asignar coordenadas de la zona
-                $filteredAulas = array_map(function($aula) use ($zonaCoordenadas) {
-                    $aula['nombre'] = $aula['numero'];  // Asignar 'numero' como 'nombre'
-                    $aula['coordenadas'] = $zonaCoordenadas;  // Asignar coordenadas de la zona
-                    return $aula;
-                }, $filteredAulas);
+                // Añadir fotos a las aulas correspondientes
+                foreach ($filteredAulas as &$aula) {
+                    $aulaId = $aula['id'];
+                    $aulaFotos = array_filter($fotosAulasData, function($foto) use ($aulaId) {
+                        return $foto['aula_id'] == $aulaId;
+                    });
+
+                    // Extraer las URLs de las fotos
+                    $aula['fotos'] = [];
+                    foreach ($aulaFotos as $foto) {
+                        $aula['fotos'][] = $foto['foto']['url_foto'];
+                    }
+
+                    // Cambiar 'numero' a 'nombre' y asignar coordenadas de la zona
+                    $aula['nombre'] = $aula['numero']; 
+                    $aula['coordenadas'] = $zonaCoordenadas;
+                }
 
                 // Combinar las referencias y aulas en un solo array
                 $combinedData = array_merge($filteredReferencias, $filteredAulas);
