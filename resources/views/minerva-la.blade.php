@@ -158,12 +158,11 @@ if (isset($zonaRelacionada['coordenadas'])) {
             </div>
             <div class="modal-body">
                 @if($videoUrl)
-                    <iframe id="youtube-video" width="100%" height="315"
-                        src="{{ $videoUrl }}" frameborder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
+                <iframe id="youtube-video" width="100%" height="400px" src="{{ $videoUrl }}" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
                 @else
-                    <p>No hay video disponible para esta aula o referencia.</p>
+                <p>No hay video disponible para esta aula o referencia.</p>
                 @endif
             </div>
         </div>
