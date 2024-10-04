@@ -50,7 +50,7 @@
             </div>
 
             @if(count($cards) > 8)
-            <div class="col-12 mb-4" id="more-{{ strtolower(str_replace(' ', '', $department)) }}" style="display: none;">
+            <div class="col-13 mb-4" id="more-{{ strtolower(str_replace(' ', '', $department)) }}" style="display: none;">
                 <div class="row">
                     @foreach(array_slice($cards, 8) as $card)
                     @if(isset($card['id']) && isset($card['nombre']))
