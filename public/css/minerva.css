@@ -23,7 +23,7 @@ body {
 
 .header {
     background: linear-gradient(180deg, rgba(170, 0, 0, 0.8) 0%, #ff1f1f80 100%),
-        url(https://firebasestorage.googleapis.com/v0/b/dbasistenciadocente.appspot.com/o/collage_header-removebg.png?alt=media&token=1f8d6e9c-cc5c-4570-ae82-525bb7ce6543);
+        url(https://firebasestorage.googleapis.com/v0/b/prueba-49b43.appspot.com/o/collage_header-removebg.png?alt=media&token=d9c5d015-3518-49aa-bb70-3c651392b22f);
 
     color: white;
     padding: 15px;
@@ -322,7 +322,7 @@ input::placeholder {
     text-align: center;
 }
 
-.btn {
+.btn2 {
     padding: 10px 20px;
     background-color: #aa0000;
     color: #fff;
@@ -331,7 +331,7 @@ input::placeholder {
     cursor: pointer;
 }
 
-.btn:hover {
+.btn2:hover {
     background-color: transparent;
     color: #aa0000;
     border: 1px solid #aa0000;

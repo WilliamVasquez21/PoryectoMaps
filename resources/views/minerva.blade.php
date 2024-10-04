@@ -86,7 +86,7 @@
             </div>
 
             <div class="text-center">
-                <button class=" btn " id="toggle-{{ strtolower(str_replace(' ', '', $department)) }}"
+                <button class=" btn2 " id="toggle-{{ strtolower(str_replace(' ', '', $department)) }}"
                     onclick="showMoreCards('more-{{ strtolower(str_replace(' ', '', $department)) }}', this)">Ver
                     más</button>
             </div>
