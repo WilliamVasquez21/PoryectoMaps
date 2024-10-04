@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Integrantes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Incluimos Swiper.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+         @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
 
 * {
     margin: 0px;
@@ -20,18 +24,18 @@ body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
-    min-height: 200vh; /* Hacemos el body más alto para probar el scroll */
+    min-height: 200vh;
 }
 
 .context {
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: auto; /* Cambia a auto para ajustarse al contenido */
-    padding: 20px 0; /* Espacio adicional para evitar que se solape con otros elementos */
-    position: relative; /* Cambiado de absolute a relative */
-    z-index: 2; /* Las tarjetas y el título estarán sobre el fondo */
+    height: auto;
+    padding: 20px 0;
+    position: relative;
+    z-index: 2;
     background-color: transparent;
 }
 
@@ -39,18 +43,16 @@ body {
     text-align: center;
     color: #fff;
     font-size: 50px;
-    margin: 0; /* Asegúrate de que no haya márgenes que afecten el centrado */
+    margin: 0;
 }
 
-
-/* Fondo animado con círculos */
 .area {
     background: #4e54c8;
     background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
     width: 100%;
     height: 100vh;
-    position: fixed; /* Mantiene el fondo fijo mientras se desplaza */
-    z-index: 0; /* El fondo queda detrás */
+    position: fixed;
+    z-index: 0;
     top: 0;
     left: 0;
 }
@@ -102,20 +104,18 @@ body {
 /* Estilo para las tarjetas y centrado */
 .container {
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: flex-start; /* Alinea las tarjetas hacia la parte superior del contenedor */
-    flex-wrap: wrap; /* Asegura que las tarjetas se distribuyan en varias filas si es necesario */
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
     position: relative;
-    z-index: 2; /* Las tarjetas estarán sobre el fondo */
-    margin-top: 5vh; /* Margen superior para evitar solapamiento con el título */
-    padding: 20px; /* Añade un poco de padding para mayor espacio */
+    z-index: 2;
+    margin-top: 5vh;
+    padding: 20px;
 }
 
 .col-lg-3, .col-md-4, .col-sm-6, .col-10 {
     padding: 10px;
-}
-
-.col-10 {
+    width: 100%;
     max-width: 400px;
 }
 
@@ -197,36 +197,113 @@ body {
     color: #fff;
     text-decoration: none;
 }
-.text-center{
-    text-align: center;
+
+.area-title {
     color: #fff;
+    text-align: center;
+    font-size: 30px;
+    margin: 20px 0;
+}
+
+/* Estilos del carrusel */
+.swiper-container {
+    width: 100%;
+    padding: 20px;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .area {
-    position: absolute;
+    position: fixed; /* El fondo estará siempre fijo en su lugar */
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: -1; /* Asegura que esté detrás del contenido */
+    z-index: -1;
 }
 
 .area::before {
     content: '';
-    position: fixed; /* La imagen de fondo permanecerá fija en su lugar */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), /* Color negro con 50% de opacidad */
-                url(https://scontent.fsal2-1.fna.fbcdn.net/v/t39.30808-6/236899758_2992999797647318_6265414759634020742_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=ClEysNERb4UQ7kNvgGGauNq&_nc_ht=scontent.fsal2-1.fna&_nc_gid=AmI0KEZBaPU6yos5QUd4xR_&oh=00_AYDnxUJHy3k_JbxcLdJ3Kl_1yVoYKdpENly5yvdDdMz6vg&oe=670498E6);
-    background-size: cover; /* Cubre toda el área sin estirarse */
-    background-position: center center; /* Centra la imagen */
-    background-repeat: no-repeat; /* No repite la imagen */
+    background-image: url('URL_DE_LA_IMAGEN'); /* Coloca aquí la URL de la imagen de fondo */
+    background-size: contain; /* Usa contain para que la imagen se ajuste sin cortar */
+    background-position: center center; /* Mantiene la imagen centrada */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Fija la imagen de fondo */
     z-index: -1;
+    min-height: 100vh; /* Asegura que cubra toda la altura de la pantalla */
 }
 
 
 
+/* Media queries para mejorar la responsividad */
+
+/* Ajustes para tablets */
+@media (max-width: 768px) {
+    .profile-card-3 {
+        height: auto;
+    }
+    
+    .profile-card-3 .background-block {
+        height: 120px;
+    }
+
+    .profile-card-3 .profile {
+        max-width: 60px;
+    }
+
+    .profile-card-3 h2 {
+        font-size: 16px;
+    }
+
+    .profile-card-3 h2 small {
+        font-size: 10px;
+    }
+}
+
+/* Ajustes para smartphones */
+@media (max-width: 576px) {
+    .context h1 {
+        font-size: 35px;
+    }
+
+    .profile-card-3 {
+        height: auto;
+    }
+
+    .profile-card-3 .background-block {
+        height: 100px;
+    }
+
+    .profile-card-3 .profile {
+        max-width: 50px;
+    }
+
+    .profile-card-3 h2 {
+        font-size: 14px;
+    }
+
+    .profile-card-3 h2 small {
+        font-size: 9px;
+    }
+
+    .icon-block a {
+        font-size: 12px;
+    }
+
+    /* Ajuste del tamaño de los círculos en pantallas pequeñas */
+    .circles li {
+        width: 10px;
+        height: 10px;
+    }
+}
     </style>
 </head>
 <body>
@@ -236,8 +313,37 @@ body {
     </div>
 
     <div class="container">
-        <div class="row justify-content-center" id="integrantes-container">
-            <!-- Las tarjetas se generarán dinámicamente aquí -->
+        <!-- Título del área Frontend -->
+        <h2 class="area-title">Frontend</h2>
+        <!-- Carrusel de perfiles Frontend -->
+        <div class="swiper-container frontend-swiper">
+            <div class="swiper-wrapper" id="frontend-container">
+                <!-- Las tarjetas de Frontend se generarán dinámicamente aquí -->
+            </div>
+            <!-- Paginación del carrusel -->
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- Título del área Backend -->
+        <h2 class="area-title">Backend</h2>
+        <!-- Carrusel de perfiles Backend -->
+        <div class="swiper-container backend-swiper">
+            <div class="swiper-wrapper" id="backend-container">
+                <!-- Las tarjetas de Backend se generarán dinámicamente aquí -->
+            </div>
+            <!-- Paginación del carrusel -->
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- Título del área Base de Datos -->
+        <h2 class="area-title">Base de Datos</h2>
+        <!-- Carrusel de perfiles Base de Datos -->
+        <div class="swiper-container database-swiper">
+            <div class="swiper-wrapper" id="database-container">
+                <!-- Las tarjetas de Base de Datos se generarán dinámicamente aquí -->
+            </div>
+            <!-- Paginación del carrusel -->
+            <div class="swiper-pagination"></div>
         </div>
     </div>
 
@@ -256,39 +362,289 @@ body {
         </ul>
     </div>
 
+    <!-- Incluimos Swiper.js -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
     <script>
         const integrantes = [
             {
-                nombre: "Justin Tim",
-                puesto: "Frontend Developer",
-                github: "https://github.com/justinfrontend",
-                linkedin: "https://linkedin.com/in/justinfrontend",
-                fondoImg: "https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-                perfilImg: "https://randomuser.me/api/portraits/men/78.jpg"
-            },
+        nombre: "William Alfredo Vásquez Flores",
+        puesto: "Frontend Developer",
+        github: "https://github.com/WilliamAlfredo",
+        linkedin: "https://www.linkedin.com/in/william-vásquez-dev",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "frontend"
+    },
+    {
+        nombre: "William Alexander Chávez Márquez",
+        puesto: "Frontend Developer",
+        github: "https://github.com/WilliamCHM",
+        linkedin: "www.linkedin.com/in/william-alexander-chavez-marquez-0a9a36329",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "frontend"
+    },
+    {
+        nombre: "René Alexander Barrera Flores",
+        puesto: "Frontend Developer",
+        github: "https://github.com/Sotalexx",
+        linkedin: "https://www.linkedin.com/in/ren%C3%A9-barrera-02338a331/",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "frontend"
+    },
+    {
+        nombre: "Carlos Orlando Hernández Del Cid",
+        puesto: "Frontend Developer",
+        github: "https://github.com/orlxnd",
+        linkedin: "https://www.linkedin.com/in/carlos-hernández-del-cid-a06471296",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "frontend"
+    },
+    {
+        nombre: "Gisselle Lilibeth Hernandez Lazo",
+        puesto: "Frontend Developer",
+        github: "",
+        linkedin: "https://www.linkedin.com/in/gisselle-hernandez-aa312a294?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "frontend"
+    },
+    {
+        nombre: "Kevin Nathanael Granados Pérez",
+        puesto: "Frontend Developer",
+        github: "https://github.com/NathanaelPerez",
+        linkedin: "http://www.linkedin.com/in/kevin-nathanael-granados-perez-245318271",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "frontend"
+    },
+    {
+        nombre: "Jesús Steven Medrano Carballo",
+        puesto: "Frontend Developer",
+        github: "https://github.com/medranosteven",
+        linkedin: "http://www.linkedin.com/in/jesús-steven-medrano-carballo-427a48330",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "frontend"
+    },
+    {
+        nombre: "Roberto Hernán Laínez Trejo",
+        puesto: "Frontend Developer",
+        github: "https://github.com/R0bert09",
+        linkedin: "https://www.linkedin.com/in/roberto-hernán-laínez-trejo-6216a7279/",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "frontend"
+    },
+    {
+        nombre: "Jesús Steven Medrano Carballo",
+        puesto: "Frontend Developer",
+        github: "https://github.com/edraslazov",
+        linkedin: "http://www.linkedin.com/in/edras-ariel-viera-lazo-022a91291",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "frontend"
+    },
+    {
+        nombre: "Eliseo Antonio Santos Diaz",
+        puesto: "Frontend Developer",
+        github: "https://github.com/EliseoSantos2468",
+        linkedin: "https://www.linkedin.com/in/eliseo-antonio-santos-diaz-606389331/",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "frontend"
+    },
+    {
+        nombre: "Arturo Esperanza",
+        puesto: "Backend Developer",
+        github: "https://github.com/EliasEsperanza",
+        linkedin: "https://www.linkedin.com/in/arturo-elias-torres-esperanza-3a47982a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "backend"
+    },
+    {
+        nombre: "Gabriel De la O",
+        puesto: "Backend Developer",
+        github: "https://github.com/Hieloeston235",
+        linkedin: "",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "backend"
+    },
+    {
+        nombre: "Meybell Ramirez",
+        puesto: "Backend Developer",
+        github: "https://github.com/Meybell25",
+        linkedin: "https://www.linkedin.com/in/meybell-ram%C3%ADrez-a4b5ab207?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "backend"
+    },
+    {
+        nombre: "Luis Cruz",
+        puesto: "Backend Developer",
+        github: "https://github.com/LuisCruz29",
+        linkedin: "",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "backend"
+    },
+    {
+        nombre: "Marlon Alemán",
+        puesto: "Backend Developer",
+        github: "https://github.com/Alemancito",
+        linkedin: "",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "backend"
+    },
+    {
+        nombre: "Santos Romero",
+        puesto: "Backend Developer",
+        github: "https://github.com/Josue04R",
+        linkedin: "",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "backend"
+    },
+    {
+        nombre: "Ángel Ramírez",
+        puesto: "Backend Developer",
+        github: "https://github.com/AngelRamirez18",
+        linkedin: "",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "backend"
+    },
+    {
+        nombre: "Diego Morataya",
+        puesto: "Backend Developer",
+        github: "https://github.com/DieMT10",
+        linkedin: "",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "backend"
+    },
+    {
+        nombre: "Kevin Rodriguez",
+        puesto: "Backend Developer",
+        github: "https://github.com/0kev0",
+        linkedin: "",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "backend"
+    },
+    {
+        nombre: "Rafael Lino",
+        puesto: "Backend Developer",
+        github: "https://github.com/Lovoh17",
+        linkedin: "https://www.linkedin.com/in/rafael-lino-b62a1425b/",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "backend"
+    },
             {
-                nombre: "Alex Doe",
-                puesto: "Backend Developer",
-                github: "https://github.com/alexbackend",
-                linkedin: "https://linkedin.com/in/alexbackend",
-                fondoImg: "https://images.pexels.com/photos/210241/pexels-photo-210241.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-                perfilImg: "https://randomuser.me/api/portraits/men/79.jpg"
-            },
-            {
-                nombre: "Sarah Smith",
-                puesto: "Database Administrator",
-                github: "https://github.com/sarahdb",
-                linkedin: "https://linkedin.com/in/sarahdb",
-                fondoImg: "https://images.pexels.com/photos/235986/pexels-photo-235986.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-                perfilImg: "https://randomuser.me/api/portraits/women/78.jpg"
-            }
+        nombre: "Elian Francisco Treminio Parada",
+        puesto: "Base de Datos",
+        github: "https://github.com/ElianTrem",
+        linkedin: "https://sv.linkedin.com/in/elian-francisco-treminio-parada-618649329",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "database"
+    },
+    {
+        nombre: "Yahir Ariel Nieto Amaya",
+        puesto: "Base de Datos",
+        github: "https://github.com/YANA021",
+        linkedin: "https://www.linkedin.com/in/yahir-ariel-nieto-amaya-412857319/",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "database"
+    },
+    {
+        nombre: "Oscar Alejandro Bonilla Cortez",
+        puesto: "Base de Datos",
+        github: "https://github.com/AlejandroBC1007",
+        linkedin: "https://sv.linkedin.com/in/alejandro-bonilla-6bb39b218",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "database"
+    },
+    {
+        nombre: "Cristina Raquel Ventura González",
+        puesto: "Base de Datos",
+        github: "https://github.com/RaquelVentura",
+        linkedin: "https://www.linkedin.com/in/cristina-raquel-ventura-gonz%C3%A1lez-158aab330/?trk=opento_sprofile_topcard",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "database"
+    },
+    {
+        nombre: "Yoselin Aracely Joya Ortez",
+        puesto: "Base de Datos",
+        github: "https://github.com/yoselinuesfom",
+        linkedin: "",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "database"
+    },
+    {
+        nombre: "Alexander Antolino Retana Medina",
+        puesto: "Base de Datos",
+        github: "https://github.com/AntolinoRetana",
+        linkedin: "",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "database"
+    },
+    {
+        nombre: "Marvin Josué Batres Rivas",
+        puesto: "Base de Datos",
+        github: "https://github.com/marvinJosueBatresRivas",
+        linkedin: "http://www.linkedin.com/in/marvin-josue-batres-rivas-b54aaa330",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "database"
+    },
+    {
+        nombre: "Miguel Alfredo Ayala Rodriguez",
+        puesto: "Base de Datos",
+        github: "https://github.com/m-lucy2405",
+        linkedin: "http://www.linkedin.com/in/miguel-alfredo-ayala-rodr%C3%ADguez-b43198331",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "database"
+    },
+    {
+        nombre: "Adan Omar Quevedo Argueta",
+        puesto: "Base de Datos",
+        github: "pendiente",
+        linkedin: "",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "database"
+    },
+    {
+        nombre: "Brayan Josue Granados",
+        puesto: "Base de Datos",
+        github: "https://github.com/BRAYANGRANADOS",
+        linkedin: "",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "database"
+    }
         ];
 
-        const integrantesContainer = document.getElementById('integrantes-container');
-
-        integrantes.forEach(integrante => {
-            const card = `
-            <p class="mt-3 w-100 float-left text-center"><strong>${integrante.puesto}</strong></p>
+        // Función para generar tarjetas de cada área
+function generarTarjetas(area, containerId) {
+    const container = document.getElementById(containerId);
+    integrantes.filter(integrante => integrante.area === area).forEach(integrante => {
+        const card = `
+            <div class="swiper-slide">
                 <div class="col-lg-3 col-md-4 col-sm-6 col-10 mx-auto my-3">
                     <div class="card profile-card-3">
                         <div class="background-block">
@@ -298,16 +654,51 @@ body {
                             <img src="${integrante.perfilImg}" alt="profile-image" class="profile" />
                         </div>
                         <div class="card-content">
-                            <h2>${integrante.nombre}<small>${integrante.puesto}</small></h2>
+                            <h2>${integrante.nombre}<small><br/>${integrante.puesto}</small></h2>
                             <div class="icon-block">
-                                <a href="${integrante.github}" target="_blank"><i class="fa fa-github"></i></a>
-                                <a href="${integrante.linkedin}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                                <a href="${integrante.github}" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="${integrante.linkedin}" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            `;
-            integrantesContainer.innerHTML += card;
+            </div>
+        `;
+        container.innerHTML += card;
+    });
+}
+
+        // Generar tarjetas para cada área
+        generarTarjetas("frontend", "frontend-container");
+        generarTarjetas("backend", "backend-container");
+        generarTarjetas("database", "database-container");
+
+        // Inicializar los carruseles Swiper para cada área
+        new Swiper('.frontend-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        new Swiper('.backend-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        new Swiper('.database-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
         });
     </script>
 </body>
