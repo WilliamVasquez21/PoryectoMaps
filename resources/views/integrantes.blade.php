@@ -386,6 +386,15 @@ body {
         area: "frontend"
     },
     {
+        nombre: "Edras Ariel Viera Lazo",
+        puesto: "Frontend Developer",
+        github: "https://github.com/edraslazov",
+        linkedin: " http://www.linkedin.com/in/edras-ariel-viera-lazo-022a91291",
+        fondoImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        perfilImg: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_UES.jpg",
+        area: "frontend"
+    },
+    {
         nombre: "René Alexander Barrera Flores",
         puesto: "Frontend Developer",
         github: "https://github.com/Sotalexx",
