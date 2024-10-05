@@ -31,8 +31,8 @@ if (isset($zonaRelacionada['coordenadas'])) {
 @endphp
 
 @section('styles')
-<link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
-<link rel="stylesheet" href="{{ asset('css/minerva-la.css') }}">
+<link rel="stylesheet" href="{{ asset('./css/normalize.css') }}"> <!--intento-->
+<link rel="stylesheet" href="{{ asset('./css/minerva-la.css') }}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
