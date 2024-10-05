@@ -16,12 +16,16 @@ const startDragging = (e) => {
 // Evento cuando el mouse o el toque se mueve
 const dragging = (e) => {
   if (!isDragging) return;
-  e.preventDefault();
+  // Solo prevenir el comportamiento predeterminado si no es un toque táctil
+  if (!e.touches) {
+    e.preventDefault();
+  }
   const x = (e.pageX || e.touches[0].pageX) - menuContainer.offsetLeft;
   const walk = (x - startX) * 2; // Ajustar la velocidad del desplazamiento
   menuContainer.scrollLeft = scrollLeft - walk;
   velocity = walk; // Registrar velocidad del desplazamiento
 };
+
 
 // Evento al soltar el mouse o el toque
 const stopDragging = () => {
