@@ -32,28 +32,28 @@ searchInput.addEventListener('input', function () {
     const cards = section.querySelectorAll('.card'); 
     let hasVisibleCard = false;
     
-    // Mostrar todas las cards
+    
     cards.forEach(card => {
       const cardTitle = card.querySelector('.title-card').textContent.toLowerCase(); 
       if (cardTitle.includes(searchTerm) || departmentTitle.includes(searchTerm)) {
-        card.parentElement.style.display = "block"; 
+        card.parentElement.style.display = "grid"; 
         hasVisibleCard = true;
       } else {
-        card.parentElement.style.display = "none";
+        card.parentElement.style.display = "none"; 
       }
     });
 
     // Mostrar u ocultar secciones basadas en si hay tarjetas visibles
     if (hasVisibleCard || departmentTitle.includes(searchTerm)) {
-      section.style.display = "block"; 
+      section.style.display = "block"; // Mostrar la sección si hay tarjetas visibles
 
-      // Mostrar todas las cards y ocultar el botón de "Ver más"
+      // Mostrar todas las cards y ocultar el botón de "Ver más" si hay búsqueda
       const moreCards = section.querySelector('[id^="more-"]');
       const toggleButton = section.querySelector('[id^="toggle-"]');
       if (moreCards) {
-        moreCards.style.display = "grid"; // Mostrar todas las cards
+        moreCards.style.display = "grid"; 
         if (toggleButton) {
-          toggleButton.style.display = "none"; // Ocultar botón
+          toggleButton.style.display = "none"; 
         }
       }
     } else {
@@ -61,6 +61,8 @@ searchInput.addEventListener('input', function () {
     }
   });
 });
+
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
