@@ -126,7 +126,7 @@ text-decoration: none;
 }
 
 .slider__dots button.active {
-  background: #000;
+  background: white;
 }
 
 .slider__button {
@@ -274,6 +274,7 @@ text-decoration: none;
 }
 /*datos*/
 .datos{
+  word-break: break-all;
 display: flex;
 flex-direction: column;
 gap: 2rem 0;
@@ -591,4 +592,58 @@ gap: 2rem 0;
   width: 100%;
   height: 400;
   aspect-ratio: 9/16;
+}
+
+#mataderoModal.modal-open {
+  background-color: black;
+}
+
+#mataderoModal .modal-content {
+  background-color: #1c1c1c; 
+  color: red;
+}
+
+#mataderoModal .modal-footer {
+  background-color: #1c1c1c !important;
+}
+
+#mataderoModal .modal-header {
+  background-color: #1c1c1c; 
+  color: red;
+}
+
+#mataderoModal .modal-body {
+  background-color: #1c1c1c; 
+  color: red;
+}
+
+body.modal-open-black {
+  background-color: black; 
+}
+
+.text-modal-1 {
+  font-size: 1.3rem;
+}
+
+.text-modal-2 {
+  color: red;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.modal-footer .btn {
+  background-color: red; 
+  color: white; 
+}
+
+.modal-header h5 {
+  color: red;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+
+
+#mataderoModal .modal-header, .modal-body, .modal-footer {
+border: none;
 }

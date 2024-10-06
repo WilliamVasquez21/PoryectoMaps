@@ -32,24 +32,36 @@ searchInput.addEventListener('input', function () {
     const cards = section.querySelectorAll('.card'); 
     let hasVisibleCard = false;
     
+    // Mostrar todas las cards
     cards.forEach(card => {
       const cardTitle = card.querySelector('.title-card').textContent.toLowerCase(); 
       if (cardTitle.includes(searchTerm) || departmentTitle.includes(searchTerm)) {
         card.parentElement.style.display = "block"; 
         hasVisibleCard = true;
       } else {
-        card.parentElement.style.display = "none"; // Ocultar la tarjeta si no coincide
+        card.parentElement.style.display = "none";
       }
     });
-    
+
     // Mostrar u ocultar secciones basadas en si hay tarjetas visibles
     if (hasVisibleCard || departmentTitle.includes(searchTerm)) {
-      section.style.display = "block"; // Mostrar la sección si hay tarjetas visibles
+      section.style.display = "block"; 
+
+      // Mostrar todas las cards y ocultar el botón de "Ver más"
+      const moreCards = section.querySelector('[id^="more-"]');
+      const toggleButton = section.querySelector('[id^="toggle-"]');
+      if (moreCards) {
+        moreCards.style.display = "grid"; // Mostrar todas las cards
+        if (toggleButton) {
+          toggleButton.style.display = "none"; // Ocultar botón
+        }
+      }
     } else {
-      section.style.display = "none"; // Ocultar la sección si no hay tarjetas visibles
+      section.style.display = "none"; 
     }
   });
 });
+
 
 document.addEventListener("DOMContentLoaded", function() {
   if (!localStorage.getItem("hasVisited")) {
