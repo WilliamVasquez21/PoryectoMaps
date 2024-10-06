@@ -9,11 +9,11 @@ class MinervaController extends Controller
     public function index()
     {
         // Consumir la API de zonas, referencias, aulas, fotos de aulas y fotos de referencias
-        $zonasResponse = Http::get('https://ues-api-production.up.railway.app/zonas');
-        $referenciasResponse = Http::get('https://ues-api-production.up.railway.app/referencias');
-        $aulasResponse = Http::get('https://ues-api-production.up.railway.app/aulas');
-        $fotosAulasResponse = Http::get('https://ues-api-production.up.railway.app/aula_fotos');
-        $fotosReferenciasResponse = Http::get('https://ues-api-production.up.railway.app/fotos_referencias');
+        $zonasResponse = Http::get('https://ues-api-production-4756.up.railway.app/zonas');
+        $referenciasResponse = Http::get('https://ues-api-production-4756.up.railway.app/referencias');
+        $aulasResponse = Http::get('https://ues-api-production-4756.up.railway.app/aulas');
+        $fotosAulasResponse = Http::get('https://ues-api-production-4756.up.railway.app/aula_fotos');
+        $fotosReferenciasResponse = Http::get('https://ues-api-production-4756.up.railway.app/fotos_referencias');
 
         $departments = [];
 
