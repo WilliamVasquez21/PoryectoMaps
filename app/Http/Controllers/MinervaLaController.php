@@ -78,11 +78,11 @@ class MinervaLaController extends Controller
         $longitude = '-88.1834';  // Coordenada predeterminada
 
         // Obtener los datos de la referencia
-        $referenciaResponse = Http::get('https://ues-api-production-4756.up.railway.app/referencias/' . $id);
-        $zonasResponse = Http::get('https://ues-api-production-4756.up.railway.app/zonas');
-        $fotosReferenciaResponse = Http::get('https://ues-api-production-4756.up.railway.app/fotos_referencias');
-        $videoReferenciaResponse = Http::get('https://ues-api-production-4756.up.railway.app/video_referencias'); // Pivote referencia-video
-        $videosResponse = Http::get('https://ues-api-production-4756.up.railway.app/videos'); // Lista de videos
+        $referenciaResponse = Http::get('https://ues-api-production.up.railway.app/referencias/' . $id);
+        $zonasResponse = Http::get('https://ues-api-production.up.railway.app/zonas');
+        $fotosReferenciaResponse = Http::get('https://ues-api-production.up.railway.app/fotos_referencias');
+        $videoReferenciaResponse = Http::get('https://ues-api-production.up.railway.app/video_referencias'); // Pivote referencia-video
+        $videosResponse = Http::get('https://ues-api-production.up.railway.app/videos'); // Lista de videos
 
         if ($referenciaResponse->successful() && !empty($referenciaResponse->json()['data'])) {
             $referenciaData = $referenciaResponse->json()['data']; // Datos de la referencia
