@@ -48,11 +48,15 @@ class MinervaLaController extends Controller
                     if (strpos($videoUrl, 'shorts') !== false) {
                         // Si es un Short, convertir el enlace para embed
                         $videoUrl = str_replace('youtube.com/shorts/', 'youtube.com/embed/', $videoUrl);
+                    } elseif (strpos($videoUrl, 'youtu.be') !== false) {
+                        // Si es un enlace corto de YouTube, convertirlo para embed
+                        $videoUrl = str_replace('youtu.be/', 'youtube.com/embed/', $videoUrl);
                     } else {
                         // Si es un vídeo regular, convertir el enlace al formato de embed
                         $videoUrl = str_replace('watch?v=', 'embed/', $videoUrl);
                     }
                 }
+                
             }
 
             // Extraer las coordenadas de la zona
