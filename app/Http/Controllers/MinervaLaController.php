@@ -17,11 +17,11 @@ class MinervaLaController extends Controller
         $longitude = '-88.1834';  // Coordenada predeterminada
 
         // Obtener los datos del aula
-        $aulaResponse = Http::get('https://ues-api-production-4756.up.railway.app/aulas/' . $id);
-        $zonasResponse = Http::get('https://ues-api-production-4756.up.railway.app/zonas');
-        $fotosAulaResponse = Http::get('https://ues-api-production-4756.up.railway.app/aula_fotos');
-        $aulaVideoResponse = Http::get('https://ues-api-production-4756.up.railway.app/aula_video'); // Pivote aula-video
-        $videosResponse = Http::get('https://ues-api-production-4756.up.railway.app/videos'); // Lista de videos
+        $aulaResponse = Http::get('https://ues-api-production.up.railway.app/aulas/' . $id);
+        $zonasResponse = Http::get('https://ues-api-production.up.railway.app/zonas');
+        $fotosAulaResponse = Http::get('https://ues-api-production.up.railway.app/aula_fotos');
+        $aulaVideoResponse = Http::get('https://ues-api-production.up.railway.app/aula_video'); // Pivote aula-video
+        $videosResponse = Http::get('https://ues-api-production.up.railway.app/videos'); // Lista de videos
 
         if ($aulaResponse->successful() && !empty($aulaResponse->json()['data'])) {
             $aulaData = $aulaResponse->json()['data']; // Datos del aula
