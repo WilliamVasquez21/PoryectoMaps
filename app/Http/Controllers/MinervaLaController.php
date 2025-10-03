@@ -17,11 +17,11 @@ class MinervaLaController extends Controller
         $longitude = '-88.1834';  // Coordenada predeterminada
 
         // Obtener los datos del aula
-        $aulaResponse = Http::get('https://ues-api-production.up.railway.app/aulas/' . $id);
-        $zonasResponse = Http::get('https://ues-api-production.up.railway.app/zonas');
-        $fotosAulaResponse = Http::get('https://ues-api-production.up.railway.app/aula_fotos');
-        $aulaVideoResponse = Http::get('https://ues-api-production.up.railway.app/aula_video'); // Pivote aula-video
-        $videosResponse = Http::get('https://ues-api-production.up.railway.app/videos'); // Lista de videos
+        $aulaResponse = Http::get('https://ues-api-production-9a53.up.railway.app/aulas/' . $id);
+        $zonasResponse = Http::get('https://ues-api-production-9a53.up.railway.app/zonas');
+        $fotosAulaResponse = Http::get('https://ues-api-production-9a53.up.railway.app/aula_fotos');
+        $aulaVideoResponse = Http::get('https://ues-api-production-9a53.up.railway.app/aula_video'); // Pivote aula-video
+        $videosResponse = Http::get('https://ues-api-production-9a53.up.railway.app/videos'); // Lista de videos
 
         if ($aulaResponse->successful() && !empty($aulaResponse->json()['data'])) {
             $aulaData = $aulaResponse->json()['data']; // Datos del aula
@@ -56,7 +56,7 @@ class MinervaLaController extends Controller
                         $videoUrl = str_replace('watch?v=', 'embed/', $videoUrl);
                     }
                 }
-                
+
             }
 
             // Extraer las coordenadas de la zona
@@ -82,11 +82,11 @@ class MinervaLaController extends Controller
         $longitude = '-88.1834';  // Coordenada predeterminada
 
         // Obtener los datos de la referencia
-        $referenciaResponse = Http::get('https://ues-api-production.up.railway.app/referencias/' . $id);
-        $zonasResponse = Http::get('https://ues-api-production.up.railway.app/zonas');
-        $fotosReferenciaResponse = Http::get('https://ues-api-production.up.railway.app/fotos_referencias');
-        $videoReferenciaResponse = Http::get('https://ues-api-production.up.railway.app/video_referencias'); // Pivote referencia-video
-        $videosResponse = Http::get('https://ues-api-production.up.railway.app/videos'); // Lista de videos
+        $referenciaResponse = Http::get('https://ues-api-production-9a53.up.railway.app/referencias/' . $id);
+        $zonasResponse = Http::get('https://ues-api-production-9a53.up.railway.app/zonas');
+        $fotosReferenciaResponse = Http::get('https://ues-api-production-9a53.up.railway.app/fotos_referencias');
+        $videoReferenciaResponse = Http::get('https://ues-api-production-9a53.up.railway.app/video_referencias'); // Pivote referencia-video
+        $videosResponse = Http::get('https://ues-api-production-9a53.up.railway.app/videos'); // Lista de videos
 
         if ($referenciaResponse->successful() && !empty($referenciaResponse->json()['data'])) {
             $referenciaData = $referenciaResponse->json()['data']; // Datos de la referencia
