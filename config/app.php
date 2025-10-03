@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://poryectomaps-production-a469.up.railway.app'),
+    'url' => env('APP_URL', 'https://poryectomaps-production-53bd.up.railway.app'),
 
     /*
     |--------------------------------------------------------------------------
